@@ -1,0 +1,1174 @@
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <title>Questa Coverage Report</title>
+  <link rel="StyleSheet" media="screen" href="../css/hdl2html.css"/>
+</head>
+<body id="hdl2html">
+  <tt>
+<pre>
+<a name="1"><q-n>     1  </q-n></a>`<q-i>include</q-w> <q-l>"param_def.v"</q-l>
+<a name="2"><q-n>     2  </q-n></a>
+<a name="3"><q-n>     3  </q-n></a><q-w>package</q-w> mcdf_pkg;
+<a name="4"><q-n>     4  </q-n></a>
+<a name="5"><q-n>     5  </q-n></a>  <q-w>import</q-w> chnl_pkg::*;
+<a name="6"><q-n>     6  </q-n></a>  <q-w>import</q-w> reg_pkg::*;
+<a name="7"><q-n>     7  </q-n></a>  <q-w>import</q-w> arb_pkg::*;
+<a name="8"><q-n>     8  </q-n></a>  <q-w>import</q-w> fmt_pkg::*;
+<a name="9"><q-n>     9  </q-n></a>  <q-w>import</q-w> rpt_pkg::*;
+<a name="10"><q-n>     10  </q-n></a>
+<a name="11"><q-n>     11  </q-n></a>  <q-w>typedef</q-w> <q-w>struct</q-w> <q-w>packed</q-w> {
+<a name="12"><q-n>     12  </q-n></a>    <q-w>bit</q-w>[2:0] len;
+<a name="13"><q-n>     13  </q-n></a>    <q-w>bit</q-w>[1:0] prio;
+<a name="14"><q-n>     14  </q-n></a>    <q-w>bit</q-w> en;
+<a name="15"><q-n>     15  </q-n></a>    <q-w>bit</q-w>[7:0] avail;
+<a name="16"><q-n>     16  </q-n></a>  } mcdf_reg_t;
+<a name="17"><q-n>     17  </q-n></a>
+<a name="18"><q-n>     18  </q-n></a>  <q-w>typedef</q-w> <q-w>enum</q-w> {RW_LEN, RW_PRIO, RW_EN, RD_AVAIL} mcdf_field_t;
+<a name="19"><q-n>     19  </q-n></a>
+<a name="20"><q-n>     20  </q-n></a>  <q-w>class</q-w> mcdf_refmod;
+<a name="21"><q-n>     21  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> mcdf_intf intf;
+<a name="22"><q-n>     22  </q-n></a>    <q-w>local</q-w> <q-w>string</q-w> name;
+<a name="23"><q-n>     23  </q-n></a>    mcdf_reg_t regs[3];
+<a name="24"><q-n>     24  </q-n></a>    mailbox #(reg_trans) reg_mb;
+<a name="25"><q-n>     25  </q-n></a>    mailbox #(mon_data_t) in_mbs[3];
+<a name="26"><q-n>     26  </q-n></a>    mailbox #(fmt_trans) out_mbs[3];
+<a name="27"><q-n>     27  </q-n></a>
+<a name="28"><q-n>     28  </q-n></a>    <q-w>function</q-w> <q-w>new</q-w>(<q-w>string</q-w> name=<q-l>"mcdf_refmod"</q-l>);
+<a name="29"><q-n>     29  </q-n></a>      <q-w>this</q-w>.name = name;
+<a name="30"><q-n>     30  </q-n></a>      <q-w>foreach</q-w>(<q-w>this</q-w>.out_mbs[i]) <q-w>this</q-w>.out_mbs[i] = <q-w>new</q-w>();
+<a name="31"><q-n>     31  </q-n></a>    <q-w>endfunction</q-w>
+<a name="32"><q-n>     32  </q-n></a>
+<a name="33"><q-n>     33  </q-n></a>    <q-w>task</q-w> run();
+<a name="34"><q-n>     34  </q-n></a>      <q-w>fork</q-w>
+<a name="35"><q-n>     35  </q-n></a>        do_reset();
+<a name="36"><q-n>     36  </q-n></a>        <q-w>this</q-w>.do_reg_update();
+<a name="37"><q-n>     37  </q-n></a>        do_packet(0);
+<a name="38"><q-n>     38  </q-n></a>        do_packet(1);
+<a name="39"><q-n>     39  </q-n></a>        do_packet(2);
+<a name="40"><q-n>     40  </q-n></a>      <q-w>join</q-w>
+<a name="41"><q-n>     41  </q-n></a>    <q-w>endtask</q-w>
+<a name="42"><q-n>     42  </q-n></a>
+<a name="43"><q-n>     43  </q-n></a>    <q-w>task</q-w> do_reg_update();
+<a name="44"><q-n>     44  </q-n></a>      reg_trans t;
+<a name="45"><q-n>     45  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="46"><q-n>     46  </q-n></a>        <q-w>this</q-w>.reg_mb.get(t);
+<a name="47"><q-n>     47  </q-n></a>        <q-w>if</q-w>(t.addr[7:4] == 0 &amp;&amp; t.cmd == `WRITE) <q-w>begin</q-w>
+<a name="48"><q-n>     48  </q-n></a>          <q-w>this</q-w>.regs[t.addr[3:2]].en = t.data[0];
+<a name="49"><q-n>     49  </q-n></a>          <q-w>this</q-w>.regs[t.addr[3:2]].prio = t.data[2:1];
+<a name="50"><q-n>     50  </q-n></a>          <q-w>this</q-w>.regs[t.addr[3:2]].len = t.data[5:3];
+<a name="51"><q-n>     51  </q-n></a>        <q-w>end</q-w>
+<a name="52"><q-n>     52  </q-n></a>        <q-w>else</q-w> <q-w>if</q-w>(t.addr[7:4] == 1 &amp;&amp; t.cmd == `READ) <q-w>begin</q-w>
+<a name="53"><q-n>     53  </q-n></a>          <q-w>this</q-w>.regs[t.addr[3:2]].avail = t.data[7:0];
+<a name="54"><q-n>     54  </q-n></a>        <q-w>end</q-w>
+<a name="55"><q-n>     55  </q-n></a>      <q-w>end</q-w>
+<a name="56"><q-n>     56  </q-n></a>    <q-w>endtask</q-w>
+<a name="57"><q-n>     57  </q-n></a>
+<a name="58"><q-n>     58  </q-n></a>    <q-w>task</q-w> do_packet(<q-w>int</q-w> id);
+<a name="59"><q-n>     59  </q-n></a>      fmt_trans ot;
+<a name="60"><q-n>     60  </q-n></a>      mon_data_t it;
+<a name="61"><q-n>     61  </q-n></a>	  <q-w>bit</q-w>[2:0] len;
+<a name="62"><q-n>     62  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="63"><q-n>     63  </q-n></a>        <q-w>this</q-w>.in_mbs[id].peek(it);
+<a name="64"><q-n>     64  </q-n></a>        ot = <q-w>new</q-w>();
+<a name="65"><q-n>     65  </q-n></a>        len = <q-w>this</q-w>.get_field_value(id, RW_LEN);
+<a name="66"><q-n>     66  </q-n></a>        ot.length = len &gt; 3 ? 32 : 4 &lt;&lt; len;
+<a name="67"><q-n>     67  </q-n></a>        ot.data = <q-w>new</q-w>[ot.length];
+<a name="68"><q-n>     68  </q-n></a>        ot.ch_id = id;
+<a name="69"><q-n>     69  </q-n></a>        <q-w>foreach</q-w>(ot.data[m]) <q-w>begin</q-w>
+<a name="70"><q-n>     70  </q-n></a>          <q-w>this</q-w>.in_mbs[id].get(it);
+<a name="71"><q-n>     71  </q-n></a>          ot.data[m] = it.data;
+<a name="72"><q-n>     72  </q-n></a>        <q-w>end</q-w>
+<a name="73"><q-n>     73  </q-n></a>        <q-w>this</q-w>.out_mbs[id].put(ot);
+<a name="74"><q-n>     74  </q-n></a>      <q-w>end</q-w>
+<a name="75"><q-n>     75  </q-n></a>    <q-w>endtask</q-w>
+<a name="76"><q-n>     76  </q-n></a>
+<a name="77"><q-n>     77  </q-n></a>    <q-w>function</q-w> <q-w>int</q-w> get_field_value(<q-w>int</q-w> id, mcdf_field_t f);
+<a name="78"><q-n>     78  </q-n></a>      <q-w>case</q-w>(f)
+<a name="79"><q-n>     79  </q-n></a>        RW_LEN: <q-w>return</q-w> regs[id].len;
+<a name="80"><q-n>     80  </q-n></a>        RW_PRIO: <q-w>return</q-w> regs[id].prio;
+<a name="81"><q-n>     81  </q-n></a>        RW_EN: <q-w>return</q-w> regs[id].en;
+<a name="82"><q-n>     82  </q-n></a>        RD_AVAIL: <q-w>return</q-w> regs[id].avail;
+<a name="83"><q-n>     83  </q-n></a>      <q-w>endcase</q-w>
+<a name="84"><q-n>     84  </q-n></a>    <q-w>endfunction</q-w> 
+<a name="85"><q-n>     85  </q-n></a>
+<a name="86"><q-n>     86  </q-n></a>    <q-w>task</q-w> do_reset();
+<a name="87"><q-n>     87  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="88"><q-n>     88  </q-n></a>        @(<q-a>negedge</q-w> intf.rstn); 
+<a name="89"><q-n>     89  </q-n></a>        <q-w>foreach</q-w>(regs[i]) <q-w>begin</q-w>
+<a name="90"><q-n>     90  </q-n></a>          regs[i].len = 'h0;
+<a name="91"><q-n>     91  </q-n></a>          regs[i].prio = 'h3;
+<a name="92"><q-n>     92  </q-n></a>          regs[i].en = 'h1;
+<a name="93"><q-n>     93  </q-n></a>          regs[i].avail = 'h20;
+<a name="94"><q-n>     94  </q-n></a>        <q-w>end</q-w>
+<a name="95"><q-n>     95  </q-n></a>      <q-w>end</q-w>
+<a name="96"><q-n>     96  </q-n></a>    <q-w>endtask</q-w>
+<a name="97"><q-n>     97  </q-n></a>
+<a name="98"><q-n>     98  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> set_interface(<q-w>virtual</q-w> mcdf_intf intf);
+<a name="99"><q-n>     99  </q-n></a>      <q-w>if</q-w>(intf == <q-w>null</q-w>)
+<a name="100"><q-n>     100  </q-n></a>        $<q-v>error</q-w>(<q-l>"interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="101"><q-n>     101  </q-n></a>      <q-w>else</q-w>
+<a name="102"><q-n>     102  </q-n></a>        <q-w>this</q-w>.intf = intf;
+<a name="103"><q-n>     103  </q-n></a>    <q-w>endfunction</q-w>
+<a name="104"><q-n>     104  </q-n></a>    
+<a name="105"><q-n>     105  </q-n></a>  <q-w>endclass</q-w>
+<a name="106"><q-n>     106  </q-n></a>
+<a name="107"><q-n>     107  </q-n></a>  <q-w>class</q-w> mcdf_checker;
+<a name="108"><q-n>     108  </q-n></a>    <q-w>local</q-w> <q-w>string</q-w> name;
+<a name="109"><q-n>     109  </q-n></a>    <q-w>local</q-w> <q-w>int</q-w> err_count;
+<a name="110"><q-n>     110  </q-n></a>    <q-w>local</q-w> <q-w>int</q-w> total_count;
+<a name="111"><q-n>     111  </q-n></a>    <q-w>local</q-w> <q-w>int</q-w> chnl_count[3];
+<a name="112"><q-n>     112  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> chnl_intf chnl_vifs[3]; 
+<a name="113"><q-n>     113  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> arb_intf arb_vif; 
+<a name="114"><q-n>     114  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> mcdf_intf mcdf_vif;
+<a name="115"><q-n>     115  </q-n></a>    <q-w>local</q-w> mcdf_refmod refmod;
+<a name="116"><q-n>     116  </q-n></a>    mailbox #(mon_data_t) chnl_mbs[3];
+<a name="117"><q-n>     117  </q-n></a>    mailbox #(fmt_trans) fmt_mb;
+<a name="118"><q-n>     118  </q-n></a>    mailbox #(reg_trans) reg_mb;
+<a name="119"><q-n>     119  </q-n></a>    mailbox #(fmt_trans) exp_mbs[3];
+<a name="120"><q-n>     120  </q-n></a>
+<a name="121"><q-n>     121  </q-n></a>    <q-w>function</q-w> <q-w>new</q-w>(<q-w>string</q-w> name=<q-l>"mcdf_checker"</q-l>);
+<a name="122"><q-n>     122  </q-n></a>      <q-w>this</q-w>.name = name;
+<a name="123"><q-n>     123  </q-n></a>      <q-w>foreach</q-w>(<q-w>this</q-w>.chnl_mbs[i]) <q-w>this</q-w>.chnl_mbs[i] = <q-w>new</q-w>();
+<a name="124"><q-n>     124  </q-n></a>      <q-w>this</q-w>.fmt_mb = <q-w>new</q-w>();
+<a name="125"><q-n>     125  </q-n></a>      <q-w>this</q-w>.reg_mb = <q-w>new</q-w>();
+<a name="126"><q-n>     126  </q-n></a>      <q-w>this</q-w>.refmod = <q-w>new</q-w>();
+<a name="127"><q-n>     127  </q-n></a>      <q-w>foreach</q-w>(<q-w>this</q-w>.refmod.in_mbs[i]) <q-w>begin</q-w>
+<a name="128"><q-n>     128  </q-n></a>        <q-w>this</q-w>.refmod.in_mbs[i] = <q-w>this</q-w>.chnl_mbs[i];
+<a name="129"><q-n>     129  </q-n></a>        <q-w>this</q-w>.exp_mbs[i] = <q-w>this</q-w>.refmod.out_mbs[i];
+<a name="130"><q-n>     130  </q-n></a>      <q-w>end</q-w>
+<a name="131"><q-n>     131  </q-n></a>      <q-w>this</q-w>.refmod.reg_mb = <q-w>this</q-w>.reg_mb;
+<a name="132"><q-n>     132  </q-n></a>      <q-w>this</q-w>.err_count = 0;
+<a name="133"><q-n>     133  </q-n></a>      <q-w>this</q-w>.total_count = 0;
+<a name="134"><q-n>     134  </q-n></a>      <q-w>foreach</q-w>(<q-w>this</q-w>.chnl_count[i]) <q-w>this</q-w>.chnl_count[i] = 0;
+<a name="135"><q-n>     135  </q-n></a>    <q-w>endfunction</q-w>
+<a name="136"><q-n>     136  </q-n></a>
+<a name="137"><q-n>     137  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> set_interface(<q-w>virtual</q-w> mcdf_intf mcdf_vif, <q-w>virtual</q-w> chnl_intf chnl_vifs[3], <q-w>virtual</q-w> arb_intf arb_vif);
+<a name="138"><q-n>     138  </q-n></a>      <q-w>if</q-w>(mcdf_vif == <q-w>null</q-w>)
+<a name="139"><q-n>     139  </q-n></a>        $<q-v>error</q-w>(<q-l>"mcdf interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="140"><q-n>     140  </q-n></a>      <q-w>else</q-w> <q-w>begin</q-w>
+<a name="141"><q-n>     141  </q-n></a>        <q-w>this</q-w>.mcdf_vif = mcdf_vif;
+<a name="142"><q-n>     142  </q-n></a>        <q-w>this</q-w>.refmod.set_interface(mcdf_vif);
+<a name="143"><q-n>     143  </q-n></a>      <q-w>end</q-w>
+<a name="144"><q-n>     144  </q-n></a>      <q-w>if</q-w>(chnl_vifs[0] == <q-w>null</q-w> || chnl_vifs[1] == <q-w>null</q-w> || chnl_vifs[2] == <q-w>null</q-w>)
+<a name="145"><q-n>     145  </q-n></a>        $<q-v>error</q-w>(<q-l>"chnl interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="146"><q-n>     146  </q-n></a>      <q-w>else</q-w> <q-w>begin</q-w>
+<a name="147"><q-n>     147  </q-n></a>        <q-w>this</q-w>.chnl_vifs = chnl_vifs;
+<a name="148"><q-n>     148  </q-n></a>      <q-w>end</q-w>
+<a name="149"><q-n>     149  </q-n></a>      <q-w>if</q-w>(arb_vif == <q-w>null</q-w>)
+<a name="150"><q-n>     150  </q-n></a>        $<q-v>error</q-w>(<q-l>"arb interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="151"><q-n>     151  </q-n></a>      <q-w>else</q-w> <q-w>begin</q-w>
+<a name="152"><q-n>     152  </q-n></a>        <q-w>this</q-w>.arb_vif = arb_vif;
+<a name="153"><q-n>     153  </q-n></a>      <q-w>end</q-w>
+<a name="154"><q-n>     154  </q-n></a>    <q-w>endfunction</q-w>
+<a name="155"><q-n>     155  </q-n></a>
+<a name="156"><q-n>     156  </q-n></a>    <q-w>task</q-w> run();
+<a name="157"><q-n>     157  </q-n></a>      <q-w>fork</q-w>
+<a name="158"><q-n>     158  </q-n></a>        <q-w>this</q-w>.do_channel_disable_check(0);
+<a name="159"><q-n>     159  </q-n></a>        <q-w>this</q-w>.do_channel_disable_check(1);
+<a name="160"><q-n>     160  </q-n></a>        <q-w>this</q-w>.do_channel_disable_check(2);
+<a name="161"><q-n>     161  </q-n></a>        <q-w>this</q-w>.do_arbiter_priority_check();
+<a name="162"><q-n>     162  </q-n></a>        <q-w>this</q-w>.do_compare();
+<a name="163"><q-n>     163  </q-n></a>        <q-w>this</q-w>.refmod.run();
+<a name="164"><q-n>     164  </q-n></a>      <q-w>join</q-w>
+<a name="165"><q-n>     165  </q-n></a>    <q-w>endtask</q-w>
+<a name="166"><q-n>     166  </q-n></a>
+<a name="167"><q-n>     167  </q-n></a>    <q-w>task</q-w> do_compare();
+<a name="168"><q-n>     168  </q-n></a>      fmt_trans expt, mont;
+<a name="169"><q-n>     169  </q-n></a>      <q-w>bit</q-w> cmp;
+<a name="170"><q-n>     170  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="171"><q-n>     171  </q-n></a>        <q-w>this</q-w>.fmt_mb.get(mont);
+<a name="172"><q-n>     172  </q-n></a>        <q-w>this</q-w>.exp_mbs[mont.ch_id].get(expt);
+<a name="173"><q-n>     173  </q-n></a>        cmp = mont.compare(expt);   
+<a name="174"><q-n>     174  </q-n></a>        <q-w>this</q-w>.total_count++;
+<a name="175"><q-n>     175  </q-n></a>        <q-w>this</q-w>.chnl_count[mont.ch_id]++;
+<a name="176"><q-n>     176  </q-n></a>        <q-w>if</q-w>(cmp == 0) <q-w>begin</q-w>
+<a name="177"><q-n>     177  </q-n></a>          <q-w>this</q-w>.err_count++;
+<a name="178"><q-n>     178  </q-n></a>          rpt_pkg::rpt_msg(<q-l>"[CMPFAIL]"</q-l>, 
+<a name="179"><q-n>     179  </q-n></a>            $sformatf(<q-l>"%0t %0dth times comparing but failed! MCDF monitored output packet is different with reference model output"</q-l>, $<q-w>time</q-w>, <q-w>this</q-w>.total_count),
+<a name="180"><q-n>     180  </q-n></a>            rpt_pkg::ERROR,
+<a name="181"><q-n>     181  </q-n></a>            rpt_pkg::TOP,
+<a name="182"><q-n>     182  </q-n></a>            rpt_pkg::LOG);
+<a name="183"><q-n>     183  </q-n></a>        <q-w>end</q-w>
+<a name="184"><q-n>     184  </q-n></a>        <q-w>else</q-w> <q-w>begin</q-w>
+<a name="185"><q-n>     185  </q-n></a>          rpt_pkg::rpt_msg(<q-l>"[CMPSUCD]"</q-l>,
+<a name="186"><q-n>     186  </q-n></a>            $sformatf(<q-l>"%0t %0dth times comparing and succeeded! MCDF monitored output packet is the same with reference model output"</q-l>, $<q-w>time</q-w>, <q-w>this</q-w>.total_count),
+<a name="187"><q-n>     187  </q-n></a>            rpt_pkg::INFO,
+<a name="188"><q-n>     188  </q-n></a>            rpt_pkg::HIGH);
+<a name="189"><q-n>     189  </q-n></a>        <q-w>end</q-w>
+<a name="190"><q-n>     190  </q-n></a>      <q-w>end</q-w>
+<a name="191"><q-n>     191  </q-n></a>    <q-w>endtask</q-w>
+<a name="192"><q-n>     192  </q-n></a>
+<a name="193"><q-n>     193  </q-n></a>    <q-w>task</q-w> do_channel_disable_check(<q-w>int</q-w> id);
+<a name="194"><q-n>     194  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="195"><q-n>     195  </q-n></a>        @(<q-a>posedge</q-w> <q-w>this</q-w>.mcdf_vif.clk <q-w>iff</q-w> (<q-w>this</q-w>.mcdf_vif.rstn &amp;&amp; <q-w>this</q-w>.mcdf_vif.mon_ck.chnl_en[id]===0));
+<a name="196"><q-n>     196  </q-n></a>        <q-w>if</q-w>(<q-w>this</q-w>.chnl_vifs[id].mon_ck.ch_valid===1 &amp;&amp; <q-w>this</q-w>.chnl_vifs[id].mon_ck.ch_ready===1)
+<a name="197"><q-n>     197  </q-n></a>          rpt_pkg::rpt_msg(<q-l>"[CHKERR]"</q-l>, 
+<a name="198"><q-n>     198  </q-n></a>            $sformatf(<q-l>"ERROR! %0t when channel disabled, ready signal raised when valid high"</q-l>,$<q-w>time</q-w>), 
+<a name="199"><q-n>     199  </q-n></a>            rpt_pkg::ERROR, 
+<a name="200"><q-n>     200  </q-n></a>            rpt_pkg::TOP);
+<a name="201"><q-n>     201  </q-n></a>      <q-w>end</q-w>
+<a name="202"><q-n>     202  </q-n></a>    <q-w>endtask</q-w>
+<a name="203"><q-n>     203  </q-n></a>
+<a name="204"><q-n>     204  </q-n></a>    <q-w>task</q-w> do_arbiter_priority_check();
+<a name="205"><q-n>     205  </q-n></a>      <q-w>int</q-w> id;
+<a name="206"><q-n>     206  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="207"><q-n>     207  </q-n></a>        @(<q-a>posedge</q-w> <q-w>this</q-w>.arb_vif.clk <q-w>iff</q-w> (<q-w>this</q-w>.arb_vif.rstn &amp;&amp; <q-w>this</q-w>.arb_vif.mon_ck.f2a_id_req===1));
+<a name="208"><q-n>     208  </q-n></a>        id = <q-w>this</q-w>.get_slave_id_with_prio();
+<a name="209"><q-n>     209  </q-n></a>        <q-w>if</q-w>(id &gt;= 0) <q-w>begin</q-w>
+<a name="210"><q-n>     210  </q-n></a>          @(<q-a>posedge</q-w> <q-w>this</q-w>.arb_vif.clk);
+<a name="211"><q-n>     211  </q-n></a>          <q-w>if</q-w>(<q-w>this</q-w>.arb_vif.mon_ck.a2s_acks[id] !== 1)
+<a name="212"><q-n>     212  </q-n></a>            rpt_pkg::rpt_msg(<q-l>"[CHKERR]"</q-l>,
+<a name="213"><q-n>     213  </q-n></a>              $sformatf(<q-l>"ERROR! %0t arbiter received f2a_id_req===1 and channel[%0d] raising request with high priority, but is not granted by arbiter"</q-l>, $<q-w>time</q-w>, id),
+<a name="214"><q-n>     214  </q-n></a>              rpt_pkg::ERROR,
+<a name="215"><q-n>     215  </q-n></a>              rpt_pkg::TOP);
+<a name="216"><q-n>     216  </q-n></a>        <q-w>end</q-w>
+<a name="217"><q-n>     217  </q-n></a>      <q-w>end</q-w>
+<a name="218"><q-n>     218  </q-n></a>    <q-w>endtask</q-w>
+<a name="219"><q-n>     219  </q-n></a>
+<a name="220"><q-n>     220  </q-n></a>    <q-w>function</q-w> <q-w>int</q-w> get_slave_id_with_prio();
+<a name="221"><q-n>     221  </q-n></a>      <q-w>int</q-w> id=-1;
+<a name="222"><q-n>     222  </q-n></a>      <q-w>int</q-w> prio=999;
+<a name="223"><q-n>     223  </q-n></a>      <q-w>foreach</q-w>(<q-w>this</q-w>.arb_vif.mon_ck.slv_prios[i]) <q-w>begin</q-w>
+<a name="224"><q-n>     224  </q-n></a>        <q-w>if</q-w>(<q-w>this</q-w>.arb_vif.mon_ck.slv_prios[i] &lt; prio &amp;&amp; <q-w>this</q-w>.arb_vif.mon_ck.slv_reqs[i]===1) <q-w>begin</q-w>
+<a name="225"><q-n>     225  </q-n></a>          id = i;
+<a name="226"><q-n>     226  </q-n></a>          prio = <q-w>this</q-w>.arb_vif.mon_ck.slv_prios[i];
+<a name="227"><q-n>     227  </q-n></a>        <q-w>end</q-w>
+<a name="228"><q-n>     228  </q-n></a>      <q-w>end</q-w>
+<a name="229"><q-n>     229  </q-n></a>      <q-w>return</q-w> id;
+<a name="230"><q-n>     230  </q-n></a>    <q-w>endfunction</q-w>
+<a name="231"><q-n>     231  </q-n></a>
+<a name="232"><q-n>     232  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> do_report();
+<a name="233"><q-n>     233  </q-n></a>      <q-w>string</q-w> s;
+<a name="234"><q-n>     234  </q-n></a>      s = <q-l>"\n---------------------------------------------------------------\n"</q-l>;
+<a name="235"><q-n>     235  </q-n></a>      s = {s, <q-l>"CHECKER SUMMARY \n"</q-l>}; 
+<a name="236"><q-n>     236  </q-n></a>      s = {s, $sformatf(<q-l>"total comparison count: %0d \n"</q-l>, <q-w>this</q-w>.total_count)}; 
+<a name="237"><q-n>     237  </q-n></a>      <q-w>foreach</q-w>(<q-w>this</q-w>.chnl_count[i]) s = {s, $sformatf(<q-l>" channel[%0d] comparison count: %0d \n"</q-l>, i, <q-w>this</q-w>.chnl_count[i])};
+<a name="238"><q-n>     238  </q-n></a>      s = {s, $sformatf(<q-l>"total error count: %0d \n"</q-l>, <q-w>this</q-w>.err_count)}; 
+<a name="239"><q-n>     239  </q-n></a>      <q-w>foreach</q-w>(<q-w>this</q-w>.chnl_mbs[i]) <q-w>begin</q-w>
+<a name="240"><q-n>     240  </q-n></a>        <q-w>if</q-w>(<q-w>this</q-w>.chnl_mbs[i].num() != 0)
+<a name="241"><q-n>     241  </q-n></a>          s = {s, $sformatf(<q-l>"WARNING:: chnl_mbs[%0d] is not empty! size = %0d \n"</q-l>, i, <q-w>this</q-w>.chnl_mbs[i].num())}; 
+<a name="242"><q-n>     242  </q-n></a>      <q-w>end</q-w>
+<a name="243"><q-n>     243  </q-n></a>      <q-w>if</q-w>(<q-w>this</q-w>.fmt_mb.num() != 0)
+<a name="244"><q-n>     244  </q-n></a>          s = {s, $sformatf(<q-l>"WARNING:: fmt_mb is not empty! size = %0d \n"</q-l>, <q-w>this</q-w>.fmt_mb.num())}; 
+<a name="245"><q-n>     245  </q-n></a>      s = {s, <q-l>"---------------------------------------------------------------\n"</q-l>};
+<a name="246"><q-n>     246  </q-n></a>      rpt_pkg::rpt_msg($sformatf(<q-l>"[%s]"</q-l>,<q-w>this</q-w>.name), s, rpt_pkg::INFO, rpt_pkg::TOP);
+<a name="247"><q-n>     247  </q-n></a>    <q-w>endfunction</q-w>
+<a name="248"><q-n>     248  </q-n></a>  <q-w>endclass</q-w>
+<a name="249"><q-n>     249  </q-n></a>
+<a name="250"><q-n>     250  </q-n></a>  <q-w>class</q-w> mcdf_coverage;
+<a name="251"><q-n>     251  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> chnl_intf chnl_vifs[3]; 
+<a name="252"><q-n>     252  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> arb_intf arb_vif; 
+<a name="253"><q-n>     253  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> mcdf_intf mcdf_vif;
+<a name="254"><q-n>     254  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> reg_intf reg_vif;
+<a name="255"><q-n>     255  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> fmt_intf fmt_vif;
+<a name="256"><q-n>     256  </q-n></a>    <q-w>local</q-w> <q-w>string</q-w> name;
+<a name="257"><q-n>     257  </q-n></a>    <q-w>local</q-w> <q-w>int</q-w> delay_req_to_grant;
+<a name="258"><q-n>     258  </q-n></a>
+<a name="259"><q-n>     259  </q-n></a>    <q-w>covergroup</q-w> cg_mcdf_reg_write_read;
+<a name="260"><q-n>     260  </q-n></a>      addr: <q-w>coverpoint</q-w> reg_vif.mon_ck.cmd_addr {
+<a name="261"><q-n>     261  </q-n></a>        type_option.weight = 0;
+<a name="262"><q-n>     262  </q-n></a>        <q-w>bins</q-w> slv0_rw_addr = {`SLV0_RW_ADDR};
+<a name="263"><q-n>     263  </q-n></a>        <q-w>bins</q-w> slv1_rw_addr = {`SLV1_RW_ADDR};
+<a name="264"><q-n>     264  </q-n></a>        <q-w>bins</q-w> slv2_rw_addr = {`SLV2_RW_ADDR};
+<a name="265"><q-n>     265  </q-n></a>        <q-w>bins</q-w> slv0_r_addr  = {`SLV0_R_ADDR };
+<a name="266"><q-n>     266  </q-n></a>        <q-w>bins</q-w> slv1_r_addr  = {`SLV1_R_ADDR };
+<a name="267"><q-n>     267  </q-n></a>        <q-w>bins</q-w> slv2_r_addr  = {`SLV2_R_ADDR };
+<a name="268"><q-n>     268  </q-n></a>      }
+<a name="269"><q-n>     269  </q-n></a>      cmd: <q-w>coverpoint</q-w> reg_vif.mon_ck.cmd {
+<a name="270"><q-n>     270  </q-n></a>        type_option.weight = 0;
+<a name="271"><q-n>     271  </q-n></a>        <q-w>bins</q-w> write = {`WRITE};
+<a name="272"><q-n>     272  </q-n></a>        <q-w>bins</q-w> read  = {`READ};
+<a name="273"><q-n>     273  </q-n></a>        <q-w>bins</q-w> idle  = {`IDLE};
+<a name="274"><q-n>     274  </q-n></a>      }
+<a name="275"><q-n>     275  </q-n></a>      cmdXaddr: <q-w>cross</q-w> cmd, addr {
+<a name="276"><q-n>     276  </q-n></a>        <q-w>bins</q-w> slv0_rw_addr = <q-w>binsof</q-w>(addr.slv0_rw_addr);
+<a name="277"><q-n>     277  </q-n></a>        <q-w>bins</q-w> slv1_rw_addr = <q-w>binsof</q-w>(addr.slv1_rw_addr);
+<a name="278"><q-n>     278  </q-n></a>        <q-w>bins</q-w> slv2_rw_addr = <q-w>binsof</q-w>(addr.slv2_rw_addr);
+<a name="279"><q-n>     279  </q-n></a>        <q-w>bins</q-w> slv0_r_addr  = <q-w>binsof</q-w>(addr.slv0_r_addr );
+<a name="280"><q-n>     280  </q-n></a>        <q-w>bins</q-w> slv1_r_addr  = <q-w>binsof</q-w>(addr.slv1_r_addr );
+<a name="281"><q-n>     281  </q-n></a>        <q-w>bins</q-w> slv2_r_addr  = <q-w>binsof</q-w>(addr.slv2_r_addr );
+<a name="282"><q-n>     282  </q-n></a>        <q-w>bins</q-w> write        = <q-w>binsof</q-w>(cmd.write);
+<a name="283"><q-n>     283  </q-n></a>        <q-w>bins</q-w> read         = <q-w>binsof</q-w>(cmd.read );
+<a name="284"><q-n>     284  </q-n></a>        <q-w>bins</q-w> idle         = <q-w>binsof</q-w>(cmd.idle );
+<a name="285"><q-n>     285  </q-n></a>        <q-w>bins</q-w> write_slv0_rw_addr  = <q-w>binsof</q-w>(cmd.write) &amp;&amp; <q-w>binsof</q-w>(addr.slv0_rw_addr);
+<a name="286"><q-n>     286  </q-n></a>        <q-w>bins</q-w> write_slv1_rw_addr  = <q-w>binsof</q-w>(cmd.write) &amp;&amp; <q-w>binsof</q-w>(addr.slv1_rw_addr);
+<a name="287"><q-n>     287  </q-n></a>        <q-w>bins</q-w> write_slv2_rw_addr  = <q-w>binsof</q-w>(cmd.write) &amp;&amp; <q-w>binsof</q-w>(addr.slv2_rw_addr);
+<a name="288"><q-n>     288  </q-n></a>        <q-w>bins</q-w> read_slv0_rw_addr   = <q-w>binsof</q-w>(cmd.read) &amp;&amp; <q-w>binsof</q-w>(addr.slv0_rw_addr);
+<a name="289"><q-n>     289  </q-n></a>        <q-w>bins</q-w> read_slv1_rw_addr   = <q-w>binsof</q-w>(cmd.read) &amp;&amp; <q-w>binsof</q-w>(addr.slv1_rw_addr);
+<a name="290"><q-n>     290  </q-n></a>        <q-w>bins</q-w> read_slv2_rw_addr   = <q-w>binsof</q-w>(cmd.read) &amp;&amp; <q-w>binsof</q-w>(addr.slv2_rw_addr);
+<a name="291"><q-n>     291  </q-n></a>        <q-w>bins</q-w> read_slv0_r_addr    = <q-w>binsof</q-w>(cmd.read) &amp;&amp; <q-w>binsof</q-w>(addr.slv0_r_addr); 
+<a name="292"><q-n>     292  </q-n></a>        <q-w>bins</q-w> read_slv1_r_addr    = <q-w>binsof</q-w>(cmd.read) &amp;&amp; <q-w>binsof</q-w>(addr.slv1_r_addr); 
+<a name="293"><q-n>     293  </q-n></a>        <q-w>bins</q-w> read_slv2_r_addr    = <q-w>binsof</q-w>(cmd.read) &amp;&amp; <q-w>binsof</q-w>(addr.slv2_r_addr); 
+<a name="294"><q-n>     294  </q-n></a>      }
+<a name="295"><q-n>     295  </q-n></a>    <q-w>endgroup</q-w>
+<a name="296"><q-n>     296  </q-n></a>
+<a name="297"><q-n>     297  </q-n></a>    <q-w>covergroup</q-w> cg_mcdf_reg_illegal_access;
+<a name="298"><q-n>     298  </q-n></a>      addr: <q-w>coverpoint</q-w> reg_vif.mon_ck.cmd_addr {
+<a name="299"><q-n>     299  </q-n></a>        type_option.weight = 0;
+<a name="300"><q-n>     300  </q-n></a>        <q-w>bins</q-w> legal_rw = {`SLV0_RW_ADDR, `SLV1_RW_ADDR, `SLV2_RW_ADDR};
+<a name="301"><q-n>     301  </q-n></a>        <q-w>bins</q-w> legal_r = {`SLV0_R_ADDR, `SLV1_R_ADDR, `SLV2_R_ADDR};
+<a name="302"><q-n>     302  </q-n></a>        <q-w>bins</q-w> illegal = {[8'h20:$], 8'hC, 8'h1C};
+<a name="303"><q-n>     303  </q-n></a>      }
+<a name="304"><q-n>     304  </q-n></a>      cmd: <q-w>coverpoint</q-w> reg_vif.mon_ck.cmd {
+<a name="305"><q-n>     305  </q-n></a>        type_option.weight = 0;
+<a name="306"><q-n>     306  </q-n></a>        <q-w>bins</q-w> write = {`WRITE};
+<a name="307"><q-n>     307  </q-n></a>        <q-w>bins</q-w> read  = {`READ};
+<a name="308"><q-n>     308  </q-n></a>      }
+<a name="309"><q-n>     309  </q-n></a>      wdata: <q-w>coverpoint</q-w> reg_vif.mon_ck.cmd_data_m2s {
+<a name="310"><q-n>     310  </q-n></a>        type_option.weight = 0;
+<a name="311"><q-n>     311  </q-n></a>        <q-w>bins</q-w> legal = {[0:'h3F]};
+<a name="312"><q-n>     312  </q-n></a>        <q-w>bins</q-w> illegal = {['h40:$]};
+<a name="313"><q-n>     313  </q-n></a>      }
+<a name="314"><q-n>     314  </q-n></a>      rdata: <q-w>coverpoint</q-w> reg_vif.mon_ck.cmd_data_s2m {
+<a name="315"><q-n>     315  </q-n></a>        type_option.weight = 0;
+<a name="316"><q-n>     316  </q-n></a>        <q-w>bins</q-w> legal = {[0:'hFF]};
+<a name="317"><q-n>     317  </q-n></a>        <q-w>illegal_bins</q-w> illegal = <q-w>default</q-w>;
+<a name="318"><q-n>     318  </q-n></a>      }
+<a name="319"><q-n>     319  </q-n></a>      cmdXaddrXdata: <q-w>cross</q-w> cmd, addr, wdata, rdata {
+<a name="320"><q-n>     320  </q-n></a>        <q-w>bins</q-w> addr_legal_rw = <q-w>binsof</q-w>(addr.legal_rw);
+<a name="321"><q-n>     321  </q-n></a>        <q-w>bins</q-w> addr_legal_r = <q-w>binsof</q-w>(addr.legal_r);
+<a name="322"><q-n>     322  </q-n></a>        <q-w>bins</q-w> addr_illegal = <q-w>binsof</q-w>(addr.illegal);
+<a name="323"><q-n>     323  </q-n></a>        <q-w>bins</q-w> cmd_write = <q-w>binsof</q-w>(cmd.write);
+<a name="324"><q-n>     324  </q-n></a>        <q-w>bins</q-w> cmd_read = <q-w>binsof</q-w>(cmd.read);
+<a name="325"><q-n>     325  </q-n></a>        <q-w>bins</q-w> wdata_legal = <q-w>binsof</q-w>(wdata.legal);
+<a name="326"><q-n>     326  </q-n></a>        <q-w>bins</q-w> wdata_illegal = <q-w>binsof</q-w>(wdata.illegal);
+<a name="327"><q-n>     327  </q-n></a>        <q-w>bins</q-w> rdata_legal = <q-w>binsof</q-w>(rdata.legal);
+<a name="328"><q-n>     328  </q-n></a>        <q-w>bins</q-w> write_illegal_addr = <q-w>binsof</q-w>(cmd.write) &amp;&amp; <q-w>binsof</q-w>(addr.illegal);
+<a name="329"><q-n>     329  </q-n></a>        <q-w>bins</q-w> read_illegal_addr  = <q-w>binsof</q-w>(cmd.read) &amp;&amp; <q-w>binsof</q-w>(addr.illegal);
+<a name="330"><q-n>     330  </q-n></a>        <q-w>bins</q-w> write_illegal_rw_data = <q-w>binsof</q-w>(cmd.write) &amp;&amp; <q-w>binsof</q-w>(addr.legal_rw) &amp;&amp; <q-w>binsof</q-w>(wdata.illegal);
+<a name="331"><q-n>     331  </q-n></a>        <q-w>bins</q-w> write_illegal_r_data = <q-w>binsof</q-w>(cmd.write) &amp;&amp; <q-w>binsof</q-w>(addr.legal_r) &amp;&amp; <q-w>binsof</q-w>(wdata.illegal);
+<a name="332"><q-n>     332  </q-n></a>      }
+<a name="333"><q-n>     333  </q-n></a>    <q-w>endgroup</q-w>
+<a name="334"><q-n>     334  </q-n></a>
+<a name="335"><q-n>     335  </q-n></a>    <q-w>covergroup</q-w> cg_channel_disable;
+<a name="336"><q-n>     336  </q-n></a>      ch0_en: <q-w>coverpoint</q-w> mcdf_vif.mon_ck.chnl_en[0] {
+<a name="337"><q-n>     337  </q-n></a>        type_option.weight = 0;
+<a name="338"><q-n>     338  </q-n></a>        <q-w>wildcard</q-w> <q-w>bins</q-w> en  = {1'b1};
+<a name="339"><q-n>     339  </q-n></a>        <q-w>wildcard</q-w> <q-w>bins</q-w> dis = {1'b0};
+<a name="340"><q-n>     340  </q-n></a>      }
+<a name="341"><q-n>     341  </q-n></a>      ch1_en: <q-w>coverpoint</q-w> mcdf_vif.mon_ck.chnl_en[1] {
+<a name="342"><q-n>     342  </q-n></a>        type_option.weight = 0;
+<a name="343"><q-n>     343  </q-n></a>        <q-w>wildcard</q-w> <q-w>bins</q-w> en  = {1'b1};
+<a name="344"><q-n>     344  </q-n></a>        <q-w>wildcard</q-w> <q-w>bins</q-w> dis = {1'b0};
+<a name="345"><q-n>     345  </q-n></a>      }
+<a name="346"><q-n>     346  </q-n></a>      ch2_en: <q-w>coverpoint</q-w> mcdf_vif.mon_ck.chnl_en[2] {
+<a name="347"><q-n>     347  </q-n></a>        type_option.weight = 0;
+<a name="348"><q-n>     348  </q-n></a>        <q-w>wildcard</q-w> <q-w>bins</q-w> en  = {1'b1};
+<a name="349"><q-n>     349  </q-n></a>        <q-w>wildcard</q-w> <q-w>bins</q-w> dis = {1'b0};
+<a name="350"><q-n>     350  </q-n></a>      }
+<a name="351"><q-n>     351  </q-n></a>      ch0_vld: <q-w>coverpoint</q-w> chnl_vifs[0].mon_ck.ch_valid {
+<a name="352"><q-n>     352  </q-n></a>        type_option.weight = 0;
+<a name="353"><q-n>     353  </q-n></a>        <q-w>bins</q-w> hi = {1'b1};
+<a name="354"><q-n>     354  </q-n></a>        <q-w>bins</q-w> lo = {1'b0};
+<a name="355"><q-n>     355  </q-n></a>      }
+<a name="356"><q-n>     356  </q-n></a>      ch1_vld: <q-w>coverpoint</q-w> chnl_vifs[1].mon_ck.ch_valid {
+<a name="357"><q-n>     357  </q-n></a>        type_option.weight = 0;
+<a name="358"><q-n>     358  </q-n></a>        <q-w>bins</q-w> hi = {1'b1};
+<a name="359"><q-n>     359  </q-n></a>        <q-w>bins</q-w> lo = {1'b0};
+<a name="360"><q-n>     360  </q-n></a>      }
+<a name="361"><q-n>     361  </q-n></a>      ch2_vld: <q-w>coverpoint</q-w> chnl_vifs[2].mon_ck.ch_valid {
+<a name="362"><q-n>     362  </q-n></a>        type_option.weight = 0;
+<a name="363"><q-n>     363  </q-n></a>        <q-w>bins</q-w> hi = {1'b1};
+<a name="364"><q-n>     364  </q-n></a>        <q-w>bins</q-w> lo = {1'b0};
+<a name="365"><q-n>     365  </q-n></a>      }
+<a name="366"><q-n>     366  </q-n></a>      chenXchvld: <q-w>cross</q-w> ch0_en, ch1_en, ch2_en, ch0_vld, ch1_vld, ch2_vld {
+<a name="367"><q-n>     367  </q-n></a>        <q-w>bins</q-w> ch0_en  = <q-w>binsof</q-w>(ch0_en.en);
+<a name="368"><q-n>     368  </q-n></a>        <q-w>bins</q-w> ch0_dis = <q-w>binsof</q-w>(ch0_en.dis);
+<a name="369"><q-n>     369  </q-n></a>        <q-w>bins</q-w> ch1_en  = <q-w>binsof</q-w>(ch1_en.en);
+<a name="370"><q-n>     370  </q-n></a>        <q-w>bins</q-w> ch1_dis = <q-w>binsof</q-w>(ch1_en.dis);
+<a name="371"><q-n>     371  </q-n></a>        <q-w>bins</q-w> ch2_en  = <q-w>binsof</q-w>(ch2_en.en);
+<a name="372"><q-n>     372  </q-n></a>        <q-w>bins</q-w> ch2_dis = <q-w>binsof</q-w>(ch2_en.dis);
+<a name="373"><q-n>     373  </q-n></a>        <q-w>bins</q-w> ch0_hi  = <q-w>binsof</q-w>(ch0_vld.hi);
+<a name="374"><q-n>     374  </q-n></a>        <q-w>bins</q-w> ch0_lo  = <q-w>binsof</q-w>(ch0_vld.lo);
+<a name="375"><q-n>     375  </q-n></a>        <q-w>bins</q-w> ch1_hi  = <q-w>binsof</q-w>(ch1_vld.hi);
+<a name="376"><q-n>     376  </q-n></a>        <q-w>bins</q-w> ch1_lo  = <q-w>binsof</q-w>(ch1_vld.lo);
+<a name="377"><q-n>     377  </q-n></a>        <q-w>bins</q-w> ch2_hi  = <q-w>binsof</q-w>(ch2_vld.hi);
+<a name="378"><q-n>     378  </q-n></a>        <q-w>bins</q-w> ch2_lo  = <q-w>binsof</q-w>(ch2_vld.lo);
+<a name="379"><q-n>     379  </q-n></a>        <q-w>bins</q-w> ch0_en_vld = <q-w>binsof</q-w>(ch0_en.en) &amp;&amp; <q-w>binsof</q-w>(ch0_vld.hi);
+<a name="380"><q-n>     380  </q-n></a>        <q-w>bins</q-w> ch0_dis_vld = <q-w>binsof</q-w>(ch0_en.dis) &amp;&amp; <q-w>binsof</q-w>(ch0_vld.hi);
+<a name="381"><q-n>     381  </q-n></a>        <q-w>bins</q-w> ch1_en_vld = <q-w>binsof</q-w>(ch1_en.en) &amp;&amp; <q-w>binsof</q-w>(ch1_vld.hi);
+<a name="382"><q-n>     382  </q-n></a>        <q-w>bins</q-w> ch1_dis_vld = <q-w>binsof</q-w>(ch1_en.dis) &amp;&amp; <q-w>binsof</q-w>(ch1_vld.hi);
+<a name="383"><q-n>     383  </q-n></a>        <q-w>bins</q-w> ch2_en_vld = <q-w>binsof</q-w>(ch2_en.en) &amp;&amp; <q-w>binsof</q-w>(ch2_vld.hi);
+<a name="384"><q-n>     384  </q-n></a>        <q-w>bins</q-w> ch2_dis_vld = <q-w>binsof</q-w>(ch2_en.dis) &amp;&amp; <q-w>binsof</q-w>(ch2_vld.hi);
+<a name="385"><q-n>     385  </q-n></a>      }
+<a name="386"><q-n>     386  </q-n></a>    <q-w>endgroup</q-w>
+<a name="387"><q-n>     387  </q-n></a>
+<a name="388"><q-n>     388  </q-n></a>    <q-w>covergroup</q-w> cg_arbiter_priority;
+<a name="389"><q-n>     389  </q-n></a>      ch0_prio: <q-w>coverpoint</q-w> arb_vif.mon_ck.slv_prios[0] {
+<a name="390"><q-n>     390  </q-n></a>        <q-w>bins</q-w> ch_prio0 = {0}; 
+<a name="391"><q-n>     391  </q-n></a>        <q-w>bins</q-w> ch_prio1 = {1}; 
+<a name="392"><q-n>     392  </q-n></a>        <q-w>bins</q-w> ch_prio2 = {2}; 
+<a name="393"><q-n>     393  </q-n></a>        <q-w>bins</q-w> ch_prio3 = {3}; 
+<a name="394"><q-n>     394  </q-n></a>      }
+<a name="395"><q-n>     395  </q-n></a>      ch1_prio: <q-w>coverpoint</q-w> arb_vif.mon_ck.slv_prios[1] {
+<a name="396"><q-n>     396  </q-n></a>        <q-w>bins</q-w> ch_prio0 = {0}; 
+<a name="397"><q-n>     397  </q-n></a>        <q-w>bins</q-w> ch_prio1 = {1}; 
+<a name="398"><q-n>     398  </q-n></a>        <q-w>bins</q-w> ch_prio2 = {2}; 
+<a name="399"><q-n>     399  </q-n></a>        <q-w>bins</q-w> ch_prio3 = {3}; 
+<a name="400"><q-n>     400  </q-n></a>      }
+<a name="401"><q-n>     401  </q-n></a>      ch2_prio: <q-w>coverpoint</q-w> arb_vif.mon_ck.slv_prios[2] {
+<a name="402"><q-n>     402  </q-n></a>        <q-w>bins</q-w> ch_prio0 = {0}; 
+<a name="403"><q-n>     403  </q-n></a>        <q-w>bins</q-w> ch_prio1 = {1}; 
+<a name="404"><q-n>     404  </q-n></a>        <q-w>bins</q-w> ch_prio2 = {2}; 
+<a name="405"><q-n>     405  </q-n></a>        <q-w>bins</q-w> ch_prio3 = {3}; 
+<a name="406"><q-n>     406  </q-n></a>      }
+<a name="407"><q-n>     407  </q-n></a>    <q-w>endgroup</q-w>
+<a name="408"><q-n>     408  </q-n></a>
+<a name="409"><q-n>     409  </q-n></a>    <q-w>covergroup</q-w> cg_formatter_length;
+<a name="410"><q-n>     410  </q-n></a>      id: <q-w>coverpoint</q-w> fmt_vif.mon_ck.fmt_chid {
+<a name="411"><q-n>     411  </q-n></a>        <q-w>bins</q-w> ch0 = {0};
+<a name="412"><q-n>     412  </q-n></a>        <q-w>bins</q-w> ch1 = {1};
+<a name="413"><q-n>     413  </q-n></a>        <q-w>bins</q-w> ch2 = {2};
+<a name="414"><q-n>     414  </q-n></a>        <q-w>illegal_bins</q-w> illegal = <q-w>default</q-w>; 
+<a name="415"><q-n>     415  </q-n></a>      }
+<a name="416"><q-n>     416  </q-n></a>      length: <q-w>coverpoint</q-w> fmt_vif.mon_ck.fmt_length {
+<a name="417"><q-n>     417  </q-n></a>        <q-w>bins</q-w> len4  = {4};
+<a name="418"><q-n>     418  </q-n></a>        <q-w>bins</q-w> len8  = {8};
+<a name="419"><q-n>     419  </q-n></a>        <q-w>bins</q-w> len16 = {16};
+<a name="420"><q-n>     420  </q-n></a>        <q-w>bins</q-w> len32 = {32};
+<a name="421"><q-n>     421  </q-n></a>        <q-w>illegal_bins</q-w> illegal = <q-w>default</q-w>;
+<a name="422"><q-n>     422  </q-n></a>      }
+<a name="423"><q-n>     423  </q-n></a>    <q-w>endgroup</q-w>
+<a name="424"><q-n>     424  </q-n></a>
+<a name="425"><q-n>     425  </q-n></a>    <q-w>covergroup</q-w> cg_formatter_grant();
+<a name="426"><q-n>     426  </q-n></a>      delay_req_to_grant: <q-w>coverpoint</q-w> <q-w>this</q-w>.delay_req_to_grant {
+<a name="427"><q-n>     427  </q-n></a>        <q-w>bins</q-w> delay1 = {1};
+<a name="428"><q-n>     428  </q-n></a>        <q-w>bins</q-w> delay2 = {2};
+<a name="429"><q-n>     429  </q-n></a>        <q-w>bins</q-w> delay3_or_more = {[3:10]};
+<a name="430"><q-n>     430  </q-n></a>        <q-w>illegal_bins</q-w> illegal = {0};
+<a name="431"><q-n>     431  </q-n></a>      }
+<a name="432"><q-n>     432  </q-n></a>    <q-w>endgroup</q-w>
+<a name="433"><q-n>     433  </q-n></a>
+<a name="434"><q-n>     434  </q-n></a>    <q-w>function</q-w> <q-w>new</q-w>(<q-w>string</q-w> name=<q-l>"mcdf_coverage"</q-l>);
+<a name="435"><q-n>     435  </q-n></a>      <q-w>this</q-w>.name = name;
+<a name="436"><q-n>     436  </q-n></a>      <q-w>this</q-w>.cg_mcdf_reg_write_read = <q-w>new</q-w>();
+<a name="437"><q-n>     437  </q-n></a>      <q-w>this</q-w>.cg_mcdf_reg_illegal_access = <q-w>new</q-w>();
+<a name="438"><q-n>     438  </q-n></a>      <q-w>this</q-w>.cg_channel_disable = <q-w>new</q-w>();
+<a name="439"><q-n>     439  </q-n></a>      <q-w>this</q-w>.cg_arbiter_priority = <q-w>new</q-w>();
+<a name="440"><q-n>     440  </q-n></a>      <q-w>this</q-w>.cg_formatter_length = <q-w>new</q-w>();
+<a name="441"><q-n>     441  </q-n></a>      <q-w>this</q-w>.cg_formatter_grant = <q-w>new</q-w>();
+<a name="442"><q-n>     442  </q-n></a>    <q-w>endfunction</q-w>
+<a name="443"><q-n>     443  </q-n></a>
+<a name="444"><q-n>     444  </q-n></a>    <q-w>task</q-w> run();
+<a name="445"><q-n>     445  </q-n></a>      <q-w>fork</q-w> 
+<a name="446"><q-n>     446  </q-n></a>        <q-w>this</q-w>.do_reg_sample();
+<a name="447"><q-n>     447  </q-n></a>        <q-w>this</q-w>.do_channel_sample();
+<a name="448"><q-n>     448  </q-n></a>        <q-w>this</q-w>.do_arbiter_sample();
+<a name="449"><q-n>     449  </q-n></a>        <q-w>this</q-w>.do_formater_sample();
+<a name="450"><q-n>     450  </q-n></a>      <q-w>join</q-w>
+<a name="451"><q-n>     451  </q-n></a>    <q-w>endtask</q-w>
+<a name="452"><q-n>     452  </q-n></a>
+<a name="453"><q-n>     453  </q-n></a>    <q-w>task</q-w> do_reg_sample();
+<a name="454"><q-n>     454  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="455"><q-n>     455  </q-n></a>        @(<q-a>posedge</q-w> reg_vif.clk <q-w>iff</q-w> reg_vif.rstn);
+<a name="456"><q-n>     456  </q-n></a>        <q-w>this</q-w>.cg_mcdf_reg_write_read.sample();
+<a name="457"><q-n>     457  </q-n></a>        <q-w>this</q-w>.cg_mcdf_reg_illegal_access.sample();
+<a name="458"><q-n>     458  </q-n></a>      <q-w>end</q-w>
+<a name="459"><q-n>     459  </q-n></a>    <q-w>endtask</q-w>
+<a name="460"><q-n>     460  </q-n></a>
+<a name="461"><q-n>     461  </q-n></a>    <q-w>task</q-w> do_channel_sample();
+<a name="462"><q-n>     462  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="463"><q-n>     463  </q-n></a>        @(<q-a>posedge</q-w> mcdf_vif.clk <q-w>iff</q-w> mcdf_vif.rstn);
+<a name="464"><q-n>     464  </q-n></a>        <q-w>if</q-w>(chnl_vifs[0].mon_ck.ch_valid===1
+<a name="465"><q-n>     465  </q-n></a>          || chnl_vifs[1].mon_ck.ch_valid===1
+<a name="466"><q-n>     466  </q-n></a>          || chnl_vifs[2].mon_ck.ch_valid===1)
+<a name="467"><q-n>     467  </q-n></a>          <q-w>this</q-w>.cg_channel_disable.sample();
+<a name="468"><q-n>     468  </q-n></a>      <q-w>end</q-w>
+<a name="469"><q-n>     469  </q-n></a>    <q-w>endtask</q-w>
+<a name="470"><q-n>     470  </q-n></a>
+<a name="471"><q-n>     471  </q-n></a>    <q-w>task</q-w> do_arbiter_sample();
+<a name="472"><q-n>     472  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="473"><q-n>     473  </q-n></a>        @(<q-a>posedge</q-w> arb_vif.clk <q-w>iff</q-w> arb_vif.rstn);
+<a name="474"><q-n>     474  </q-n></a>        <q-w>if</q-w>(arb_vif.slv_reqs[0]!==0 || arb_vif.slv_reqs[1]!==0 || arb_vif.slv_reqs[2]!==0)
+<a name="475"><q-n>     475  </q-n></a>          <q-w>this</q-w>.cg_arbiter_priority.sample();
+<a name="476"><q-n>     476  </q-n></a>      <q-w>end</q-w>
+<a name="477"><q-n>     477  </q-n></a>    <q-w>endtask</q-w>
+<a name="478"><q-n>     478  </q-n></a>
+<a name="479"><q-n>     479  </q-n></a>    <q-w>task</q-w> do_formater_sample();
+<a name="480"><q-n>     480  </q-n></a>      <q-w>fork</q-w>
+<a name="481"><q-n>     481  </q-n></a>        <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="482"><q-n>     482  </q-n></a>          @(<q-a>posedge</q-w> fmt_vif.clk <q-w>iff</q-w> fmt_vif.rstn);
+<a name="483"><q-n>     483  </q-n></a>          <q-w>if</q-w>(fmt_vif.mon_ck.fmt_req === 1)
+<a name="484"><q-n>     484  </q-n></a>            <q-w>this</q-w>.cg_formatter_length.sample();
+<a name="485"><q-n>     485  </q-n></a>        <q-w>end</q-w>
+<a name="486"><q-n>     486  </q-n></a>        <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="487"><q-n>     487  </q-n></a>          @(<q-a>posedge</q-w> fmt_vif.mon_ck.fmt_req);
+<a name="488"><q-n>     488  </q-n></a>          <q-w>this</q-w>.delay_req_to_grant = 0;
+<a name="489"><q-n>     489  </q-n></a>          <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="490"><q-n>     490  </q-n></a>            <q-w>if</q-w>(fmt_vif.fmt_grant === 1) <q-w>begin</q-w>
+<a name="491"><q-n>     491  </q-n></a>              <q-w>this</q-w>.cg_formatter_grant.sample();
+<a name="492"><q-n>     492  </q-n></a>              <q-w>break</q-w>;
+<a name="493"><q-n>     493  </q-n></a>            <q-w>end</q-w>
+<a name="494"><q-n>     494  </q-n></a>            <q-w>else</q-w> <q-w>begin</q-w>
+<a name="495"><q-n>     495  </q-n></a>              @(<q-a>posedge</q-w> fmt_vif.clk);
+<a name="496"><q-n>     496  </q-n></a>              <q-w>this</q-w>.delay_req_to_grant++;
+<a name="497"><q-n>     497  </q-n></a>            <q-w>end</q-w>
+<a name="498"><q-n>     498  </q-n></a>          <q-w>end</q-w>
+<a name="499"><q-n>     499  </q-n></a>        <q-w>end</q-w>
+<a name="500"><q-n>     500  </q-n></a>      <q-w>join</q-w>
+<a name="501"><q-n>     501  </q-n></a>    <q-w>endtask</q-w>
+<a name="502"><q-n>     502  </q-n></a>
+<a name="503"><q-n>     503  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> do_report();
+<a name="504"><q-n>     504  </q-n></a>      <q-w>string</q-w> s;
+<a name="505"><q-n>     505  </q-n></a>      s = <q-l>"\n---------------------------------------------------------------\n"</q-l>;
+<a name="506"><q-n>     506  </q-n></a>      s = {s, <q-l>"COVERAGE SUMMARY \n"</q-l>}; 
+<a name="507"><q-n>     507  </q-n></a>      s = {s, $sformatf(<q-l>"total coverage: %.1f \n"</q-l>, $get_coverage())}; 
+<a name="508"><q-n>     508  </q-n></a>      s = {s, $sformatf(<q-l>"  cg_mcdf_reg_write_read coverage: %.1f \n"</q-l>, <q-w>this</q-w>.cg_mcdf_reg_write_read.get_coverage())}; 
+<a name="509"><q-n>     509  </q-n></a>      s = {s, $sformatf(<q-l>"  cg_mcdf_reg_illegal_access coverage: %.1f \n"</q-l>, <q-w>this</q-w>.cg_mcdf_reg_illegal_access.get_coverage())}; 
+<a name="510"><q-n>     510  </q-n></a>      s = {s, $sformatf(<q-l>"  cg_channel_disable_test coverage: %.1f \n"</q-l>, <q-w>this</q-w>.cg_channel_disable.get_coverage())}; 
+<a name="511"><q-n>     511  </q-n></a>      s = {s, $sformatf(<q-l>"  cg_arbiter_priority_test coverage: %.1f \n"</q-l>, <q-w>this</q-w>.cg_arbiter_priority.get_coverage())}; 
+<a name="512"><q-n>     512  </q-n></a>      s = {s, $sformatf(<q-l>"  cg_formatter_length_test coverage: %.1f \n"</q-l>, <q-w>this</q-w>.cg_formatter_length.get_coverage())}; 
+<a name="513"><q-n>     513  </q-n></a>      s = {s, $sformatf(<q-l>"  cg_formatter_grant_test coverage: %.1f \n"</q-l>, <q-w>this</q-w>.cg_formatter_grant.get_coverage())}; 
+<a name="514"><q-n>     514  </q-n></a>      s = {s, <q-l>"---------------------------------------------------------------\n"</q-l>};
+<a name="515"><q-n>     515  </q-n></a>      rpt_pkg::rpt_msg($sformatf(<q-l>"[%s]"</q-l>,<q-w>this</q-w>.name), s, rpt_pkg::INFO, rpt_pkg::TOP);
+<a name="516"><q-n>     516  </q-n></a>    <q-w>endfunction</q-w>
+<a name="517"><q-n>     517  </q-n></a>
+<a name="518"><q-n>     518  </q-n></a>    <q-w>virtual</q-w> <q-w>function</q-w> <q-w>void</q-w> set_interface(<q-w>virtual</q-w> chnl_intf ch_vifs[3] 
+<a name="519"><q-n>     519  </q-n></a>                                        ,<q-w>virtual</q-w> reg_intf reg_vif
+<a name="520"><q-n>     520  </q-n></a>                                        ,<q-w>virtual</q-w> arb_intf arb_vif
+<a name="521"><q-n>     521  </q-n></a>                                        ,<q-w>virtual</q-w> fmt_intf fmt_vif
+<a name="522"><q-n>     522  </q-n></a>                                        ,<q-w>virtual</q-w> mcdf_intf mcdf_vif
+<a name="523"><q-n>     523  </q-n></a>                                      );
+<a name="524"><q-n>     524  </q-n></a>      <q-w>this</q-w>.chnl_vifs = ch_vifs;
+<a name="525"><q-n>     525  </q-n></a>      <q-w>this</q-w>.arb_vif = arb_vif;
+<a name="526"><q-n>     526  </q-n></a>      <q-w>this</q-w>.reg_vif = reg_vif;
+<a name="527"><q-n>     527  </q-n></a>      <q-w>this</q-w>.fmt_vif = fmt_vif;
+<a name="528"><q-n>     528  </q-n></a>      <q-w>this</q-w>.mcdf_vif = mcdf_vif;
+<a name="529"><q-n>     529  </q-n></a>      <q-w>if</q-w>(chnl_vifs[0] == <q-w>null</q-w> || chnl_vifs[1] == <q-w>null</q-w> || chnl_vifs[2] == <q-w>null</q-w>)
+<a name="530"><q-n>     530  </q-n></a>        $<q-v>error</q-w>(<q-l>"chnl interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="531"><q-n>     531  </q-n></a>      <q-w>if</q-w>(arb_vif == <q-w>null</q-w>)
+<a name="532"><q-n>     532  </q-n></a>        $<q-v>error</q-w>(<q-l>"arb interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="533"><q-n>     533  </q-n></a>      <q-w>if</q-w>(reg_vif == <q-w>null</q-w>)
+<a name="534"><q-n>     534  </q-n></a>        $<q-v>error</q-w>(<q-l>"reg interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="535"><q-n>     535  </q-n></a>      <q-w>if</q-w>(fmt_vif == <q-w>null</q-w>)
+<a name="536"><q-n>     536  </q-n></a>        $<q-v>error</q-w>(<q-l>"fmt interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="537"><q-n>     537  </q-n></a>      <q-w>if</q-w>(mcdf_vif == <q-w>null</q-w>)
+<a name="538"><q-n>     538  </q-n></a>        $<q-v>error</q-w>(<q-l>"mcdf interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="539"><q-n>     539  </q-n></a>    <q-w>endfunction</q-w>
+<a name="540"><q-n>     540  </q-n></a>  <q-w>endclass</q-w>
+<a name="541"><q-n>     541  </q-n></a>
+<a name="542"><q-n>     542  </q-n></a>
+<a name="543"><q-n>     543  </q-n></a>  <q-w>class</q-w> mcdf_env;
+<a name="544"><q-n>     544  </q-n></a>    chnl_agent chnl_agts[3];
+<a name="545"><q-n>     545  </q-n></a>    reg_agent reg_agt;
+<a name="546"><q-n>     546  </q-n></a>    fmt_agent fmt_agt;
+<a name="547"><q-n>     547  </q-n></a>    mcdf_checker chker;
+<a name="548"><q-n>     548  </q-n></a>    mcdf_coverage cvrg;
+<a name="549"><q-n>     549  </q-n></a>    protected string name;
+<a name="550"><q-n>     550  </q-n></a>
+<a name="551"><q-n>     551  </q-n></a>    function new(string name = "mcdf_env");
+<a name="552"><q-n>     552  </q-n></a>      this.name = name;
+<a name="553"><q-n>     553  </q-n></a>      this.chker = new();
+<a name="554"><q-n>     554  </q-n></a>      foreach(chnl_agts[i]) begin
+<a name="555"><q-n>     555  </q-n></a>        this.chnl_agts[i] = new($sformatf("chnl_agts[%0d]",i));
+<a name="556"><q-n>     556  </q-n></a>        this.chnl_agts[i].monitor.mon_mb = this.chker.chnl_mbs[i];
+<a name="557"><q-n>     557  </q-n></a>      end
+<a name="558"><q-n>     558  </q-n></a>      this.reg_agt = new("reg_agt");
+<a name="559"><q-n>     559  </q-n></a>      this.reg_agt.monitor.mon_mb = this.chker.reg_mb;
+<a name="560"><q-n>     560  </q-n></a>      this.fmt_agt = new("fmt_agt");
+<a name="561"><q-n>     561  </q-n></a>      this.fmt_agt.monitor.mon_mb = this.chker.fmt_mb;
+<a name="562"><q-n>     562  </q-n></a>      this.cvrg = new();
+<a name="563"><q-n>     563  </q-n></a>      $display("%s instantiated and connected objects", this.name);
+<a name="564"><q-n>     564  </q-n></a>    endfunction
+<a name="565"><q-n>     565  </q-n></a>
+<a name="566"><q-n>     566  </q-n></a>    virtual task run();
+<a name="567"><q-n>     567  </q-n></a>      $display($sformatf("*****************%s started********************", this.name));
+<a name="568"><q-n>     568  </q-n></a>      this.do_config();
+<a name="569"><q-n>     569  </q-n></a>      fork
+<a name="570"><q-n>     570  </q-n></a>        this.chnl_agts[0].run();
+<a name="571"><q-n>     571  </q-n></a>        this.chnl_agts[1].run();
+<a name="572"><q-n>     572  </q-n></a>        this.chnl_agts[2].run();
+<a name="573"><q-n>     573  </q-n></a>        this.reg_agt.run();
+<a name="574"><q-n>     574  </q-n></a>        this.fmt_agt.run();
+<a name="575"><q-n>     575  </q-n></a>        this.chker.run();
+<a name="576"><q-n>     576  </q-n></a>        this.cvrg.run();
+<a name="577"><q-n>     577  </q-n></a>      join
+<a name="578"><q-n>     578  </q-n></a>    endtask
+<a name="579"><q-n>     579  </q-n></a>
+<a name="580"><q-n>     580  </q-n></a>    virtual function void do_config();
+<a name="581"><q-n>     581  </q-n></a>    endfunction
+<a name="582"><q-n>     582  </q-n></a>
+<a name="583"><q-n>     583  </q-n></a>    virtual function void do_report();
+<a name="584"><q-n>     584  </q-n></a>      this.chker.do_report();
+<a name="585"><q-n>     585  </q-n></a>      this.cvrg.do_report();
+<a name="586"><q-n>     586  </q-n></a>    endfunction
+<a name="587"><q-n>     587  </q-n></a>
+<a name="588"><q-n>     588  </q-n></a>  endclass
+<a name="589"><q-n>     589  </q-n></a>
+<a name="590"><q-n>     590  </q-n></a>  class mcdf_base_test;
+<a name="591"><q-n>     591  </q-n></a>    chnl_generator chnl_gens[3];
+<a name="592"><q-n>     592  </q-n></a>    reg_generator reg_gen;
+<a name="593"><q-n>     593  </q-n></a>    fmt_generator fmt_gen;
+<a name="594"><q-n>     594  </q-n></a>    mcdf_env env;
+<a name="595"><q-n>     595  </q-n></a>    protected string name;
+<a name="596"><q-n>     596  </q-n></a>    local int timeout = 10; // 10 * ms
+<a name="597"><q-n>     597  </q-n></a>
+<a name="598"><q-n>     598  </q-n></a>    function new(string name = "mcdf_base_test");
+<a name="599"><q-n>     599  </q-n></a>      this.name = name;
+<a name="600"><q-n>     600  </q-n></a>      this.env = new("env");
+<a name="601"><q-n>     601  </q-n></a>
+<a name="602"><q-n>     602  </q-n></a>      foreach(this.chnl_gens[i]) begin
+<a name="603"><q-n>     603  </q-n></a>        this.chnl_gens[i] = new();
+<a name="604"><q-n>     604  </q-n></a>        this.env.chnl_agts[i].driver.req_mb = this.chnl_gens[i].req_mb;
+<a name="605"><q-n>     605  </q-n></a>        this.env.chnl_agts[i].driver.rsp_mb = this.chnl_gens[i].rsp_mb;
+<a name="606"><q-n>     606  </q-n></a>      end
+<a name="607"><q-n>     607  </q-n></a>
+<a name="608"><q-n>     608  </q-n></a>      this.reg_gen = new();
+<a name="609"><q-n>     609  </q-n></a>      this.env.reg_agt.driver.req_mb = this.reg_gen.req_mb;
+<a name="610"><q-n>     610  </q-n></a>      this.env.reg_agt.driver.rsp_mb = this.reg_gen.rsp_mb;
+<a name="611"><q-n>     611  </q-n></a>
+<a name="612"><q-n>     612  </q-n></a>      this.fmt_gen = new();
+<a name="613"><q-n>     613  </q-n></a>      this.env.fmt_agt.driver.req_mb = this.fmt_gen.req_mb;
+<a name="614"><q-n>     614  </q-n></a>      this.env.fmt_agt.driver.rsp_mb = this.fmt_gen.rsp_mb;
+<a name="615"><q-n>     615  </q-n></a>
+<a name="616"><q-n>     616  </q-n></a>      rpt_pkg::logname = {this.name, "_check.log"};
+<a name="617"><q-n>     617  </q-n></a>      rpt_pkg::clean_log();
+<a name="618"><q-n>     618  </q-n></a>      $display("%s instantiated and connected objects", this.name);
+<a name="619"><q-n>     619  </q-n></a>    endfunction
+<a name="620"><q-n>     620  </q-n></a>
+<a name="621"><q-n>     621  </q-n></a>    virtual task run();
+<a name="622"><q-n>     622  </q-n></a>      fork
+<a name="623"><q-n>     623  </q-n></a>        env.run();
+<a name="624"><q-n>     624  </q-n></a>      join_none
+<a name="625"><q-n>     625  </q-n></a>      rpt_pkg::rpt_msg("[TEST]",
+<a name="626"><q-n>     626  </q-n></a>        $sformatf("=====================%s AT TIME %0t STARTED=====================", this.name, $time),
+<a name="627"><q-n>     627  </q-n></a>        rpt_pkg::INFO,
+<a name="628"><q-n>     628  </q-n></a>        rpt_pkg::HIGH);
+<a name="629"><q-n>     629  </q-n></a>      this.do_reg();
+<a name="630"><q-n>     630  </q-n></a>      this.do_formatter();
+<a name="631"><q-n>     631  </q-n></a>      fork
+<a name="632"><q-n>     632  </q-n></a>        this.do_data();
+<a name="633"><q-n>     633  </q-n></a>        this.do_watchdog();
+<a name="634"><q-n>     634  </q-n></a>      join_any
+<a name="635"><q-n>     635  </q-n></a>      rpt_pkg::rpt_msg("[TEST]",
+<a name="636"><q-n>     636  </q-n></a>        $sformatf("=====================%s AT TIME %0t FINISHED=====================", this.name, $time),
+<a name="637"><q-n>     637  </q-n></a>        rpt_pkg::INFO,
+<a name="638"><q-n>     638  </q-n></a>        rpt_pkg::HIGH);
+<a name="639"><q-n>     639  </q-n></a>      this.do_report();
+<a name="640"><q-n>     640  </q-n></a>      $finish();
+<a name="641"><q-n>     641  </q-n></a>    endtask
+<a name="642"><q-n>     642  </q-n></a>
+<a name="643"><q-n>     643  </q-n></a>    // do register configuration
+<a name="644"><q-n>     644  </q-n></a>    virtual task do_reg();
+<a name="645"><q-n>     645  </q-n></a>    endtask
+<a name="646"><q-n>     646  </q-n></a>
+<a name="647"><q-n>     647  </q-n></a>    // do external formatter down stream slave configuration
+<a name="648"><q-n>     648  </q-n></a>    virtual task do_formatter();
+<a name="649"><q-n>     649  </q-n></a>    endtask
+<a name="650"><q-n>     650  </q-n></a>
+<a name="651"><q-n>     651  </q-n></a>    // do data transition from 3 channel slaves
+<a name="652"><q-n>     652  </q-n></a>    virtual task do_data();
+<a name="653"><q-n>     653  </q-n></a>    endtask
+<a name="654"><q-n>     654  </q-n></a>
+<a name="655"><q-n>     655  </q-n></a>    // timeout watchdog to avoid simulation pending
+<a name="656"><q-n>     656  </q-n></a>    virtual task do_watchdog();
+<a name="657"><q-n>     657  </q-n></a>      rpt_pkg::rpt_msg("[TEST]",
+<a name="658"><q-n>     658  </q-n></a>        $sformatf("=====================%s AT TIME %0t WATCHDOG GUARDING=====================", this.name, $time),
+<a name="659"><q-n>     659  </q-n></a>        rpt_pkg::INFO,
+<a name="660"><q-n>     660  </q-n></a>        rpt_pkg::HIGH);
+<a name="661"><q-n>     661  </q-n></a>      #(this.timeout * 1ms);
+<a name="662"><q-n>     662  </q-n></a>      rpt_pkg::rpt_msg("[TEST]",
+<a name="663"><q-n>     663  </q-n></a>        $sformatf("=====================%s AT TIME %0t WATCHDOG BARKING=====================", this.name, $time),
+<a name="664"><q-n>     664  </q-n></a>        rpt_pkg::INFO,
+<a name="665"><q-n>     665  </q-n></a>        rpt_pkg::HIGH);
+<a name="666"><q-n>     666  </q-n></a>    endtask
+<a name="667"><q-n>     667  </q-n></a>
+<a name="668"><q-n>     668  </q-n></a>    // do simulation summary
+<a name="669"><q-n>     669  </q-n></a>    virtual function void do_report();
+<a name="670"><q-n>     670  </q-n></a>      this.env.do_report();
+<a name="671"><q-n>     671  </q-n></a>      rpt_pkg::do_report();
+<a name="672"><q-n>     672  </q-n></a>    endfunction
+<a name="673"><q-n>     673  </q-n></a>
+<a name="674"><q-n>     674  </q-n></a>    virtual function void set_interface(virtual chnl_intf ch0_vif 
+<a name="675"><q-n>     675  </q-n></a>                                        ,virtual chnl_intf ch1_vif 
+<a name="676"><q-n>     676  </q-n></a>                                        ,virtual chnl_intf ch2_vif 
+<a name="677"><q-n>     677  </q-n></a>                                        ,virtual reg_intf reg_vif
+<a name="678"><q-n>     678  </q-n></a>                                        ,virtual arb_intf arb_vif
+<a name="679"><q-n>     679  </q-n></a>                                        ,virtual fmt_intf fmt_vif
+<a name="680"><q-n>     680  </q-n></a>                                        ,virtual mcdf_intf mcdf_vif
+<a name="681"><q-n>     681  </q-n></a>                                      );
+<a name="682"><q-n>     682  </q-n></a>      this.env.chnl_agts[0].set_interface(ch0_vif);
+<a name="683"><q-n>     683  </q-n></a>      this.env.chnl_agts[1].set_interface(ch1_vif);
+<a name="684"><q-n>     684  </q-n></a>      this.env.chnl_agts[2].set_interface(ch2_vif);
+<a name="685"><q-n>     685  </q-n></a>      this.env.reg_agt.set_interface(reg_vif);
+<a name="686"><q-n>     686  </q-n></a>      this.env.fmt_agt.set_interface(fmt_vif);
+<a name="687"><q-n>     687  </q-n></a>      this.env.chker.set_interface(mcdf_vif, '{ch0_vif, ch1_vif, ch2_vif}, arb_vif);
+<a name="688"><q-n>     688  </q-n></a>      this.env.cvrg.set_interface('{ch0_vif, ch1_vif, ch2_vif}, reg_vif, arb_vif, fmt_vif, mcdf_vif);
+<a name="689"><q-n>     689  </q-n></a>    endfunction
+<a name="690"><q-n>     690  </q-n></a>
+<a name="691"><q-n>     691  </q-n></a>    virtual function bit diff_value(int val1, int val2, string id = "value_compare");
+<a name="692"><q-n>     692  </q-n></a>      if(val1 != val2) begin
+<a name="693"><q-n>     693  </q-n></a>        rpt_pkg::rpt_msg("[CMPERR]", 
+<a name="694"><q-n>     694  </q-n></a>          $sformatf("ERROR! %s val1 %8x != val2 %8x", id, val1, val2), 
+<a name="695"><q-n>     695  </q-n></a>          rpt_pkg::ERROR, 
+<a name="696"><q-n>     696  </q-n></a>          rpt_pkg::TOP);
+<a name="697"><q-n>     697  </q-n></a>        return 0;
+<a name="698"><q-n>     698  </q-n></a>      end
+<a name="699"><q-n>     699  </q-n></a>      else begin
+<a name="700"><q-n>     700  </q-n></a>        rpt_pkg::rpt_msg("[CMPSUC]", 
+<a name="701"><q-n>     701  </q-n></a>          $sformatf("SUCCESS! %s val1 %8x == val2 %8x", id, val1, val2),
+<a name="702"><q-n>     702  </q-n></a>          rpt_pkg::INFO,
+<a name="703"><q-n>     703  </q-n></a>          rpt_pkg::HIGH);
+<a name="704"><q-n>     704  </q-n></a>        return 1;
+<a name="705"><q-n>     705  </q-n></a>      end
+<a name="706"><q-n>     706  </q-n></a>    endfunction
+<a name="707"><q-n>     707  </q-n></a>
+<a name="708"><q-n>     708  </q-n></a>    virtual task idle_reg();
+<a name="709"><q-n>     709  </q-n></a>      void'(reg_gen.randomize() with {cmd == `IDLE; addr == 0; data == 0;});
+<a name="710"><q-n>     710  </q-n></a>      reg_gen.start();
+<a name="711"><q-n>     711  </q-n></a>    endtask
+<a name="712"><q-n>     712  </q-n></a>
+<a name="713"><q-n>     713  </q-n></a>    virtual task write_reg(bit[7:0] addr, bit[31:0] data);
+<a name="714"><q-n>     714  </q-n></a>      void'(reg_gen.randomize() with {cmd == `WRITE; addr == local::addr; data == local::data;});
+<a name="715"><q-n>     715  </q-n></a>      reg_gen.start();
+<a name="716"><q-n>     716  </q-n></a>    endtask
+<a name="717"><q-n>     717  </q-n></a>
+<a name="718"><q-n>     718  </q-n></a>    virtual task read_reg(bit[7:0] addr, output bit[31:0] data);
+<a name="719"><q-n>     719  </q-n></a>      void'(reg_gen.randomize() with {cmd == `READ; addr == local::addr;});
+<a name="720"><q-n>     720  </q-n></a>      reg_gen.start();
+<a name="721"><q-n>     721  </q-n></a>      data = reg_gen.data;
+<a name="722"><q-n>     722  </q-n></a>    endtask
+<a name="723"><q-n>     723  </q-n></a>  endclass
+<a name="724"><q-n>     724  </q-n></a>
+<a name="725"><q-n>     725  </q-n></a>  class mcdf_data_consistence_basic_test extends mcdf_base_test;
+<a name="726"><q-n>     726  </q-n></a>    function new(string name = "mcdf_data_consistence_basic_test");
+<a name="727"><q-n>     727  </q-n></a>      super.new(name);
+<a name="728"><q-n>     728  </q-n></a>    endfunction
+<a name="729"><q-n>     729  </q-n></a>
+<a name="730"><q-n>     730  </q-n></a>    task do_reg();
+<a name="731"><q-n>     731  </q-n></a>      bit[31:0] wr_val, rd_val;
+<a name="732"><q-n>     732  </q-n></a>      // slv0 with len=8,  prio=0, en=1
+<a name="733"><q-n>     733  </q-n></a>      wr_val = (1&lt;&lt;3)+(0&lt;&lt;1)+1;
+<a name="734"><q-n>     734  </q-n></a>      this.write_reg(`SLV0_RW_ADDR, wr_val);
+<a name="735"><q-n>     735  </q-n></a>      this.read_reg(`SLV0_RW_ADDR, rd_val);
+<a name="736"><q-n>     736  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV0_WR_REG"));
+<a name="737"><q-n>     737  </q-n></a>
+<a name="738"><q-n>     738  </q-n></a>      // slv1 with len=16, prio=1, en=1
+<a name="739"><q-n>     739  </q-n></a>      wr_val = (2&lt;&lt;3)+(1&lt;&lt;1)+1;
+<a name="740"><q-n>     740  </q-n></a>      this.write_reg(`SLV1_RW_ADDR, wr_val);
+<a name="741"><q-n>     741  </q-n></a>      this.read_reg(`SLV1_RW_ADDR, rd_val);
+<a name="742"><q-n>     742  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV1_WR_REG"));
+<a name="743"><q-n>     743  </q-n></a>
+<a name="744"><q-n>     744  </q-n></a>      // slv2 with len=32, prio=2, en=1
+<a name="745"><q-n>     745  </q-n></a>      wr_val = (3&lt;&lt;3)+(2&lt;&lt;1)+1;
+<a name="746"><q-n>     746  </q-n></a>      this.write_reg(`SLV2_RW_ADDR, wr_val);
+<a name="747"><q-n>     747  </q-n></a>      this.read_reg(`SLV2_RW_ADDR, rd_val);
+<a name="748"><q-n>     748  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV2_WR_REG"));
+<a name="749"><q-n>     749  </q-n></a>
+<a name="750"><q-n>     750  </q-n></a>      // send IDLE command
+<a name="751"><q-n>     751  </q-n></a>      this.idle_reg();
+<a name="752"><q-n>     752  </q-n></a>    endtask
+<a name="753"><q-n>     753  </q-n></a>
+<a name="754"><q-n>     754  </q-n></a>    task do_formatter();
+<a name="755"><q-n>     755  </q-n></a>      void'(fmt_gen.randomize() with {fifo == LONG_FIFO; bandwidth == HIGH_WIDTH;});
+<a name="756"><q-n>     756  </q-n></a>      fmt_gen.start();
+<a name="757"><q-n>     757  </q-n></a>    endtask
+<a name="758"><q-n>     758  </q-n></a>
+<a name="759"><q-n>     759  </q-n></a>    task do_data();
+<a name="760"><q-n>     760  </q-n></a>      void'(chnl_gens[0].randomize() with {ntrans==100; ch_id==0; data_nidles==0; pkt_nidles==1; data_size==8; });
+<a name="761"><q-n>     761  </q-n></a>      void'(chnl_gens[1].randomize() with {ntrans==100; ch_id==1; data_nidles==1; pkt_nidles==4; data_size==16;});
+<a name="762"><q-n>     762  </q-n></a>      void'(chnl_gens[2].randomize() with {ntrans==100; ch_id==2; data_nidles==2; pkt_nidles==8; data_size==32;});
+<a name="763"><q-n>     763  </q-n></a>      fork
+<a name="764"><q-n>     764  </q-n></a>        chnl_gens[0].start();
+<a name="765"><q-n>     765  </q-n></a>        chnl_gens[1].start();
+<a name="766"><q-n>     766  </q-n></a>        chnl_gens[2].start();
+<a name="767"><q-n>     767  </q-n></a>      join
+<a name="768"><q-n>     768  </q-n></a>      #10us; // wait until all data haven been transfered through MCDF
+<a name="769"><q-n>     769  </q-n></a>    endtask
+<a name="770"><q-n>     770  </q-n></a>  endclass
+<a name="771"><q-n>     771  </q-n></a>
+<a name="772"><q-n>     772  </q-n></a>  class mcdf_full_random_test extends mcdf_base_test;
+<a name="773"><q-n>     773  </q-n></a>    function new(string name = "mcdf_full_random_test");
+<a name="774"><q-n>     774  </q-n></a>      super.new(name);
+<a name="775"><q-n>     775  </q-n></a>    endfunction
+<a name="776"><q-n>     776  </q-n></a>
+<a name="777"><q-n>     777  </q-n></a>    task do_reg();
+<a name="778"><q-n>     778  </q-n></a>      bit[31:0] wr_val, rd_val;
+<a name="779"><q-n>     779  </q-n></a>      // slv0 with len={4,8,16,32},  prio={[0:3]}, en={[0:1]}
+<a name="780"><q-n>     780  </q-n></a>      wr_val = ($urandom_range(0,3)&lt;&lt;3)+($urandom_range(0,3)&lt;&lt;1)+$urandom_range(0,1);
+<a name="781"><q-n>     781  </q-n></a>      this.write_reg(`SLV0_RW_ADDR, wr_val);
+<a name="782"><q-n>     782  </q-n></a>      this.read_reg(`SLV0_RW_ADDR, rd_val);
+<a name="783"><q-n>     783  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV0_WR_REG"));
+<a name="784"><q-n>     784  </q-n></a>
+<a name="785"><q-n>     785  </q-n></a>      // slv0 with len={4,8,16,32},  prio={[0:3]}, en={[0:1]}
+<a name="786"><q-n>     786  </q-n></a>      wr_val = ($urandom_range(0,3)&lt;&lt;3)+($urandom_range(0,3)&lt;&lt;1)+$urandom_range(0,1);
+<a name="787"><q-n>     787  </q-n></a>      this.write_reg(`SLV1_RW_ADDR, wr_val);
+<a name="788"><q-n>     788  </q-n></a>      this.read_reg(`SLV1_RW_ADDR, rd_val);
+<a name="789"><q-n>     789  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV1_WR_REG"));
+<a name="790"><q-n>     790  </q-n></a>
+<a name="791"><q-n>     791  </q-n></a>      // slv0 with len={4,8,16,32},  prio={[0:3]}, en={[0:1]}
+<a name="792"><q-n>     792  </q-n></a>      wr_val = ($urandom_range(0,3)&lt;&lt;3)+($urandom_range(0,3)&lt;&lt;1)+$urandom_range(0,1);
+<a name="793"><q-n>     793  </q-n></a>      this.write_reg(`SLV2_RW_ADDR, wr_val);
+<a name="794"><q-n>     794  </q-n></a>      this.read_reg(`SLV2_RW_ADDR, rd_val);
+<a name="795"><q-n>     795  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV2_WR_REG"));
+<a name="796"><q-n>     796  </q-n></a>
+<a name="797"><q-n>     797  </q-n></a>      // send IDLE command
+<a name="798"><q-n>     798  </q-n></a>      this.idle_reg();
+<a name="799"><q-n>     799  </q-n></a>    endtask
+<a name="800"><q-n>     800  </q-n></a>
+<a name="801"><q-n>     801  </q-n></a>    task do_formatter();
+<a name="802"><q-n>     802  </q-n></a>      void'(fmt_gen.randomize() with {fifo inside {SHORT_FIFO, ULTRA_FIFO}; bandwidth inside {LOW_WIDTH, ULTRA_WIDTH};});
+<a name="803"><q-n>     803  </q-n></a>      fmt_gen.start();
+<a name="804"><q-n>     804  </q-n></a>    endtask
+<a name="805"><q-n>     805  </q-n></a>
+<a name="806"><q-n>     806  </q-n></a>    task do_data();
+<a name="807"><q-n>     807  </q-n></a>      void'(chnl_gens[0].randomize() with {ntrans inside {[400:600]}; ch_id==0; data_nidles inside {[0:3]}; pkt_nidles inside {1,2,4,8}; data_size inside {8,16,32};});
+<a name="808"><q-n>     808  </q-n></a>      void'(chnl_gens[1].randomize() with {ntrans inside {[400:600]}; ch_id==1; data_nidles inside {[0:3]}; pkt_nidles inside {1,2,4,8}; data_size inside {8,16,32};});
+<a name="809"><q-n>     809  </q-n></a>      void'(chnl_gens[2].randomize() with {ntrans inside {[400:600]}; ch_id==2; data_nidles inside {[0:3]}; pkt_nidles inside {1,2,4,8}; data_size inside {8,16,32};});
+<a name="810"><q-n>     810  </q-n></a>      fork
+<a name="811"><q-n>     811  </q-n></a>        chnl_gens[0].start();
+<a name="812"><q-n>     812  </q-n></a>        chnl_gens[1].start();
+<a name="813"><q-n>     813  </q-n></a>        chnl_gens[2].start();
+<a name="814"><q-n>     814  </q-n></a>      join
+<a name="815"><q-n>     815  </q-n></a>      #10us; // wait until all data haven been transfered through MCDF
+<a name="816"><q-n>     816  </q-n></a>    endtask
+<a name="817"><q-n>     817  </q-n></a>  endclass
+<a name="818"><q-n>     818  </q-n></a>  
+<a name="819"><q-n>     819  </q-n></a>  class mcdf_channel_disable_test extends mcdf_base_test;
+<a name="820"><q-n>     820  </q-n></a>    function new(string name = "mcdf_channel_disable_test");
+<a name="821"><q-n>     821  </q-n></a>      super.new(name);
+<a name="822"><q-n>     822  </q-n></a>    endfunction
+<a name="823"><q-n>     823  </q-n></a>
+<a name="824"><q-n>     824  </q-n></a>    task do_reg();
+<a name="825"><q-n>     825  </q-n></a>      bit[31:0] wr_val, rd_val;
+<a name="826"><q-n>     826  </q-n></a>      // slv0 with len=8,  prio=0, en=0
+<a name="827"><q-n>     827  </q-n></a>      wr_val = (1&lt;&lt;3)+(0&lt;&lt;1)+0;
+<a name="828"><q-n>     828  </q-n></a>      this.write_reg(`SLV0_RW_ADDR, wr_val);
+<a name="829"><q-n>     829  </q-n></a>      this.read_reg(`SLV0_RW_ADDR, rd_val);
+<a name="830"><q-n>     830  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV0_WR_REG"));
+<a name="831"><q-n>     831  </q-n></a>
+<a name="832"><q-n>     832  </q-n></a>      // slv1 with len=16, prio=1, en=0
+<a name="833"><q-n>     833  </q-n></a>      wr_val = (2&lt;&lt;3)+(1&lt;&lt;1)+0;
+<a name="834"><q-n>     834  </q-n></a>      this.write_reg(`SLV1_RW_ADDR, wr_val);
+<a name="835"><q-n>     835  </q-n></a>      this.read_reg(`SLV1_RW_ADDR, rd_val);
+<a name="836"><q-n>     836  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV1_WR_REG"));
+<a name="837"><q-n>     837  </q-n></a>
+<a name="838"><q-n>     838  </q-n></a>      // slv2 with len=32, prio=2, en=0
+<a name="839"><q-n>     839  </q-n></a>      wr_val = (3&lt;&lt;3)+(2&lt;&lt;1)+0;
+<a name="840"><q-n>     840  </q-n></a>      this.write_reg(`SLV2_RW_ADDR, wr_val);
+<a name="841"><q-n>     841  </q-n></a>      this.read_reg(`SLV2_RW_ADDR, rd_val);
+<a name="842"><q-n>     842  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV2_WR_REG"));
+<a name="843"><q-n>     843  </q-n></a>
+<a name="844"><q-n>     844  </q-n></a>      // send IDLE command
+<a name="845"><q-n>     845  </q-n></a>      this.idle_reg();
+<a name="846"><q-n>     846  </q-n></a>    endtask
+<a name="847"><q-n>     847  </q-n></a>
+<a name="848"><q-n>     848  </q-n></a>    task do_formatter();
+<a name="849"><q-n>     849  </q-n></a>      void'(fmt_gen.randomize() with {fifo == LONG_FIFO; bandwidth == HIGH_WIDTH;});
+<a name="850"><q-n>     850  </q-n></a>      fmt_gen.start();
+<a name="851"><q-n>     851  </q-n></a>    endtask
+<a name="852"><q-n>     852  </q-n></a>
+<a name="853"><q-n>     853  </q-n></a>    task do_data();
+<a name="854"><q-n>     854  </q-n></a>      void'(chnl_gens[0].randomize() with {ntrans==100; ch_id==0; data_nidles==0; pkt_nidles==1; data_size==8; });
+<a name="855"><q-n>     855  </q-n></a>      void'(chnl_gens[1].randomize() with {ntrans==100; ch_id==1; data_nidles==1; pkt_nidles==4; data_size==16;});
+<a name="856"><q-n>     856  </q-n></a>      void'(chnl_gens[2].randomize() with {ntrans==100; ch_id==2; data_nidles==2; pkt_nidles==8; data_size==32;});
+<a name="857"><q-n>     857  </q-n></a>      fork
+<a name="858"><q-n>     858  </q-n></a>        chnl_gens[0].start();
+<a name="859"><q-n>     859  </q-n></a>        chnl_gens[1].start();
+<a name="860"><q-n>     860  </q-n></a>        chnl_gens[2].start();
+<a name="861"><q-n>     861  </q-n></a>      join
+<a name="862"><q-n>     862  </q-n></a>      #10us; // wait until all data haven been transfered through MCDF
+<a name="863"><q-n>     863  </q-n></a>    endtask
+<a name="864"><q-n>     864  </q-n></a>  endclass
+<a name="865"><q-n>     865  </q-n></a>  
+<a name="866"><q-n>     866  </q-n></a>  class mcdf_reg_write_read_test extends mcdf_base_test;
+<a name="867"><q-n>     867  </q-n></a>    function new(string name = "mcdf_reg_write_read_test");
+<a name="868"><q-n>     868  </q-n></a>      super.new(name);
+<a name="869"><q-n>     869  </q-n></a>    endfunction
+<a name="870"><q-n>     870  </q-n></a>
+<a name="871"><q-n>     871  </q-n></a>    task do_reg();
+<a name="872"><q-n>     872  </q-n></a>	  bit[31:0] wr_val, rd_val;
+<a name="873"><q-n>     873  </q-n></a>	  //slv0
+<a name="874"><q-n>     874  </q-n></a>      wr_val =($urandom_range(0,3)&lt;&lt;3)+($urandom_range(0,3)&lt;&lt;1)+($urandom_range(0,1));
+<a name="875"><q-n>     875  </q-n></a>      this.write_reg(`SLV0_RW_ADDR, wr_val);
+<a name="876"><q-n>     876  </q-n></a>      this.read_reg(`SLV0_RW_ADDR, rd_val);
+<a name="877"><q-n>     877  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV0_WR_REG"));
+<a name="878"><q-n>     878  </q-n></a>
+<a name="879"><q-n>     879  </q-n></a>      // slv1
+<a name="880"><q-n>     880  </q-n></a>      wr_val =($urandom_range(0,3)&lt;&lt;3)+($urandom_range(0,3)&lt;&lt;1)+($urandom_range(0,1));
+<a name="881"><q-n>     881  </q-n></a>      this.write_reg(`SLV1_RW_ADDR, wr_val);
+<a name="882"><q-n>     882  </q-n></a>      this.read_reg(`SLV1_RW_ADDR, rd_val);
+<a name="883"><q-n>     883  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV1_WR_REG"));
+<a name="884"><q-n>     884  </q-n></a>
+<a name="885"><q-n>     885  </q-n></a>      // slv2
+<a name="886"><q-n>     886  </q-n></a>      wr_val =($urandom_range(0,3)&lt;&lt;3)+($urandom_range(0,3)&lt;&lt;1)+($urandom_range(0,1));
+<a name="887"><q-n>     887  </q-n></a>      this.write_reg(`SLV2_RW_ADDR, wr_val);
+<a name="888"><q-n>     888  </q-n></a>      this.read_reg(`SLV2_RW_ADDR, rd_val);
+<a name="889"><q-n>     889  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV2_WR_REG"));
+<a name="890"><q-n>     890  </q-n></a>	  
+<a name="891"><q-n>     891  </q-n></a>	  //rd
+<a name="892"><q-n>     892  </q-n></a>	  wr_val = $urandom_range(0,256);
+<a name="893"><q-n>     893  </q-n></a>      this.write_reg(`SLV0_R_ADDR, wr_val);
+<a name="894"><q-n>     894  </q-n></a>      this.read_reg(`SLV0_R_ADDR, rd_val);
+<a name="895"><q-n>     895  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV0_WR_REG"));
+<a name="896"><q-n>     896  </q-n></a>	  
+<a name="897"><q-n>     897  </q-n></a>	  wr_val = $urandom_range(0,256);
+<a name="898"><q-n>     898  </q-n></a>      this.write_reg(`SLV1_R_ADDR, wr_val);
+<a name="899"><q-n>     899  </q-n></a>      this.read_reg(`SLV1_R_ADDR, rd_val);
+<a name="900"><q-n>     900  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV1_WR_REG"));
+<a name="901"><q-n>     901  </q-n></a>	  
+<a name="902"><q-n>     902  </q-n></a>	  wr_val = $urandom_range(0,256);
+<a name="903"><q-n>     903  </q-n></a>      this.write_reg(`SLV2_R_ADDR, wr_val);
+<a name="904"><q-n>     904  </q-n></a>      this.read_reg(`SLV2_R_ADDR, rd_val);
+<a name="905"><q-n>     905  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV2_WR_REG"));
+<a name="906"><q-n>     906  </q-n></a>
+<a name="907"><q-n>     907  </q-n></a>      // send IDLE command
+<a name="908"><q-n>     908  </q-n></a>      this.idle_reg();
+<a name="909"><q-n>     909  </q-n></a>	endtask 
+<a name="910"><q-n>     910  </q-n></a>	
+<a name="911"><q-n>     911  </q-n></a>	task do_formatter();
+<a name="912"><q-n>     912  </q-n></a>    endtask
+<a name="913"><q-n>     913  </q-n></a>
+<a name="914"><q-n>     914  </q-n></a>    task do_data();
+<a name="915"><q-n>     915  </q-n></a>    endtask
+<a name="916"><q-n>     916  </q-n></a>    
+<a name="917"><q-n>     917  </q-n></a>  endclass
+<a name="918"><q-n>     918  </q-n></a>	
+<a name="919"><q-n>     919  </q-n></a>  class mcdf_reg_illegal_access_test extends mcdf_base_test;
+<a name="920"><q-n>     920  </q-n></a>    function new(string name = "mcdf_reg_illegal_access_test");
+<a name="921"><q-n>     921  </q-n></a>      super.new(name);
+<a name="922"><q-n>     922  </q-n></a>    endfunction
+<a name="923"><q-n>     923  </q-n></a>
+<a name="924"><q-n>     924  </q-n></a>    task do_reg();
+<a name="925"><q-n>     925  </q-n></a>      bit[31:0] wr_val, rd_val;
+<a name="926"><q-n>     926  </q-n></a>      wr_val[31:6] =$urandom_range(0,67108863);
+<a name="927"><q-n>     927  </q-n></a>      this.write_reg(`SLV0_RW_ADDR, wr_val);
+<a name="928"><q-n>     928  </q-n></a>      this.read_reg(`SLV0_RW_ADDR, rd_val);
+<a name="929"><q-n>     929  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV0_WR_REG"));
+<a name="930"><q-n>     930  </q-n></a>
+<a name="931"><q-n>     931  </q-n></a>      wr_val[31:6] =$urandom_range(0,67108863);
+<a name="932"><q-n>     932  </q-n></a>      this.write_reg(`SLV1_RW_ADDR, wr_val);
+<a name="933"><q-n>     933  </q-n></a>      this.read_reg(`SLV1_RW_ADDR, rd_val);
+<a name="934"><q-n>     934  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV1_WR_REG"));
+<a name="935"><q-n>     935  </q-n></a>
+<a name="936"><q-n>     936  </q-n></a>      wr_val[31:6] =$urandom_range(0,67108863);
+<a name="937"><q-n>     937  </q-n></a>      this.write_reg(`SLV2_RW_ADDR, wr_val);
+<a name="938"><q-n>     938  </q-n></a>      this.read_reg(`SLV2_RW_ADDR, rd_val);
+<a name="939"><q-n>     939  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV2_WR_REG"));
+<a name="940"><q-n>     940  </q-n></a>	  
+<a name="941"><q-n>     941  </q-n></a>	  wr_val = $urandom_range(0,256);
+<a name="942"><q-n>     942  </q-n></a>      this.write_reg(`SLV0_R_ADDR, wr_val);
+<a name="943"><q-n>     943  </q-n></a>	  
+<a name="944"><q-n>     944  </q-n></a>	  wr_val = $urandom_range(0,256);
+<a name="945"><q-n>     945  </q-n></a>      this.write_reg(`SLV1_R_ADDR, wr_val);
+<a name="946"><q-n>     946  </q-n></a>	  
+<a name="947"><q-n>     947  </q-n></a>	  wr_val = $urandom_range(0,256);
+<a name="948"><q-n>     948  </q-n></a>      this.write_reg(`SLV2_R_ADDR, wr_val);
+<a name="949"><q-n>     949  </q-n></a>	  
+<a name="950"><q-n>     950  </q-n></a>	  wr_val =$urandom_range(0,67108863);
+<a name="951"><q-n>     951  </q-n></a>	  this.write_reg(8'h01, wr_val);
+<a name="952"><q-n>     952  </q-n></a>      this.read_reg(8'h01, rd_val);
+<a name="953"><q-n>     953  </q-n></a>
+<a name="954"><q-n>     954  </q-n></a>      // send IDLE command
+<a name="955"><q-n>     955  </q-n></a>      this.idle_reg();
+<a name="956"><q-n>     956  </q-n></a>    endtask
+<a name="957"><q-n>     957  </q-n></a>
+<a name="958"><q-n>     958  </q-n></a>    task do_formatter();
+<a name="959"><q-n>     959  </q-n></a>    endtask
+<a name="960"><q-n>     960  </q-n></a>
+<a name="961"><q-n>     961  </q-n></a>    task do_data();
+<a name="962"><q-n>     962  </q-n></a>    endtask
+<a name="963"><q-n>     963  </q-n></a>  endclass
+<a name="964"><q-n>     964  </q-n></a>  
+<a name="965"><q-n>     965  </q-n></a>  class mcdf_abiter_priority_same_test extends mcdf_base_test;
+<a name="966"><q-n>     966  </q-n></a>    function new(string name = "mcdf_abiter_priority_test");
+<a name="967"><q-n>     967  </q-n></a>      super.new(name);
+<a name="968"><q-n>     968  </q-n></a>    endfunction
+<a name="969"><q-n>     969  </q-n></a>
+<a name="970"><q-n>     970  </q-n></a>    task do_reg();
+<a name="971"><q-n>     971  </q-n></a>      bit[31:0] wr_val, rd_val;
+<a name="972"><q-n>     972  </q-n></a>	  //same
+<a name="973"><q-n>     973  </q-n></a>      // slv0 with len=8,  prio=2, en=1
+<a name="974"><q-n>     974  </q-n></a>      wr_val = (1&lt;&lt;3)+(3&lt;&lt;1)+1;
+<a name="975"><q-n>     975  </q-n></a>      this.write_reg(`SLV0_RW_ADDR, wr_val);
+<a name="976"><q-n>     976  </q-n></a>      this.read_reg(`SLV0_RW_ADDR, rd_val);
+<a name="977"><q-n>     977  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV0_WR_REG"));
+<a name="978"><q-n>     978  </q-n></a>
+<a name="979"><q-n>     979  </q-n></a>      // slv1 with len=16, prio=2, en=1
+<a name="980"><q-n>     980  </q-n></a>      wr_val = (2&lt;&lt;3)+(3&lt;&lt;1)+1;
+<a name="981"><q-n>     981  </q-n></a>      this.write_reg(`SLV1_RW_ADDR, wr_val);
+<a name="982"><q-n>     982  </q-n></a>      this.read_reg(`SLV1_RW_ADDR, rd_val);
+<a name="983"><q-n>     983  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV1_WR_REG"));
+<a name="984"><q-n>     984  </q-n></a>
+<a name="985"><q-n>     985  </q-n></a>      // slv2 with len=32, prio=2, en=1
+<a name="986"><q-n>     986  </q-n></a>      wr_val = (3&lt;&lt;3)+(3&lt;&lt;1)+1;
+<a name="987"><q-n>     987  </q-n></a>      this.write_reg(`SLV2_RW_ADDR, wr_val);
+<a name="988"><q-n>     988  </q-n></a>      this.read_reg(`SLV2_RW_ADDR, rd_val);
+<a name="989"><q-n>     989  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV2_WR_REG"));
+<a name="990"><q-n>     990  </q-n></a>	 
+<a name="991"><q-n>     991  </q-n></a>      // send IDLE command
+<a name="992"><q-n>     992  </q-n></a>      this.idle_reg();
+<a name="993"><q-n>     993  </q-n></a>    endtask
+<a name="994"><q-n>     994  </q-n></a>
+<a name="995"><q-n>     995  </q-n></a>    task do_formatter();
+<a name="996"><q-n>     996  </q-n></a>      void'(fmt_gen.randomize() with {fifo == LONG_FIFO; bandwidth == HIGH_WIDTH;});
+<a name="997"><q-n>     997  </q-n></a>      fmt_gen.start();
+<a name="998"><q-n>     998  </q-n></a>    endtask
+<a name="999"><q-n>     999  </q-n></a>
+<a name="1000"><q-n>     1000  </q-n></a>    task do_data();
+<a name="1001"><q-n>     1001  </q-n></a>      void'(chnl_gens[0].randomize() with {ntrans==100; ch_id==0; data_nidles==0; pkt_nidles==1; data_size==8; });
+<a name="1002"><q-n>     1002  </q-n></a>      void'(chnl_gens[1].randomize() with {ntrans==100; ch_id==1; data_nidles==1; pkt_nidles==4; data_size==16;});
+<a name="1003"><q-n>     1003  </q-n></a>      void'(chnl_gens[2].randomize() with {ntrans==100; ch_id==2; data_nidles==2; pkt_nidles==8; data_size==32;});
+<a name="1004"><q-n>     1004  </q-n></a>      fork
+<a name="1005"><q-n>     1005  </q-n></a>        chnl_gens[0].start();
+<a name="1006"><q-n>     1006  </q-n></a>        chnl_gens[1].start();
+<a name="1007"><q-n>     1007  </q-n></a>        chnl_gens[2].start();
+<a name="1008"><q-n>     1008  </q-n></a>      join
+<a name="1009"><q-n>     1009  </q-n></a>      #10us; // wait until all data haven been transfered through MCDF
+<a name="1010"><q-n>     1010  </q-n></a>    endtask
+<a name="1011"><q-n>     1011  </q-n></a>  endclass
+<a name="1012"><q-n>     1012  </q-n></a>	
+<a name="1013"><q-n>     1013  </q-n></a>  class mcdf_abiter_priority_diff_test extends mcdf_base_test;
+<a name="1014"><q-n>     1014  </q-n></a>    function new(string name = "mcdf_abiter_priority_test");
+<a name="1015"><q-n>     1015  </q-n></a>      super.new(name);
+<a name="1016"><q-n>     1016  </q-n></a>    endfunction
+<a name="1017"><q-n>     1017  </q-n></a>
+<a name="1018"><q-n>     1018  </q-n></a>    task do_reg();
+<a name="1019"><q-n>     1019  </q-n></a>      bit[31:0] wr_val, rd_val;
+<a name="1020"><q-n>     1020  </q-n></a>	  //different
+<a name="1021"><q-n>     1021  </q-n></a>	  // slv0 with len=8,  prio=0, en=1
+<a name="1022"><q-n>     1022  </q-n></a>      wr_val = (1&lt;&lt;3)+(0&lt;&lt;1)+1;
+<a name="1023"><q-n>     1023  </q-n></a>      this.write_reg(`SLV0_RW_ADDR, wr_val);
+<a name="1024"><q-n>     1024  </q-n></a>      this.read_reg(`SLV0_RW_ADDR, rd_val);
+<a name="1025"><q-n>     1025  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV0_WR_REG"));
+<a name="1026"><q-n>     1026  </q-n></a>
+<a name="1027"><q-n>     1027  </q-n></a>      // slv1 with len=16, prio=1, en=1
+<a name="1028"><q-n>     1028  </q-n></a>      wr_val = (2&lt;&lt;3)+(2&lt;&lt;1)+1;
+<a name="1029"><q-n>     1029  </q-n></a>      this.write_reg(`SLV1_RW_ADDR, wr_val);
+<a name="1030"><q-n>     1030  </q-n></a>      this.read_reg(`SLV1_RW_ADDR, rd_val);
+<a name="1031"><q-n>     1031  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV1_WR_REG"));
+<a name="1032"><q-n>     1032  </q-n></a>
+<a name="1033"><q-n>     1033  </q-n></a>      // slv2 with len=32, prio=2, en=1
+<a name="1034"><q-n>     1034  </q-n></a>      wr_val = (3&lt;&lt;3)+(1&lt;&lt;1)+1;
+<a name="1035"><q-n>     1035  </q-n></a>      this.write_reg(`SLV2_RW_ADDR, wr_val);
+<a name="1036"><q-n>     1036  </q-n></a>      this.read_reg(`SLV2_RW_ADDR, rd_val);
+<a name="1037"><q-n>     1037  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV2_WR_REG"));
+<a name="1038"><q-n>     1038  </q-n></a>
+<a name="1039"><q-n>     1039  </q-n></a>      // send IDLE command
+<a name="1040"><q-n>     1040  </q-n></a>      this.idle_reg();
+<a name="1041"><q-n>     1041  </q-n></a>    endtask
+<a name="1042"><q-n>     1042  </q-n></a>
+<a name="1043"><q-n>     1043  </q-n></a>    task do_formatter();
+<a name="1044"><q-n>     1044  </q-n></a>      void'(fmt_gen.randomize() with {fifo == LONG_FIFO; bandwidth == HIGH_WIDTH;});
+<a name="1045"><q-n>     1045  </q-n></a>      fmt_gen.start();
+<a name="1046"><q-n>     1046  </q-n></a>    endtask
+<a name="1047"><q-n>     1047  </q-n></a>
+<a name="1048"><q-n>     1048  </q-n></a>    task do_data();
+<a name="1049"><q-n>     1049  </q-n></a>      void'(chnl_gens[0].randomize() with {ntrans==100; ch_id==0; data_nidles==0; pkt_nidles==1; data_size==8; });
+<a name="1050"><q-n>     1050  </q-n></a>      void'(chnl_gens[1].randomize() with {ntrans==100; ch_id==1; data_nidles==1; pkt_nidles==4; data_size==16;});
+<a name="1051"><q-n>     1051  </q-n></a>      void'(chnl_gens[2].randomize() with {ntrans==100; ch_id==2; data_nidles==2; pkt_nidles==8; data_size==32;});
+<a name="1052"><q-n>     1052  </q-n></a>      fork
+<a name="1053"><q-n>     1053  </q-n></a>        chnl_gens[0].start();
+<a name="1054"><q-n>     1054  </q-n></a>        chnl_gens[1].start();
+<a name="1055"><q-n>     1055  </q-n></a>        chnl_gens[2].start();
+<a name="1056"><q-n>     1056  </q-n></a>      join
+<a name="1057"><q-n>     1057  </q-n></a>      #10us; // wait until all data haven been transfered through MCDF
+<a name="1058"><q-n>     1058  </q-n></a>    endtask
+<a name="1059"><q-n>     1059  </q-n></a>  endclass
+<a name="1060"><q-n>     1060  </q-n></a>  
+<a name="1061"><q-n>     1061  </q-n></a>  class mcdf_formatter_length_test extends mcdf_base_test;
+<a name="1062"><q-n>     1062  </q-n></a>    function new(string name = "mcdf_formatter_length_test");
+<a name="1063"><q-n>     1063  </q-n></a>      super.new(name);
+<a name="1064"><q-n>     1064  </q-n></a>    endfunction
+<a name="1065"><q-n>     1065  </q-n></a>
+<a name="1066"><q-n>     1066  </q-n></a>    task do_reg();
+<a name="1067"><q-n>     1067  </q-n></a>      bit[31:0] wr_val, rd_val;
+<a name="1068"><q-n>     1068  </q-n></a>      // slv0 with len,  prio=0, en=1
+<a name="1069"><q-n>     1069  </q-n></a>      wr_val = ($urandom_range(0,3)&lt;&lt;3)+(0&lt;&lt;1)+1;
+<a name="1070"><q-n>     1070  </q-n></a>      this.write_reg(`SLV0_RW_ADDR, wr_val);
+<a name="1071"><q-n>     1071  </q-n></a>      this.read_reg(`SLV0_RW_ADDR, rd_val);
+<a name="1072"><q-n>     1072  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV0_WR_REG"));
+<a name="1073"><q-n>     1073  </q-n></a>
+<a name="1074"><q-n>     1074  </q-n></a>      // slv1 with len, prio=1, en=1
+<a name="1075"><q-n>     1075  </q-n></a>      wr_val = ($urandom_range(0,3)&lt;&lt;3)+(1&lt;&lt;1)+1;
+<a name="1076"><q-n>     1076  </q-n></a>      this.write_reg(`SLV1_RW_ADDR, wr_val);
+<a name="1077"><q-n>     1077  </q-n></a>      this.read_reg(`SLV1_RW_ADDR, rd_val);
+<a name="1078"><q-n>     1078  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV1_WR_REG"));
+<a name="1079"><q-n>     1079  </q-n></a>
+<a name="1080"><q-n>     1080  </q-n></a>      // slv2 with len, prio=2, en=1
+<a name="1081"><q-n>     1081  </q-n></a>      wr_val = ($urandom_range(0,3)&lt;&lt;3)+(2&lt;&lt;1)+1;
+<a name="1082"><q-n>     1082  </q-n></a>      this.write_reg(`SLV2_RW_ADDR, wr_val);
+<a name="1083"><q-n>     1083  </q-n></a>      this.read_reg(`SLV2_RW_ADDR, rd_val);
+<a name="1084"><q-n>     1084  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV2_WR_REG"));
+<a name="1085"><q-n>     1085  </q-n></a>
+<a name="1086"><q-n>     1086  </q-n></a>      // send IDLE command
+<a name="1087"><q-n>     1087  </q-n></a>      this.idle_reg();
+<a name="1088"><q-n>     1088  </q-n></a>    endtask
+<a name="1089"><q-n>     1089  </q-n></a>
+<a name="1090"><q-n>     1090  </q-n></a>    task do_formatter();
+<a name="1091"><q-n>     1091  </q-n></a>      void'(fmt_gen.randomize() with {fifo == LONG_FIFO; bandwidth == HIGH_WIDTH;});
+<a name="1092"><q-n>     1092  </q-n></a>      fmt_gen.start();
+<a name="1093"><q-n>     1093  </q-n></a>    endtask
+<a name="1094"><q-n>     1094  </q-n></a>
+<a name="1095"><q-n>     1095  </q-n></a>    task do_data();
+<a name="1096"><q-n>     1096  </q-n></a>      void'(chnl_gens[0].randomize() with {ntrans==100; ch_id==0; data_nidles==0; pkt_nidles==1; data_size==8; });
+<a name="1097"><q-n>     1097  </q-n></a>      void'(chnl_gens[1].randomize() with {ntrans==100; ch_id==1; data_nidles==1; pkt_nidles==4; data_size==16;});
+<a name="1098"><q-n>     1098  </q-n></a>      void'(chnl_gens[2].randomize() with {ntrans==100; ch_id==2; data_nidles==2; pkt_nidles==8; data_size==32;});
+<a name="1099"><q-n>     1099  </q-n></a>      fork
+<a name="1100"><q-n>     1100  </q-n></a>        chnl_gens[0].start();
+<a name="1101"><q-n>     1101  </q-n></a>        chnl_gens[1].start();
+<a name="1102"><q-n>     1102  </q-n></a>        chnl_gens[2].start();
+<a name="1103"><q-n>     1103  </q-n></a>      join
+<a name="1104"><q-n>     1104  </q-n></a>      #10us; // wait until all data haven been transfered through MCDF
+<a name="1105"><q-n>     1105  </q-n></a>    endtask
+<a name="1106"><q-n>     1106  </q-n></a>  endclass
+<a name="1107"><q-n>     1107  </q-n></a>  
+<a name="1108"><q-n>     1108  </q-n></a>  class mcdf_formatter_grant_test extends mcdf_base_test;
+<a name="1109"><q-n>     1109  </q-n></a>    function new(string name = "mcdf_formatter_grant_test");
+<a name="1110"><q-n>     1110  </q-n></a>      super.new(name);
+<a name="1111"><q-n>     1111  </q-n></a>    endfunction
+<a name="1112"><q-n>     1112  </q-n></a>
+<a name="1113"><q-n>     1113  </q-n></a>    task do_reg();
+<a name="1114"><q-n>     1114  </q-n></a>      bit[31:0] wr_val, rd_val;
+<a name="1115"><q-n>     1115  </q-n></a>      // slv0 with len=8,  prio=0, en=1
+<a name="1116"><q-n>     1116  </q-n></a>      wr_val = (1&lt;&lt;3)+(0&lt;&lt;1)+1;
+<a name="1117"><q-n>     1117  </q-n></a>      this.write_reg(`SLV0_RW_ADDR, wr_val);
+<a name="1118"><q-n>     1118  </q-n></a>      this.read_reg(`SLV0_RW_ADDR, rd_val);
+<a name="1119"><q-n>     1119  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV0_WR_REG"));
+<a name="1120"><q-n>     1120  </q-n></a>
+<a name="1121"><q-n>     1121  </q-n></a>      // slv1 with len=16, prio=1, en=1
+<a name="1122"><q-n>     1122  </q-n></a>      wr_val = (2&lt;&lt;3)+(1&lt;&lt;1)+1;
+<a name="1123"><q-n>     1123  </q-n></a>      this.write_reg(`SLV1_RW_ADDR, wr_val);
+<a name="1124"><q-n>     1124  </q-n></a>      this.read_reg(`SLV1_RW_ADDR, rd_val);
+<a name="1125"><q-n>     1125  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV1_WR_REG"));
+<a name="1126"><q-n>     1126  </q-n></a>
+<a name="1127"><q-n>     1127  </q-n></a>      // slv2 with len=32, prio=2, en=1
+<a name="1128"><q-n>     1128  </q-n></a>      wr_val = (3&lt;&lt;3)+(2&lt;&lt;1)+1;
+<a name="1129"><q-n>     1129  </q-n></a>      this.write_reg(`SLV2_RW_ADDR, wr_val);
+<a name="1130"><q-n>     1130  </q-n></a>      this.read_reg(`SLV2_RW_ADDR, rd_val);
+<a name="1131"><q-n>     1131  </q-n></a>      void'(this.diff_value(wr_val, rd_val, "SLV2_WR_REG"));
+<a name="1132"><q-n>     1132  </q-n></a>
+<a name="1133"><q-n>     1133  </q-n></a>      // send IDLE command
+<a name="1134"><q-n>     1134  </q-n></a>      this.idle_reg();
+<a name="1135"><q-n>     1135  </q-n></a>    endtask
+<a name="1136"><q-n>     1136  </q-n></a>
+<a name="1137"><q-n>     1137  </q-n></a>    task do_formatter();
+<a name="1138"><q-n>     1138  </q-n></a>      void'(fmt_gen.randomize() with {fifo == SHORT_FIFO; bandwidth == LOW_WIDTH;});
+<a name="1139"><q-n>     1139  </q-n></a>      fmt_gen.start();
+<a name="1140"><q-n>     1140  </q-n></a>    endtask
+<a name="1141"><q-n>     1141  </q-n></a>
+<a name="1142"><q-n>     1142  </q-n></a>    task do_data();
+<a name="1143"><q-n>     1143  </q-n></a>      void'(chnl_gens[0].randomize() with {ntrans==100; ch_id==0; data_nidles==0; pkt_nidles==1; data_size==8; });
+<a name="1144"><q-n>     1144  </q-n></a>      void'(chnl_gens[1].randomize() with {ntrans==100; ch_id==1; data_nidles==1; pkt_nidles==4; data_size==16;});
+<a name="1145"><q-n>     1145  </q-n></a>      void'(chnl_gens[2].randomize() with {ntrans==100; ch_id==2; data_nidles==2; pkt_nidles==8; data_size==32;});
+<a name="1146"><q-n>     1146  </q-n></a>      fork
+<a name="1147"><q-n>     1147  </q-n></a>        chnl_gens[0].start();
+<a name="1148"><q-n>     1148  </q-n></a>        chnl_gens[1].start();
+<a name="1149"><q-n>     1149  </q-n></a>        chnl_gens[2].start();
+<a name="1150"><q-n>     1150  </q-n></a>      join
+<a name="1151"><q-n>     1151  </q-n></a>      #10us; // wait until all data haven been transfered through MCDF
+<a name="1152"><q-n>     1152  </q-n></a>    endtask
+<a name="1153"><q-n>     1153  </q-n></a>  endclass
+<a name="1154"><q-n>     1154  </q-n></a>
+<a name="1155"><q-n>     1155  </q-n></a>endpackage
+</pre>
+</tt>
+<h1>Error: Source file not available...</h1>
+  <p>
+  This source file could not be found. Make sure the HDL sourcefiles are visible when you generate the HTML report.</p><p>
+  Contact Mentor Customer Support if you have any questions.</p>
+  
+</body>
+</html>

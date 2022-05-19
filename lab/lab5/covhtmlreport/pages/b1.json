@@ -1,0 +1,616 @@
+var g_data = {
+b51:[{dummy:0},
+{anchor:'cvg52',items:[{z:'if (!full_s && slvx_en_i) chx_ready_o = 1\'b1;//If FIFO is not full and al...',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'33',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'if (!full_s && slvx_en_i) chx_ready_o = 1\'b1;//If FIFO is not full and al...',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'33',h:'3',c:'g'}
+,{cr:'c',t:'E',z:'else chx_ready_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'34',h:'3',c:'g'}
+]},
+{anchor:'cvg53',items:[{z:'  if (!rstn_i) slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'39',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'39',h:'3',c:'g'}
+,{cr:'c',t:'T',z:'  else if (!empty_s) slvx_req_o = 1\'b1;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'40',h:'3',c:'g'}
+,{cr:'c',t:'E',z:'  else slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'41',h:'3',c:'g'}
+]},
+{anchor:'cvg54',items:[{z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',h:'3',c:'g'}
+,{cr:'c',t:'T',z:'  if (chx_valid_i && chx_ready_o) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'50',h:'3',c:'g'}
+,{cr:'c',t:'A',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',h:'3',c:'g'}
+]},
+{anchor:'cvg55',items:[{z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',h:'3',c:'g'}
+,{cr:'c',t:'T',z:'  if (rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'61',h:'3',c:'g'}
+,{cr:'c',t:'A',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',h:'3',c:'g'}
+]},
+{anchor:'cvg56',items:[{z:'  if (!rstn_i) slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'69',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'69',h:'3',c:'g'}
+,{cr:'c',t:'T',z:'  else if (rd_en_s && (!empty_s))',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'70',h:'3',c:'g'}
+,{cr:'c',t:'E',z:'    else slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'72',h:'3',c:'g'}
+]},
+{anchor:'cvg57',items:[{z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',h:'3',c:'g'}
+,{cr:'c',t:'A',z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',h:'3',c:'g'}
+]},
+{anchor:'cvg58',items:[{z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',h:'3',c:'g'}
+,{cr:'c',t:'A',z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',h:'3',c:'g'}
+]}],
+b50:[{dummy:0},
+{anchor:'cvg622',items:[{z:'  if (!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'51',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'51',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'    else ',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'57',h:'1',c:'g'}
+]},
+{anchor:'cvg623',items:[{z:'	if (!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'67',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	if (!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'67',h:'1',c:'g'}
+,{cr:'c',t:'T',z:' else if (cmd_i== `WRITE) begin',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'73',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'	if (!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'67',h:'1',c:'g'}
+]},
+{anchor:'cvg624',items:[{z:'				case(cmd_addr_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'74',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'				`SLV0_RW_ADDR: mem[`SLV0_RW_REG]<= {26\'b0,cmd_data_i[`PAC_LEN_HIGH:0]...',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'75',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV1_RW_ADDR: mem[`SLV1_RW_REG]<= {26\'b0,cmd_data_i[`PAC_LEN_HIGH:0]...',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'76',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV2_RW_ADDR: mem[`SLV2_RW_REG]<= {26\'b0,cmd_data_i[`PAC_LEN_HIGH:0]...',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'77',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'				case(cmd_addr_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'74',h:'1',c:'g'}
+]},
+{anchor:'cvg625',items:[{z:'  if(!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'83',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if(!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'83',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'		else if(cmd_i == `READ)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'85',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if(!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'83',h:'1',c:'g'}
+]},
+{anchor:'cvg626',items:[{z:'				case(cmd_addr_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'87',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'				`SLV0_RW_ADDR:		cmd_data_reg  <= mem[`SLV0_RW_REG];',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'88',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV1_RW_ADDR:		cmd_data_reg  <= mem[`SLV1_RW_REG];',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'89',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV2_RW_ADDR:	  cmd_data_reg  <= mem[`SLV2_RW_REG];					',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'90',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV0_R_ADDR: 		cmd_data_reg  <= mem[`SLV0_R_REG];',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'91',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV1_R_ADDR: 		cmd_data_reg  <= mem[`SLV1_R_REG];',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'92',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV2_R_ADDR: 		cmd_data_reg  <= mem[`SLV2_R_REG];',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'93',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'				case(cmd_addr_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'87',h:'1',c:'g'}
+]}],
+b621:[{dummy:0},
+{anchor:'cvg622',items:[{z:'  if (!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'51',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'51',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'    else ',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'57',h:'1',c:'g'}
+]},
+{anchor:'cvg623',items:[{z:'	if (!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'67',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	if (!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'67',h:'1',c:'g'}
+,{cr:'c',t:'T',z:' else if (cmd_i== `WRITE) begin',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'73',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'	if (!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'67',h:'1',c:'g'}
+]},
+{anchor:'cvg624',items:[{z:'				case(cmd_addr_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'74',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'				`SLV0_RW_ADDR: mem[`SLV0_RW_REG]<= {26\'b0,cmd_data_i[`PAC_LEN_HIGH:0]...',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'75',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV1_RW_ADDR: mem[`SLV1_RW_REG]<= {26\'b0,cmd_data_i[`PAC_LEN_HIGH:0]...',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'76',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV2_RW_ADDR: mem[`SLV2_RW_REG]<= {26\'b0,cmd_data_i[`PAC_LEN_HIGH:0]...',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'77',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'				case(cmd_addr_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'74',h:'1',c:'g'}
+]},
+{anchor:'cvg625',items:[{z:'  if(!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'83',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if(!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'83',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'		else if(cmd_i == `READ)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'85',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if(!rstn_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'83',h:'1',c:'g'}
+]},
+{anchor:'cvg626',items:[{z:'				case(cmd_addr_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'87',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'				`SLV0_RW_ADDR:		cmd_data_reg  <= mem[`SLV0_RW_REG];',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'88',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV1_RW_ADDR:		cmd_data_reg  <= mem[`SLV1_RW_REG];',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'89',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV2_RW_ADDR:	  cmd_data_reg  <= mem[`SLV2_RW_REG];					',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'90',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV0_R_ADDR: 		cmd_data_reg  <= mem[`SLV0_R_REG];',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'91',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV1_R_ADDR: 		cmd_data_reg  <= mem[`SLV1_R_REG];',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'92',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				`SLV2_R_ADDR: 		cmd_data_reg  <= mem[`SLV2_R_REG];',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'93',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'				case(cmd_addr_i)',hf:'__HDL_srcfile_6.htm',f:'reg.v',l:'87',h:'1',c:'g'}
+]}],
+b663:[{dummy:0},
+{anchor:'cvg664',items:[{z:'if (!full_s && slvx_en_i) chx_ready_o = 1\'b1;//If FIFO is not full and al...',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'33',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'if (!full_s && slvx_en_i) chx_ready_o = 1\'b1;//If FIFO is not full and al...',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'33',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'else chx_ready_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'34',h:'1',c:'g'}
+]},
+{anchor:'cvg665',items:[{z:'  if (!rstn_i) slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'39',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'39',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (!empty_s) slvx_req_o = 1\'b1;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'40',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'  else slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'41',h:'1',c:'g'}
+]},
+{anchor:'cvg666',items:[{z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  if (chx_valid_i && chx_ready_o) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'50',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',h:'1',c:'g'}
+]},
+{anchor:'cvg667',items:[{z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  if (rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'61',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',h:'1',c:'g'}
+]},
+{anchor:'cvg668',items:[{z:'  if (!rstn_i) slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'69',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'69',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (rd_en_s && (!empty_s))',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'70',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'    else slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'72',h:'1',c:'g'}
+]},
+{anchor:'cvg669',items:[{z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',h:'1',c:'g'}
+]},
+{anchor:'cvg670',items:[{z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',h:'1',c:'g'}
+]}],
+b735:[{dummy:0},
+{anchor:'cvg736',items:[{z:'if (!full_s && slvx_en_i) chx_ready_o = 1\'b1;//If FIFO is not full and al...',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'33',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'if (!full_s && slvx_en_i) chx_ready_o = 1\'b1;//If FIFO is not full and al...',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'33',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'else chx_ready_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'34',h:'1',c:'g'}
+]},
+{anchor:'cvg737',items:[{z:'  if (!rstn_i) slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'39',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'39',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (!empty_s) slvx_req_o = 1\'b1;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'40',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'  else slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'41',h:'1',c:'g'}
+]},
+{anchor:'cvg738',items:[{z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  if (chx_valid_i && chx_ready_o) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'50',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',h:'1',c:'g'}
+]},
+{anchor:'cvg739',items:[{z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  if (rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'61',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',h:'1',c:'g'}
+]},
+{anchor:'cvg740',items:[{z:'  if (!rstn_i) slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'69',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'69',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (rd_en_s && (!empty_s))',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'70',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'    else slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'72',h:'1',c:'g'}
+]},
+{anchor:'cvg741',items:[{z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',h:'1',c:'g'}
+]},
+{anchor:'cvg742',items:[{z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',h:'1',c:'g'}
+]}],
+b807:[{dummy:0},
+{anchor:'cvg808',items:[{z:'if (!full_s && slvx_en_i) chx_ready_o = 1\'b1;//If FIFO is not full and al...',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'33',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'if (!full_s && slvx_en_i) chx_ready_o = 1\'b1;//If FIFO is not full and al...',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'33',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'else chx_ready_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'34',h:'1',c:'g'}
+]},
+{anchor:'cvg809',items:[{z:'  if (!rstn_i) slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'39',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'39',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (!empty_s) slvx_req_o = 1\'b1;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'40',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'  else slvx_req_o = 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'41',h:'1',c:'g'}
+]},
+{anchor:'cvg810',items:[{z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  if (chx_valid_i && chx_ready_o) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'50',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'47',h:'1',c:'g'}
+]},
+{anchor:'cvg811',items:[{z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  if (rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'61',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if (!rstn_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'58',h:'1',c:'g'}
+]},
+{anchor:'cvg812',items:[{z:'  if (!rstn_i) slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'69',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'69',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (rd_en_s && (!empty_s))',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'70',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'    else slvx_val_o <= 1\'b0;',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'72',h:'1',c:'g'}
+]},
+{anchor:'cvg813',items:[{z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if (rstn_i && rd_en_s && (!empty_s)) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'78',h:'1',c:'g'}
+]},
+{anchor:'cvg814',items:[{z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'	if (rstn_i && chx_valid_i && chx_ready_o && slvx_en_i) begin',hf:'__HDL_srcfile_1.htm',f:'slave_fifo.v',l:'86',h:'1',c:'g'}
+]}],
+b123:[{dummy:0},
+{anchor:'cvg880',items:[{z:'  if (!rstn_i) id_sel_r  = 2\'b11;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'49',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) id_sel_r  = 2\'b11;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'49',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (f2a_id_req_i)',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'50',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'       else ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'136',h:'1',c:'g'}
+]},
+{anchor:'cvg881',items:[{z:'         case ({slv2_req_i,slv1_req_i,slv0_req_i})  ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'51',c:'Y',p:'75.00'}
+,{cr:'c',t:'T',z:'				3\'b001: 	begin ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'52',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				3\'b010: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'57',h:'1',c:'g'}
+,{cr:'m',t:'T',z:'				3\'b011: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'62',h:'0',c:'r'}
+,{cr:'c',t:'T',z:'				3\'b100: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'75',h:'1',c:'g'}
+,{cr:'m',t:'T',z:'				3\'b101: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'80',h:'0',c:'r'}
+,{cr:'c',t:'T',z:'		     3\'b110: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'93',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'		     3\'b111: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'106',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'		     default: 	begin ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'129',h:'1',c:'g'}
+]},
+{anchor:'cvg882',items:[{z:'							if(slv1_prio_i >= slv0_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'63',c:'R',p:'0.00'}
+,{cr:'m',t:'I',z:'							if(slv1_prio_i >= slv0_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'63',h:'0',c:'r'}
+,{cr:'m',t:'E',z:'							else ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'68',h:'0',c:'r'}
+]},
+{anchor:'cvg883',items:[{z:'							if(slv2_prio_i >= slv0_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'81',c:'R',p:'0.00'}
+,{cr:'m',t:'I',z:'							if(slv2_prio_i >= slv0_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'81',h:'0',c:'r'}
+,{cr:'m',t:'E',z:'							else ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'86',h:'0',c:'r'}
+]},
+{anchor:'cvg884',items:[{z:'							if(slv2_prio_i >= slv1_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'94',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'							if(slv2_prio_i >= slv1_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'94',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'							else ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'99',h:'1',c:'g'}
+]},
+{anchor:'cvg885',items:[{z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i >= slv0_prio_i)...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'107',c:'Y',p:'50.00'}
+,{cr:'c',t:'I',z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i >= slv0_prio_i)...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'107',h:'1',c:'g'}
+,{cr:'m',t:'A',z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i >= slv0_prio_i)...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'107',h:'0',c:'r'}
+]},
+{anchor:'cvg886',items:[{z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i < slv0_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'112',c:'Y',p:'50.00'}
+,{cr:'m',t:'I',z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i < slv0_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'112',h:'0',c:'r'}
+,{cr:'c',t:'A',z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i < slv0_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'112',h:'1',c:'g'}
+]},
+{anchor:'cvg887',items:[{z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i >= slv1_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'117',c:'Y',p:'50.00'}
+,{cr:'m',t:'I',z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i >= slv1_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'117',h:'0',c:'r'}
+,{cr:'c',t:'A',z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i >= slv1_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'117',h:'1',c:'g'}
+]},
+{anchor:'cvg888',items:[{z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i < slv1_prio_i)  ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'122',c:'Y',p:'50.00'}
+,{cr:'m',t:'I',z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i < slv1_prio_i)  ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'122',h:'0',c:'r'}
+,{cr:'c',t:'A',z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i < slv1_prio_i)  ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'122',h:'1',c:'g'}
+]},
+{anchor:'cvg889',items:[{z:'  case ( id_sel_r)',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'147',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'    2\'b00: begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'148',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    2\'b01: begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'153',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    2\'b10: begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'158',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    default :begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'163',h:'1',c:'g'}
+]},
+{anchor:'cvg890',items:[{z:'assign a2s0_ack_o = ( id_sel_r == 2\'b00)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'171',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'assign a2s0_ack_o = ( id_sel_r == 2\'b00)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'171',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'assign a2s0_ack_o = ( id_sel_r == 2\'b00)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'171',h:'1',c:'g'}
+]},
+{anchor:'cvg891',items:[{z:'assign a2s1_ack_o = ( id_sel_r == 2\'b01)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'172',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'assign a2s1_ack_o = ( id_sel_r == 2\'b01)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'172',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'assign a2s1_ack_o = ( id_sel_r == 2\'b01)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'172',h:'1',c:'g'}
+]},
+{anchor:'cvg892',items:[{z:'assign a2s2_ack_o = ( id_sel_r == 2\'b10)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'173',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'assign a2s2_ack_o = ( id_sel_r == 2\'b10)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'173',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'assign a2s2_ack_o = ( id_sel_r == 2\'b10)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'173',h:'1',c:'g'}
+]}],
+b879:[{dummy:0},
+{anchor:'cvg880',items:[{z:'  if (!rstn_i) id_sel_r  = 2\'b11;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'49',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) id_sel_r  = 2\'b11;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'49',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (f2a_id_req_i)',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'50',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'       else ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'136',h:'1',c:'g'}
+]},
+{anchor:'cvg881',items:[{z:'         case ({slv2_req_i,slv1_req_i,slv0_req_i})  ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'51',c:'Y',p:'75.00'}
+,{cr:'c',t:'T',z:'				3\'b001: 	begin ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'52',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'				3\'b010: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'57',h:'1',c:'g'}
+,{cr:'m',t:'T',z:'				3\'b011: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'62',h:'0',c:'r'}
+,{cr:'c',t:'T',z:'				3\'b100: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'75',h:'1',c:'g'}
+,{cr:'m',t:'T',z:'				3\'b101: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'80',h:'0',c:'r'}
+,{cr:'c',t:'T',z:'		     3\'b110: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'93',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'		     3\'b111: 	begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'106',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'		     default: 	begin ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'129',h:'1',c:'g'}
+]},
+{anchor:'cvg882',items:[{z:'							if(slv1_prio_i >= slv0_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'63',c:'R',p:'0.00'}
+,{cr:'m',t:'I',z:'							if(slv1_prio_i >= slv0_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'63',h:'0',c:'r'}
+,{cr:'m',t:'E',z:'							else ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'68',h:'0',c:'r'}
+]},
+{anchor:'cvg883',items:[{z:'							if(slv2_prio_i >= slv0_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'81',c:'R',p:'0.00'}
+,{cr:'m',t:'I',z:'							if(slv2_prio_i >= slv0_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'81',h:'0',c:'r'}
+,{cr:'m',t:'E',z:'							else ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'86',h:'0',c:'r'}
+]},
+{anchor:'cvg884',items:[{z:'							if(slv2_prio_i >= slv1_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'94',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'							if(slv2_prio_i >= slv1_prio_i) ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'94',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'							else ',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'99',h:'1',c:'g'}
+]},
+{anchor:'cvg885',items:[{z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i >= slv0_prio_i)...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'107',c:'Y',p:'50.00'}
+,{cr:'c',t:'I',z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i >= slv0_prio_i)...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'107',h:'1',c:'g'}
+,{cr:'m',t:'A',z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i >= slv0_prio_i)...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'107',h:'0',c:'r'}
+]},
+{anchor:'cvg886',items:[{z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i < slv0_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'112',c:'Y',p:'50.00'}
+,{cr:'m',t:'I',z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i < slv0_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'112',h:'0',c:'r'}
+,{cr:'c',t:'A',z:'							      if(slv2_prio_i >= slv0_prio_i && slv1_prio_i < slv0_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'112',h:'1',c:'g'}
+]},
+{anchor:'cvg887',items:[{z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i >= slv1_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'117',c:'Y',p:'50.00'}
+,{cr:'m',t:'I',z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i >= slv1_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'117',h:'0',c:'r'}
+,{cr:'c',t:'A',z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i >= slv1_prio_i) ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'117',h:'1',c:'g'}
+]},
+{anchor:'cvg888',items:[{z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i < slv1_prio_i)  ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'122',c:'Y',p:'50.00'}
+,{cr:'m',t:'I',z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i < slv1_prio_i)  ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'122',h:'0',c:'r'}
+,{cr:'c',t:'A',z:'							      if(slv2_prio_i < slv0_prio_i && slv2_prio_i < slv1_prio_i)  ...',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'122',h:'1',c:'g'}
+]},
+{anchor:'cvg889',items:[{z:'  case ( id_sel_r)',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'147',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'    2\'b00: begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'148',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    2\'b01: begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'153',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    2\'b10: begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'158',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    default :begin',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'163',h:'1',c:'g'}
+]},
+{anchor:'cvg890',items:[{z:'assign a2s0_ack_o = ( id_sel_r == 2\'b00)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'171',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'assign a2s0_ack_o = ( id_sel_r == 2\'b00)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'171',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'assign a2s0_ack_o = ( id_sel_r == 2\'b00)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'171',h:'1',c:'g'}
+]},
+{anchor:'cvg891',items:[{z:'assign a2s1_ack_o = ( id_sel_r == 2\'b01)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'172',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'assign a2s1_ack_o = ( id_sel_r == 2\'b01)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'172',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'assign a2s1_ack_o = ( id_sel_r == 2\'b01)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'172',h:'1',c:'g'}
+]},
+{anchor:'cvg892',items:[{z:'assign a2s2_ack_o = ( id_sel_r == 2\'b10)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'173',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'assign a2s2_ack_o = ( id_sel_r == 2\'b10)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'173',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'assign a2s2_ack_o = ( id_sel_r == 2\'b10)?f2a_ack_i:1\'b0;',hf:'__HDL_srcfile_8.htm',f:'arbiter.v',l:'173',h:'1',c:'g'}
+]}],
+b124:[{dummy:0},
+{anchor:'cvg955',items:[{z:'  if (!rstn_i) length_r = 6\'d32;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'51',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) length_r = 6\'d32;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'51',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'  else ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'52',h:'1',c:'g'}
+]},
+{anchor:'cvg956',items:[{z:'  case (pkglen_sel_i) ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'53',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'    3\'d0 : length_r = 6\'d4;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'54',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    3\'d1 : length_r = 6\'d8;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'55',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    3\'d2 : length_r = 6\'d16;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'56',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    3\'d3 : length_r = 6\'d32;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'57',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    default : length_r = 6\'d32;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'58',h:'1',c:'g'}
+]},
+{anchor:'cvg957',items:[{z:'  if (!rstn_i) cnt_rec_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'65',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) cnt_rec_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'65',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (fmt_id_req_r) cnt_rec_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'66',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'  else ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'67',h:'1',c:'g'}
+]},
+{anchor:'cvg958',items:[{z:'  case (a2f_id_i)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'68',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'    2\'b00 : if ((a2f_val_i | buffer0_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'69',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    2\'b01 : if ((a2f_val_i | buffer1_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'70',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    2\'b10 : if ((a2f_val_i | buffer2_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'71',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    default : cnt_rec_r <= cnt_rec_r;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'72',h:'1',c:'g'}
+]},
+{anchor:'cvg959',items:[{z:'    2\'b00 : if ((a2f_val_i | buffer0_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'69',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'    2\'b00 : if ((a2f_val_i | buffer0_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'69',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'    2\'b00 : if ((a2f_val_i | buffer0_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'69',h:'1',c:'g'}
+]},
+{anchor:'cvg960',items:[{z:'    2\'b01 : if ((a2f_val_i | buffer1_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'70',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'    2\'b01 : if ((a2f_val_i | buffer1_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'70',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'    2\'b01 : if ((a2f_val_i | buffer1_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'70',h:'1',c:'g'}
+]},
+{anchor:'cvg961',items:[{z:'    2\'b10 : if ((a2f_val_i | buffer2_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'71',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'    2\'b10 : if ((a2f_val_i | buffer2_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'71',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'    2\'b10 : if ((a2f_val_i | buffer2_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'71',h:'1',c:'g'}
+]},
+{anchor:'cvg962',items:[{z:'  if (!rstn_i) begin  fmt_fifo[cnt_rec_r] <= 32\'hffff_ffff;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'79',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) begin  fmt_fifo[cnt_rec_r] <= 32\'hffff_ffff;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'79',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (fmt_ack_r) ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'87',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'    else ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'96',h:'1',c:'g'}
+]},
+{anchor:'cvg963',items:[{z:'        case (a2f_id_i)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'88',c:'Y',p:'75.00'}
+,{cr:'c',t:'T',z:'              2\'b00 : if (buffer0_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'89',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'              2\'b01 : if (buffer1_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'91',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'              2\'b10 : if (buffer2_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'93',h:'1',c:'g'}
+,{cr:'m',t:'A',z:'        case (a2f_id_i)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'88',h:'0',c:'r'}
+]},
+{anchor:'cvg964',items:[{z:'              2\'b00 : if (buffer0_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'89',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'              2\'b00 : if (buffer0_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'89',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'              else if (a2f_val_i && fmt_ack_r) fmt_fifo[cnt_rec_r] <= a2f...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'90',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'              2\'b00 : if (buffer0_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'89',h:'1',c:'g'}
+]},
+{anchor:'cvg965',items:[{z:'              2\'b01 : if (buffer1_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'91',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'              2\'b01 : if (buffer1_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'91',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'              else if (a2f_val_i && fmt_ack_r) fmt_fifo[cnt_rec_r] <= a2f...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'92',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'              2\'b01 : if (buffer1_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'91',h:'1',c:'g'}
+]},
+{anchor:'cvg966',items:[{z:'              2\'b10 : if (buffer2_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'93',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'              2\'b10 : if (buffer2_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'93',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'              else if (a2f_val_i && fmt_ack_r) fmt_fifo[cnt_rec_r] <= a2f...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'94',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'              2\'b10 : if (buffer2_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'93',h:'1',c:'g'}
+]},
+{anchor:'cvg967',items:[{z:'      case (a2f_id_i)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'97',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'            2\'b00 : if (a2f_val_i && !fmt_ack_r) begin slv0_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'98',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'            2\'b01 : if (a2f_val_i && !fmt_ack_r) begin slv1_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'99',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'            2\'b10 : if (a2f_val_i && !fmt_ack_r) begin slv2_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'100',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'      case (a2f_id_i)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'97',h:'1',c:'g'}
+]},
+{anchor:'cvg968',items:[{z:'            2\'b00 : if (a2f_val_i && !fmt_ack_r) begin slv0_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'98',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'            2\'b00 : if (a2f_val_i && !fmt_ack_r) begin slv0_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'98',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'            2\'b00 : if (a2f_val_i && !fmt_ack_r) begin slv0_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'98',h:'1',c:'g'}
+]},
+{anchor:'cvg969',items:[{z:'            2\'b01 : if (a2f_val_i && !fmt_ack_r) begin slv1_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'99',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'            2\'b01 : if (a2f_val_i && !fmt_ack_r) begin slv1_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'99',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'            2\'b01 : if (a2f_val_i && !fmt_ack_r) begin slv1_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'99',h:'1',c:'g'}
+]},
+{anchor:'cvg970',items:[{z:'            2\'b10 : if (a2f_val_i && !fmt_ack_r) begin slv2_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'100',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'            2\'b10 : if (a2f_val_i && !fmt_ack_r) begin slv2_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'100',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'            2\'b10 : if (a2f_val_i && !fmt_ack_r) begin slv2_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'100',h:'1',c:'g'}
+]},
+{anchor:'cvg971',items:[{z:'  if (!rstn_i) cnt_sen_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'108',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) cnt_sen_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'108',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (fmt_id_req_r) cnt_sen_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'109',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (fmt_send_r) cnt_sen_r <= cnt_sen_r + 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'110',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if (!rstn_i) cnt_sen_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'108',h:'1',c:'g'}
+]},
+{anchor:'cvg972',items:[{z:'	if (!rstn_i) fmt_data_r <= 32\'hffff_ffff;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'116',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	if (!rstn_i) fmt_data_r <= 32\'hffff_ffff;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'116',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	else if (fmt_send_r) fmt_data_r <= fmt_fifo[cnt_sen_r];',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'117',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'	else fmt_data_r <= 32\'hffff_ffff;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'118',h:'1',c:'g'}
+]},
+{anchor:'cvg973',items:[{z:'if (!rstn_i) c_state <= FMT_IDLE;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'132',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'if (!rstn_i) c_state <= FMT_IDLE;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'132',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'else c_state <= n_state;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'133',h:'1',c:'g'}
+]},
+{anchor:'cvg974',items:[{z:'	if (!rstn_i) ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'137',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	if (!rstn_i) ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'137',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'	else case (c_state)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'139',h:'1',c:'g'}
+]},
+{anchor:'cvg975',items:[{z:'	else case (c_state)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'139',c:'Y',p:'85.71'}
+,{cr:'c',t:'T',z:'	FMT_IDLE : 	begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'140',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	FMT_REQ : if(cnt_rec_r >= length_r)	n_state = FMT_WAIT_GRANT;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'147',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	FMT_WAIT_GRANT : 	begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'150',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	FMT_START :  n_state = FMT_SEND ;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'155',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	FMT_SEND  : 	begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'157',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	FMT_END : n_state = FMT_IDLE;	',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'162',h:'1',c:'g'}
+,{cr:'m',t:'T',z:'	default : n_state = FMT_IDLE;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'164',h:'0',c:'r'}
+]},
+{anchor:'cvg976',items:[{z:'						if (cnt_rec_r == length_r - 2\'d1) //need to decode and pay attentio...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'141',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'						if (cnt_rec_r == length_r - 2\'d1) //need to decode and pay attentio...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'141',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'						else ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'143',h:'1',c:'g'}
+]},
+{anchor:'cvg977',items:[{z:'	FMT_REQ : if(cnt_rec_r >= length_r)	n_state = FMT_WAIT_GRANT;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'147',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	FMT_REQ : if(cnt_rec_r >= length_r)	n_state = FMT_WAIT_GRANT;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'147',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'            else n_state = FMT_REQ;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'148',h:'1',c:'g'}
+]},
+{anchor:'cvg978',items:[{z:'								if(fmt_grant_i) n_state = FMT_START;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'151',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'								if(fmt_grant_i) n_state = FMT_START;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'151',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'								else n_state = FMT_WAIT_GRANT;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'152',h:'1',c:'g'}
+]},
+{anchor:'cvg979',items:[{z:'							if (cnt_sen_r == length_r - 2\'d2) n_state = FMT_END;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'158',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'							if (cnt_sen_r == length_r - 2\'d2) n_state = FMT_END;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'158',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'							else n_state = FMT_SEND;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'159',h:'1',c:'g'}
+]},
+{anchor:'cvg980',items:[{z:'  if (!rstn_i)begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'170',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i)begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'170',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'  else case (c_state)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'178',h:'1',c:'g'}
+]},
+{anchor:'cvg981',items:[{z:'  else case (c_state)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'178',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'    FMT_IDLE : begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'179',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    FMT_REQ : begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'190',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    FMT_WAIT_GRANT : begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'201',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    FMT_START : begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'210',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    FMT_SEND : begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'219',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    FMT_END : begin ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'228',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  else case (c_state)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'178',h:'1',c:'g'}
+]},
+{anchor:'cvg982',items:[{z:'      if (a2f_id_i != 2\'b11) fmt_ack_r = 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'180',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'      if (a2f_id_i != 2\'b11) fmt_ack_r = 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'180',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'      else fmt_ack_r = 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'181',h:'1',c:'g'}
+]},
+{anchor:'cvg983',items:[{z:'      if (a2f_id_i == 2\'b11) fmt_id_req_r = 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'182',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'      if (a2f_id_i == 2\'b11) fmt_id_req_r = 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'182',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'      else fmt_id_req_r = 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'183',h:'1',c:'g'}
+]},
+{anchor:'cvg984',items:[{z:'      if (cnt_rec_r >= length_r)  fmt_ack_r = 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'191',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'      if (cnt_rec_r >= length_r)  fmt_ack_r = 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'191',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'      else fmt_ack_r = 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'192',h:'1',c:'g'}
+]}],
+b954:[{dummy:0},
+{anchor:'cvg955',items:[{z:'  if (!rstn_i) length_r = 6\'d32;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'51',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) length_r = 6\'d32;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'51',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'  else ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'52',h:'1',c:'g'}
+]},
+{anchor:'cvg956',items:[{z:'  case (pkglen_sel_i) ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'53',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'    3\'d0 : length_r = 6\'d4;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'54',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    3\'d1 : length_r = 6\'d8;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'55',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    3\'d2 : length_r = 6\'d16;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'56',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    3\'d3 : length_r = 6\'d32;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'57',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    default : length_r = 6\'d32;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'58',h:'1',c:'g'}
+]},
+{anchor:'cvg957',items:[{z:'  if (!rstn_i) cnt_rec_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'65',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) cnt_rec_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'65',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (fmt_id_req_r) cnt_rec_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'66',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'  else ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'67',h:'1',c:'g'}
+]},
+{anchor:'cvg958',items:[{z:'  case (a2f_id_i)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'68',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'    2\'b00 : if ((a2f_val_i | buffer0_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'69',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    2\'b01 : if ((a2f_val_i | buffer1_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'70',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    2\'b10 : if ((a2f_val_i | buffer2_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'71',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    default : cnt_rec_r <= cnt_rec_r;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'72',h:'1',c:'g'}
+]},
+{anchor:'cvg959',items:[{z:'    2\'b00 : if ((a2f_val_i | buffer0_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'69',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'    2\'b00 : if ((a2f_val_i | buffer0_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'69',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'    2\'b00 : if ((a2f_val_i | buffer0_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'69',h:'1',c:'g'}
+]},
+{anchor:'cvg960',items:[{z:'    2\'b01 : if ((a2f_val_i | buffer1_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'70',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'    2\'b01 : if ((a2f_val_i | buffer1_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'70',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'    2\'b01 : if ((a2f_val_i | buffer1_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'70',h:'1',c:'g'}
+]},
+{anchor:'cvg961',items:[{z:'    2\'b10 : if ((a2f_val_i | buffer2_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'71',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'    2\'b10 : if ((a2f_val_i | buffer2_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'71',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'    2\'b10 : if ((a2f_val_i | buffer2_val_r) && fmt_ack_r) cnt_rec_r <= cn...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'71',h:'1',c:'g'}
+]},
+{anchor:'cvg962',items:[{z:'  if (!rstn_i) begin  fmt_fifo[cnt_rec_r] <= 32\'hffff_ffff;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'79',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) begin  fmt_fifo[cnt_rec_r] <= 32\'hffff_ffff;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'79',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (fmt_ack_r) ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'87',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'    else ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'96',h:'1',c:'g'}
+]},
+{anchor:'cvg963',items:[{z:'        case (a2f_id_i)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'88',c:'Y',p:'75.00'}
+,{cr:'c',t:'T',z:'              2\'b00 : if (buffer0_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'89',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'              2\'b01 : if (buffer1_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'91',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'              2\'b10 : if (buffer2_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'93',h:'1',c:'g'}
+,{cr:'m',t:'A',z:'        case (a2f_id_i)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'88',h:'0',c:'r'}
+]},
+{anchor:'cvg964',items:[{z:'              2\'b00 : if (buffer0_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'89',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'              2\'b00 : if (buffer0_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'89',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'              else if (a2f_val_i && fmt_ack_r) fmt_fifo[cnt_rec_r] <= a2f...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'90',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'              2\'b00 : if (buffer0_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'89',h:'1',c:'g'}
+]},
+{anchor:'cvg965',items:[{z:'              2\'b01 : if (buffer1_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'91',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'              2\'b01 : if (buffer1_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'91',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'              else if (a2f_val_i && fmt_ack_r) fmt_fifo[cnt_rec_r] <= a2f...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'92',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'              2\'b01 : if (buffer1_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'91',h:'1',c:'g'}
+]},
+{anchor:'cvg966',items:[{z:'              2\'b10 : if (buffer2_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'93',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'              2\'b10 : if (buffer2_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'93',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'              else if (a2f_val_i && fmt_ack_r) fmt_fifo[cnt_rec_r] <= a2f...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'94',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'              2\'b10 : if (buffer2_val_r && fmt_ack_r) begin fmt_fifo[cnt_...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'93',h:'1',c:'g'}
+]},
+{anchor:'cvg967',items:[{z:'      case (a2f_id_i)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'97',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'            2\'b00 : if (a2f_val_i && !fmt_ack_r) begin slv0_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'98',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'            2\'b01 : if (a2f_val_i && !fmt_ack_r) begin slv1_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'99',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'            2\'b10 : if (a2f_val_i && !fmt_ack_r) begin slv2_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'100',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'      case (a2f_id_i)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'97',h:'1',c:'g'}
+]},
+{anchor:'cvg968',items:[{z:'            2\'b00 : if (a2f_val_i && !fmt_ack_r) begin slv0_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'98',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'            2\'b00 : if (a2f_val_i && !fmt_ack_r) begin slv0_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'98',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'            2\'b00 : if (a2f_val_i && !fmt_ack_r) begin slv0_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'98',h:'1',c:'g'}
+]},
+{anchor:'cvg969',items:[{z:'            2\'b01 : if (a2f_val_i && !fmt_ack_r) begin slv1_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'99',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'            2\'b01 : if (a2f_val_i && !fmt_ack_r) begin slv1_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'99',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'            2\'b01 : if (a2f_val_i && !fmt_ack_r) begin slv1_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'99',h:'1',c:'g'}
+]},
+{anchor:'cvg970',items:[{z:'            2\'b10 : if (a2f_val_i && !fmt_ack_r) begin slv2_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'100',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'            2\'b10 : if (a2f_val_i && !fmt_ack_r) begin slv2_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'100',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'            2\'b10 : if (a2f_val_i && !fmt_ack_r) begin slv2_buffer_r <= a...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'100',h:'1',c:'g'}
+]},
+{anchor:'cvg971',items:[{z:'  if (!rstn_i) cnt_sen_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'108',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i) cnt_sen_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'108',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (fmt_id_req_r) cnt_sen_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'109',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'  else if (fmt_send_r) cnt_sen_r <= cnt_sen_r + 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'110',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  if (!rstn_i) cnt_sen_r <= 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'108',h:'1',c:'g'}
+]},
+{anchor:'cvg972',items:[{z:'	if (!rstn_i) fmt_data_r <= 32\'hffff_ffff;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'116',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	if (!rstn_i) fmt_data_r <= 32\'hffff_ffff;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'116',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	else if (fmt_send_r) fmt_data_r <= fmt_fifo[cnt_sen_r];',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'117',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'	else fmt_data_r <= 32\'hffff_ffff;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'118',h:'1',c:'g'}
+]},
+{anchor:'cvg973',items:[{z:'if (!rstn_i) c_state <= FMT_IDLE;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'132',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'if (!rstn_i) c_state <= FMT_IDLE;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'132',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'else c_state <= n_state;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'133',h:'1',c:'g'}
+]},
+{anchor:'cvg974',items:[{z:'	if (!rstn_i) ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'137',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	if (!rstn_i) ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'137',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'	else case (c_state)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'139',h:'1',c:'g'}
+]},
+{anchor:'cvg975',items:[{z:'	else case (c_state)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'139',c:'Y',p:'85.71'}
+,{cr:'c',t:'T',z:'	FMT_IDLE : 	begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'140',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	FMT_REQ : if(cnt_rec_r >= length_r)	n_state = FMT_WAIT_GRANT;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'147',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	FMT_WAIT_GRANT : 	begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'150',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	FMT_START :  n_state = FMT_SEND ;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'155',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	FMT_SEND  : 	begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'157',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'	FMT_END : n_state = FMT_IDLE;	',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'162',h:'1',c:'g'}
+,{cr:'m',t:'T',z:'	default : n_state = FMT_IDLE;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'164',h:'0',c:'r'}
+]},
+{anchor:'cvg976',items:[{z:'						if (cnt_rec_r == length_r - 2\'d1) //need to decode and pay attentio...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'141',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'						if (cnt_rec_r == length_r - 2\'d1) //need to decode and pay attentio...',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'141',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'						else ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'143',h:'1',c:'g'}
+]},
+{anchor:'cvg977',items:[{z:'	FMT_REQ : if(cnt_rec_r >= length_r)	n_state = FMT_WAIT_GRANT;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'147',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'	FMT_REQ : if(cnt_rec_r >= length_r)	n_state = FMT_WAIT_GRANT;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'147',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'            else n_state = FMT_REQ;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'148',h:'1',c:'g'}
+]},
+{anchor:'cvg978',items:[{z:'								if(fmt_grant_i) n_state = FMT_START;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'151',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'								if(fmt_grant_i) n_state = FMT_START;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'151',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'								else n_state = FMT_WAIT_GRANT;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'152',h:'1',c:'g'}
+]},
+{anchor:'cvg979',items:[{z:'							if (cnt_sen_r == length_r - 2\'d2) n_state = FMT_END;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'158',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'							if (cnt_sen_r == length_r - 2\'d2) n_state = FMT_END;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'158',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'							else n_state = FMT_SEND;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'159',h:'1',c:'g'}
+]},
+{anchor:'cvg980',items:[{z:'  if (!rstn_i)begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'170',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'  if (!rstn_i)begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'170',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'  else case (c_state)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'178',h:'1',c:'g'}
+]},
+{anchor:'cvg981',items:[{z:'  else case (c_state)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'178',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'    FMT_IDLE : begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'179',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    FMT_REQ : begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'190',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    FMT_WAIT_GRANT : begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'201',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    FMT_START : begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'210',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    FMT_SEND : begin',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'219',h:'1',c:'g'}
+,{cr:'c',t:'T',z:'    FMT_END : begin ',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'228',h:'1',c:'g'}
+,{cr:'c',t:'A',z:'  else case (c_state)',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'178',h:'1',c:'g'}
+]},
+{anchor:'cvg982',items:[{z:'      if (a2f_id_i != 2\'b11) fmt_ack_r = 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'180',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'      if (a2f_id_i != 2\'b11) fmt_ack_r = 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'180',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'      else fmt_ack_r = 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'181',h:'1',c:'g'}
+]},
+{anchor:'cvg983',items:[{z:'      if (a2f_id_i == 2\'b11) fmt_id_req_r = 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'182',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'      if (a2f_id_i == 2\'b11) fmt_id_req_r = 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'182',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'      else fmt_id_req_r = 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'183',h:'1',c:'g'}
+]},
+{anchor:'cvg984',items:[{z:'      if (cnt_rec_r >= length_r)  fmt_ack_r = 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'191',c:'G',p:'100.00'}
+,{cr:'c',t:'I',z:'      if (cnt_rec_r >= length_r)  fmt_ack_r = 1\'b0;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'191',h:'1',c:'g'}
+,{cr:'c',t:'E',z:'      else fmt_ack_r = 1\'b1;',hf:'__HDL_srcfile_9.htm',f:'formater.v',l:'192',h:'1',c:'g'}
+]}],
+dummyEnd:0
+};
+processBranchesData(g_data);

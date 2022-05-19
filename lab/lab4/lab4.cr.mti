@@ -1,0 +1,105 @@
+D:/Qsim/lab/lab4/mcdf_pkg.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\lab4\mcdf_pkg.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package mcdf_pkg
+-- Importing package chnl_pkg
+-- Importing package reg_pkg
+-- Importing package arb_pkg
+-- Importing package fmt_pkg
+-- Importing package rpt_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Qsim/lab/lab4/reg.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab4/reg.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module ctrl_regs
+
+Top level modules:
+	ctrl_regs
+
+} {} {}} D:/Qsim/lab/lab4/slave_fifo.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab4/slave_fifo.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module slave_fifo
+
+Top level modules:
+	slave_fifo
+
+} {} {}} D:/Qsim/lab/lab4/arbiter.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab4/arbiter.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module arbiter
+
+Top level modules:
+	arbiter
+
+} {} {}} D:/Qsim/lab/lab4/chnl_pkg.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\lab4\chnl_pkg.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package chnl_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Qsim/lab/lab4/reg_pkg.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\lab4\reg_pkg.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package reg_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Qsim/lab/lab4/rpt_pkg.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\lab4\rpt_pkg.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package rpt_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Qsim/lab/lab4/fmt_pkg.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\lab4\fmt_pkg.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package fmt_pkg
+-- Importing package rpt_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Qsim/lab/lab4/param_def.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab4/param_def.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+
+} {} {}} D:/Qsim/lab/lab4/formater.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab4/formater.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module formater
+
+Top level modules:
+	formater
+
+} {} {}} D:/Qsim/lab/lab4/tb.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab4/tb.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface chnl_intf
+-- Compiling interface reg_intf
+-- Compiling interface arb_intf
+-- Compiling interface fmt_intf
+-- Compiling interface mcdf_intf
+-- Compiling module tb
+-- Importing package chnl_pkg
+-- Importing package reg_pkg
+-- Importing package arb_pkg
+-- Importing package fmt_pkg
+-- Importing package rpt_pkg
+-- Importing package mcdf_pkg
+
+Top level modules:
+	tb
+
+} {} {}} D:/Qsim/lab/lab4/arb_pkg.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab4/arb_pkg.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package arb_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Qsim/lab/lab4/mcdf.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab4/mcdf.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module mcdf
+
+Top level modules:
+	mcdf
+
+} {} {}}

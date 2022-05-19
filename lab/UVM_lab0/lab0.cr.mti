@@ -1,0 +1,77 @@
+D:/Qsim/lab/UVM_lab0/uvm_test_inst.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/UVM_lab0/uvm_test_inst.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package test_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab0/uvm_test_inst.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module uvm_test_inst
+-- Importing package test_pkg
+
+Top level modules:
+	uvm_test_inst
+
+} {} {}} D:/Qsim/lab/UVM_lab0/uvm_compile.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/UVM_lab0/uvm_compile.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module uvm_compile
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab0/uvm_compile.sv(6): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	uvm_compile
+
+} {} {}} D:/Qsim/lab/UVM_lab0/param_def.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/UVM_lab0/param_def.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+
+} {} {}} D:/Qsim/lab/UVM_lab0/formater.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/UVM_lab0/formater.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module formater
+
+Top level modules:
+	formater
+
+} {} {}} D:/Qsim/lab/UVM_lab0/uvm_class_inst.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/UVM_lab0/uvm_class_inst.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module uvm_class_inst
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab0/uvm_class_inst.sv(5): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	uvm_class_inst
+
+} {} {}} D:/Qsim/lab/UVM_lab0/arbiter.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/UVM_lab0/arbiter.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module arbiter
+
+Top level modules:
+	arbiter
+
+} {} {}} D:/Qsim/lab/UVM_lab0/sv_class_inst.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/UVM_lab0/sv_class_inst.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module sv_class_inst
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab0/sv_class_inst.sv(5): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	sv_class_inst
+
+} {} {}} D:/Qsim/lab/UVM_lab0/mcdf.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/UVM_lab0/mcdf.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module mcdf
+
+Top level modules:
+	mcdf
+
+} {} {}} D:/Qsim/lab/UVM_lab0/reg.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/UVM_lab0/reg.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module ctrl_regs
+
+Top level modules:
+	ctrl_regs
+
+} {} {}} D:/Qsim/lab/UVM_lab0/slave_fifo.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/UVM_lab0/slave_fifo.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module slave_fifo
+
+Top level modules:
+	slave_fifo
+
+} {} {}}

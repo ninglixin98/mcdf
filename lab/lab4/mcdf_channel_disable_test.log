@@ -1,0 +1,1437 @@
+# vsim -novopt -classdebug -solvefaildebug -sv_seed 0 "+TESTNAME" = mcdf_channel_disable_test work.tb -l mcdf_channel_disable_test.log 
+# Start time: 21:10:16 on Feb 19,2022
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# ** Error: (vsim-3170) Could not find '='.
+#         Searched libraries:
+#             D:/Qsim/lab/lab4/work
+# Error loading design
+# End time: 21:10:17 on Feb 19,2022, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 1
+# Compile of slave_fifo.v was successful.
+# Compile of reg.v was successful.
+# Compile of arbiter.v was successful.
+# Compile of param_def.v was successful.
+# Compile of formater.v was successful.
+# Compile of mcdf.v was successful.
+# Compile of mcdf_pkg.sv was successful.
+# Compile of tb.sv was successful.
+vsim -novopt -classdebug -solvefaildebug -sv_seed 0 +TESTNAME=mcdf_channel_disable_test -l mcdf_channel_disable_test.log work.tb
+# vsim -novopt -classdebug -solvefaildebug -sv_seed 0 "+TESTNAME=mcdf_channel_disable_test" -l mcdf_channel_disable_test.log work.tb 
+# Start time: 21:12:51 on Feb 19,2022
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Refreshing D:/Qsim/lab/lab4/work.tb
+# Refreshing D:/Qsim/lab/lab4/work.mcdf_intf
+# Loading sv_std.std
+# Loading work.mcdf_intf
+# Refreshing D:/Qsim/lab/lab4/work.fmt_intf
+# Loading work.fmt_intf
+# Refreshing D:/Qsim/lab/lab4/work.mcdf_pkg
+# Loading work.rpt_pkg
+# Loading work.fmt_pkg
+# Loading work.arb_pkg
+# Loading work.reg_pkg
+# Loading work.chnl_pkg
+# Loading work.mcdf_pkg
+# Loading work.tb
+# Refreshing D:/Qsim/lab/lab4/work.mcdf
+# Loading work.mcdf
+# Refreshing D:/Qsim/lab/lab4/work.ctrl_regs
+# Loading work.ctrl_regs
+# Refreshing D:/Qsim/lab/lab4/work.slave_fifo
+# Loading work.slave_fifo
+# Refreshing D:/Qsim/lab/lab4/work.arbiter
+# Loading work.arbiter
+# Refreshing D:/Qsim/lab/lab4/work.formater
+# Loading work.formater
+# Refreshing D:/Qsim/lab/lab4/work.reg_intf
+# Loading work.reg_intf
+# Refreshing D:/Qsim/lab/lab4/work.chnl_intf
+# Loading work.chnl_intf
+# Refreshing D:/Qsim/lab/lab4/work.arb_intf
+# Loading work.arb_intf
+add wave -position insertpoint  \
+sim:/tb/dut/clk_i \
+sim:/tb/dut/rstn_i \
+sim:/tb/dut/cmd_i \
+sim:/tb/dut/cmd_addr_i \
+sim:/tb/dut/cmd_data_i \
+sim:/tb/dut/cmd_data_o \
+sim:/tb/dut/ch0_data_i \
+sim:/tb/dut/ch0_vld_i \
+sim:/tb/dut/ch1_data_i \
+sim:/tb/dut/ch1_vld_i \
+sim:/tb/dut/ch2_data_i \
+sim:/tb/dut/ch2_vld_i \
+sim:/tb/dut/ch0_ready_o \
+sim:/tb/dut/ch1_ready_o \
+sim:/tb/dut/ch2_ready_o \
+sim:/tb/dut/fmt_grant_i \
+sim:/tb/dut/fmt_chid_o \
+sim:/tb/dut/fmt_req_o \
+sim:/tb/dut/fmt_length_o \
+sim:/tb/dut/fmt_data_o \
+sim:/tb/dut/fmt_start_o \
+sim:/tb/dut/fmt_end_o
+run -all
+# env instantiated and connected objects
+# mcdf_data_consistence_basic_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_write_read_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_illegal_access_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_channel_disable_test instantiated and connected objects
+# @0 [INFO] [TEST] : =====================mcdf_channel_disable_test AT TIME 0 STARTED=====================
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# rsp = 0: 
+# =======================================
+# 
+# *****************env started********************
+# 115000 reg driver [reg_agt.driver] sent addr 00, cmd 10, data 00000008
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 135000 reg_agt.monitor monitored addr 00, cmd 10, data 00000008
+# 140000 reg driver [reg_agt.driver] sent addr 00, cmd 01, data 00000008
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = 00000008: 
+# rsp = 1: 
+# =======================================
+# 
+# @140000 [INFO] [CMPSUC] : SUCCESS! SLV0_WR_REG val1 00000008 == val2 00000008
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# rsp = 0: 
+# =======================================
+# 
+# 145000 reg driver [reg_agt.driver] sent addr 04, cmd 10, data 00000012
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 155000 reg_agt.monitor monitored addr 00, cmd 01, data 00000008
+# 165000 reg_agt.monitor monitored addr 04, cmd 10, data 00000012
+# 170000 reg driver [reg_agt.driver] sent addr 04, cmd 01, data 00000012
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = 00000012: 
+# rsp = 1: 
+# =======================================
+# 
+# @170000 [INFO] [CMPSUC] : SUCCESS! SLV1_WR_REG val1 00000012 == val2 00000012
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# rsp = 0: 
+# =======================================
+# 
+# 175000 reg driver [reg_agt.driver] sent addr 08, cmd 10, data 0000001c
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 185000 reg_agt.monitor monitored addr 04, cmd 01, data 00000012
+# 195000 reg_agt.monitor monitored addr 08, cmd 10, data 0000001c
+# 200000 reg driver [reg_agt.driver] sent addr 08, cmd 01, data 0000001c
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = 0000001c: 
+# rsp = 1: 
+# =======================================
+# 
+# @200000 [INFO] [CMPSUC] : SUCCESS! SLV2_WR_REG val1 0000001c == val2 0000001c
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 0: 
+# =======================================
+# 
+# 215000 reg_agt.monitor monitored addr 08, cmd 01, data 0000001c
+# 215000 reg driver [reg_agt.driver] sent addr 00, cmd 00, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# fmt_generator object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# =======================================
+# 
+# =======================================
+# fmt_trans object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# length =   : 
+# ch_id = 0: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# fmt_trans object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# length =   : 
+# ch_id = 0: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 0: 
+# pkt_id = 0: 
+# data_nidles = 0: 
+# pkt_nidles = 1: 
+# data_size = 8: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 1: 
+# pkt_id = 0: 
+# data_nidles = 1: 
+# pkt_nidles = 4: 
+# data_size = 16: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 2: 
+# pkt_id = 0: 
+# data_nidles = 2: 
+# pkt_nidles = 8: 
+# data_size = 32: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c0000000 
+# data[1] = c0000001 
+# data[2] = c0000002 
+# data[3] = c0000003 
+# data[4] = c0000004 
+# data[5] = c0000005 
+# data[6] = c0000006 
+# data[7] = c0000007 
+# ch_id = 0: 
+# pkt_id = 0: 
+# data_nidles = 0: 
+# pkt_nidles = 1: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c1000000 
+# data[1] = c1000001 
+# data[2] = c1000002 
+# data[3] = c1000003 
+# data[4] = c1000004 
+# data[5] = c1000005 
+# data[6] = c1000006 
+# data[7] = c1000007 
+# data[8] = c1000008 
+# data[9] = c1000009 
+# data[10] = c100000a 
+# data[11] = c100000b 
+# data[12] = c100000c 
+# data[13] = c100000d 
+# data[14] = c100000e 
+# data[15] = c100000f 
+# ch_id = 1: 
+# pkt_id = 0: 
+# data_nidles = 1: 
+# pkt_nidles = 4: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c2000000 
+# data[1] = c2000001 
+# data[2] = c2000002 
+# data[3] = c2000003 
+# data[4] = c2000004 
+# data[5] = c2000005 
+# data[6] = c2000006 
+# data[7] = c2000007 
+# data[8] = c2000008 
+# data[9] = c2000009 
+# data[10] = c200000a 
+# data[11] = c200000b 
+# data[12] = c200000c 
+# data[13] = c200000d 
+# data[14] = c200000e 
+# data[15] = c200000f 
+# data[16] = c2000010 
+# data[17] = c2000011 
+# data[18] = c2000012 
+# data[19] = c2000013 
+# data[20] = c2000014 
+# data[21] = c2000015 
+# data[22] = c2000016 
+# data[23] = c2000017 
+# data[24] = c2000018 
+# data[25] = c2000019 
+# data[26] = c200001a 
+# data[27] = c200001b 
+# data[28] = c200001c 
+# data[29] = c200001d 
+# data[30] = c200001e 
+# data[31] = c200001f 
+# ch_id = 2: 
+# pkt_id = 0: 
+# data_nidles = 2: 
+# pkt_nidles = 8: 
+# rsp = 0: 
+# =======================================
+# 
+# 235000 reg_agt.monitor monitored addr 08, cmd 01, data 0000001c
+# Break key hit
+# Break in Module ctrl_regs at D:/Qsim/lab/lab4/reg.v line 49
+restart
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+run -all
+# env instantiated and connected objects
+# mcdf_data_consistence_basic_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_write_read_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_illegal_access_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_channel_disable_test instantiated and connected objects
+# @0 [INFO] [TEST] : =====================mcdf_channel_disable_test AT TIME 0 STARTED=====================
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# rsp = 0: 
+# =======================================
+# 
+# *****************env started********************
+# 115000 reg driver [reg_agt.driver] sent addr 00, cmd 10, data 00000008
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 135000 reg_agt.monitor monitored addr 00, cmd 10, data 00000008
+# 140000 reg driver [reg_agt.driver] sent addr 00, cmd 01, data 00000008
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = 00000008: 
+# rsp = 1: 
+# =======================================
+# 
+# @140000 [INFO] [CMPSUC] : SUCCESS! SLV0_WR_REG val1 00000008 == val2 00000008
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# rsp = 0: 
+# =======================================
+# 
+# 145000 reg driver [reg_agt.driver] sent addr 04, cmd 10, data 00000012
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 155000 reg_agt.monitor monitored addr 00, cmd 01, data 00000008
+# 165000 reg_agt.monitor monitored addr 04, cmd 10, data 00000012
+# 170000 reg driver [reg_agt.driver] sent addr 04, cmd 01, data 00000012
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = 00000012: 
+# rsp = 1: 
+# =======================================
+# 
+# @170000 [INFO] [CMPSUC] : SUCCESS! SLV1_WR_REG val1 00000012 == val2 00000012
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# rsp = 0: 
+# =======================================
+# 
+# 175000 reg driver [reg_agt.driver] sent addr 08, cmd 10, data 0000001c
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 185000 reg_agt.monitor monitored addr 04, cmd 01, data 00000012
+# 195000 reg_agt.monitor monitored addr 08, cmd 10, data 0000001c
+# 200000 reg driver [reg_agt.driver] sent addr 08, cmd 01, data 0000001c
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = 0000001c: 
+# rsp = 1: 
+# =======================================
+# 
+# @200000 [INFO] [CMPSUC] : SUCCESS! SLV2_WR_REG val1 0000001c == val2 0000001c
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 0: 
+# =======================================
+# 
+# 215000 reg_agt.monitor monitored addr 08, cmd 01, data 0000001c
+# 215000 reg driver [reg_agt.driver] sent addr 00, cmd 00, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# fmt_generator object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# =======================================
+# 
+# =======================================
+# fmt_trans object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# length =   : 
+# ch_id = 0: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# fmt_trans object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# length =   : 
+# ch_id = 0: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 0: 
+# pkt_id = 0: 
+# data_nidles = 0: 
+# pkt_nidles = 1: 
+# data_size = 8: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 1: 
+# pkt_id = 0: 
+# data_nidles = 1: 
+# pkt_nidles = 4: 
+# data_size = 16: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 2: 
+# pkt_id = 0: 
+# data_nidles = 2: 
+# pkt_nidles = 8: 
+# data_size = 32: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c0000000 
+# data[1] = c0000001 
+# data[2] = c0000002 
+# data[3] = c0000003 
+# data[4] = c0000004 
+# data[5] = c0000005 
+# data[6] = c0000006 
+# data[7] = c0000007 
+# ch_id = 0: 
+# pkt_id = 0: 
+# data_nidles = 0: 
+# pkt_nidles = 1: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c1000000 
+# data[1] = c1000001 
+# data[2] = c1000002 
+# data[3] = c1000003 
+# data[4] = c1000004 
+# data[5] = c1000005 
+# data[6] = c1000006 
+# data[7] = c1000007 
+# data[8] = c1000008 
+# data[9] = c1000009 
+# data[10] = c100000a 
+# data[11] = c100000b 
+# data[12] = c100000c 
+# data[13] = c100000d 
+# data[14] = c100000e 
+# data[15] = c100000f 
+# ch_id = 1: 
+# pkt_id = 0: 
+# data_nidles = 1: 
+# pkt_nidles = 4: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c2000000 
+# data[1] = c2000001 
+# data[2] = c2000002 
+# data[3] = c2000003 
+# data[4] = c2000004 
+# data[5] = c2000005 
+# data[6] = c2000006 
+# data[7] = c2000007 
+# data[8] = c2000008 
+# data[9] = c2000009 
+# data[10] = c200000a 
+# data[11] = c200000b 
+# data[12] = c200000c 
+# data[13] = c200000d 
+# data[14] = c200000e 
+# data[15] = c200000f 
+# data[16] = c2000010 
+# data[17] = c2000011 
+# data[18] = c2000012 
+# data[19] = c2000013 
+# data[20] = c2000014 
+# data[21] = c2000015 
+# data[22] = c2000016 
+# data[23] = c2000017 
+# data[24] = c2000018 
+# data[25] = c2000019 
+# data[26] = c200001a 
+# data[27] = c200001b 
+# data[28] = c200001c 
+# data[29] = c200001d 
+# data[30] = c200001e 
+# data[31] = c200001f 
+# ch_id = 2: 
+# pkt_id = 0: 
+# data_nidles = 2: 
+# pkt_nidles = 8: 
+# rsp = 0: 
+# =======================================
+# 
+# 235000 reg_agt.monitor monitored addr 08, cmd 01, data 0000001c
+# Break key hit
+restart
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+run -all
+# env instantiated and connected objects
+# mcdf_data_consistence_basic_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_write_read_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_illegal_access_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_channel_disable_test instantiated and connected objects
+# @0 [INFO] [TEST] : =====================mcdf_channel_disable_test AT TIME 0 STARTED=====================
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# rsp = 0: 
+# =======================================
+# 
+# *****************env started********************
+# 115000 reg driver [reg_agt.driver] sent addr 00, cmd 10, data 00000008
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 135000 reg_agt.monitor monitored addr 00, cmd 10, data 00000008
+# 140000 reg driver [reg_agt.driver] sent addr 00, cmd 01, data 00000008
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = 00000008: 
+# rsp = 1: 
+# =======================================
+# 
+# @140000 [INFO] [CMPSUC] : SUCCESS! SLV0_WR_REG val1 00000008 == val2 00000008
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# rsp = 0: 
+# =======================================
+# 
+# 145000 reg driver [reg_agt.driver] sent addr 04, cmd 10, data 00000012
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 155000 reg_agt.monitor monitored addr 00, cmd 01, data 00000008
+# 165000 reg_agt.monitor monitored addr 04, cmd 10, data 00000012
+# 170000 reg driver [reg_agt.driver] sent addr 04, cmd 01, data 00000012
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = 00000012: 
+# rsp = 1: 
+# =======================================
+# 
+# @170000 [INFO] [CMPSUC] : SUCCESS! SLV1_WR_REG val1 00000012 == val2 00000012
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# rsp = 0: 
+# =======================================
+# 
+# 175000 reg driver [reg_agt.driver] sent addr 08, cmd 10, data 0000001c
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 185000 reg_agt.monitor monitored addr 04, cmd 01, data 00000012
+# 195000 reg_agt.monitor monitored addr 08, cmd 10, data 0000001c
+# 200000 reg driver [reg_agt.driver] sent addr 08, cmd 01, data 0000001c
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = 0000001c: 
+# rsp = 1: 
+# =======================================
+# 
+# @200000 [INFO] [CMPSUC] : SUCCESS! SLV2_WR_REG val1 0000001c == val2 0000001c
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 0: 
+# =======================================
+# 
+# 215000 reg_agt.monitor monitored addr 08, cmd 01, data 0000001c
+# 215000 reg driver [reg_agt.driver] sent addr 00, cmd 00, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# fmt_generator object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# =======================================
+# 
+# =======================================
+# fmt_trans object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# length =   : 
+# ch_id = 0: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# fmt_trans object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# length =   : 
+# ch_id = 0: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 0: 
+# pkt_id = 0: 
+# data_nidles = 0: 
+# pkt_nidles = 1: 
+# data_size = 8: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 1: 
+# pkt_id = 0: 
+# data_nidles = 1: 
+# pkt_nidles = 4: 
+# data_size = 16: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 2: 
+# pkt_id = 0: 
+# data_nidles = 2: 
+# pkt_nidles = 8: 
+# data_size = 32: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c0000000 
+# data[1] = c0000001 
+# data[2] = c0000002 
+# data[3] = c0000003 
+# data[4] = c0000004 
+# data[5] = c0000005 
+# data[6] = c0000006 
+# data[7] = c0000007 
+# ch_id = 0: 
+# pkt_id = 0: 
+# data_nidles = 0: 
+# pkt_nidles = 1: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c1000000 
+# data[1] = c1000001 
+# data[2] = c1000002 
+# data[3] = c1000003 
+# data[4] = c1000004 
+# data[5] = c1000005 
+# data[6] = c1000006 
+# data[7] = c1000007 
+# data[8] = c1000008 
+# data[9] = c1000009 
+# data[10] = c100000a 
+# data[11] = c100000b 
+# data[12] = c100000c 
+# data[13] = c100000d 
+# data[14] = c100000e 
+# data[15] = c100000f 
+# ch_id = 1: 
+# pkt_id = 0: 
+# data_nidles = 1: 
+# pkt_nidles = 4: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c2000000 
+# data[1] = c2000001 
+# data[2] = c2000002 
+# data[3] = c2000003 
+# data[4] = c2000004 
+# data[5] = c2000005 
+# data[6] = c2000006 
+# data[7] = c2000007 
+# data[8] = c2000008 
+# data[9] = c2000009 
+# data[10] = c200000a 
+# data[11] = c200000b 
+# data[12] = c200000c 
+# data[13] = c200000d 
+# data[14] = c200000e 
+# data[15] = c200000f 
+# data[16] = c2000010 
+# data[17] = c2000011 
+# data[18] = c2000012 
+# data[19] = c2000013 
+# data[20] = c2000014 
+# data[21] = c2000015 
+# data[22] = c2000016 
+# data[23] = c2000017 
+# data[24] = c2000018 
+# data[25] = c2000019 
+# data[26] = c200001a 
+# data[27] = c200001b 
+# data[28] = c200001c 
+# data[29] = c200001d 
+# data[30] = c200001e 
+# data[31] = c200001f 
+# ch_id = 2: 
+# pkt_id = 0: 
+# data_nidles = 2: 
+# pkt_nidles = 8: 
+# rsp = 0: 
+# =======================================
+# 
+# 235000 reg_agt.monitor monitored addr 08, cmd 01, data 0000001c
+# Break key hit
+# Break in Task fmt_pkg/fmt_driver::do_consume at D:/Qsim/lab/lab4/fmt_pkg.sv line 161
+restart
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+run -all
+# env instantiated and connected objects
+# mcdf_data_consistence_basic_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_write_read_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_illegal_access_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_channel_disable_test instantiated and connected objects
+# @0 [INFO] [TEST] : =====================mcdf_channel_disable_test AT TIME 0 STARTED=====================
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# rsp = 0: 
+# =======================================
+# 
+# *****************env started********************
+# 115000 reg driver [reg_agt.driver] sent addr 00, cmd 10, data 00000008
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 00000008: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 135000 reg_agt.monitor monitored addr 00, cmd 10, data 00000008
+# 140000 reg driver [reg_agt.driver] sent addr 00, cmd 01, data 00000008
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = 00000008: 
+# rsp = 1: 
+# =======================================
+# 
+# @140000 [INFO] [CMPSUC] : SUCCESS! SLV0_WR_REG val1 00000008 == val2 00000008
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# rsp = 0: 
+# =======================================
+# 
+# 145000 reg driver [reg_agt.driver] sent addr 04, cmd 10, data 00000012
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 00000012: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 155000 reg_agt.monitor monitored addr 00, cmd 01, data 00000008
+# 165000 reg_agt.monitor monitored addr 04, cmd 10, data 00000012
+# 170000 reg driver [reg_agt.driver] sent addr 04, cmd 01, data 00000012
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = 00000012: 
+# rsp = 1: 
+# =======================================
+# 
+# @170000 [INFO] [CMPSUC] : SUCCESS! SLV1_WR_REG val1 00000012 == val2 00000012
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# rsp = 0: 
+# =======================================
+# 
+# 175000 reg driver [reg_agt.driver] sent addr 08, cmd 10, data 0000001c
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 0000001c: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 185000 reg_agt.monitor monitored addr 04, cmd 01, data 00000012
+# 195000 reg_agt.monitor monitored addr 08, cmd 10, data 0000001c
+# 200000 reg driver [reg_agt.driver] sent addr 08, cmd 01, data 0000001c
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = 0000001c: 
+# rsp = 1: 
+# =======================================
+# 
+# @200000 [INFO] [CMPSUC] : SUCCESS! SLV2_WR_REG val1 0000001c == val2 0000001c
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 0: 
+# =======================================
+# 
+# 215000 reg_agt.monitor monitored addr 08, cmd 01, data 0000001c
+# 215000 reg driver [reg_agt.driver] sent addr 00, cmd 00, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# fmt_generator object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# =======================================
+# 
+# =======================================
+# fmt_trans object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# length =   : 
+# ch_id = 0: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# fmt_trans object content is as below: 
+# fifo = LONG_FIFO: 
+# bandwidth = HIGH_WIDTH: 
+# length =   : 
+# ch_id = 0: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 0: 
+# pkt_id = 0: 
+# data_nidles = 0: 
+# pkt_nidles = 1: 
+# data_size = 8: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 1: 
+# pkt_id = 0: 
+# data_nidles = 1: 
+# pkt_nidles = 4: 
+# data_size = 16: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# chnl_generator object content is as below: 
+# ntrans = 100: 
+# ch_id = 2: 
+# pkt_id = 0: 
+# data_nidles = 2: 
+# pkt_nidles = 8: 
+# data_size = 32: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c0000000 
+# data[1] = c0000001 
+# data[2] = c0000002 
+# data[3] = c0000003 
+# data[4] = c0000004 
+# data[5] = c0000005 
+# data[6] = c0000006 
+# data[7] = c0000007 
+# ch_id = 0: 
+# pkt_id = 0: 
+# data_nidles = 0: 
+# pkt_nidles = 1: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c1000000 
+# data[1] = c1000001 
+# data[2] = c1000002 
+# data[3] = c1000003 
+# data[4] = c1000004 
+# data[5] = c1000005 
+# data[6] = c1000006 
+# data[7] = c1000007 
+# data[8] = c1000008 
+# data[9] = c1000009 
+# data[10] = c100000a 
+# data[11] = c100000b 
+# data[12] = c100000c 
+# data[13] = c100000d 
+# data[14] = c100000e 
+# data[15] = c100000f 
+# ch_id = 1: 
+# pkt_id = 0: 
+# data_nidles = 1: 
+# pkt_nidles = 4: 
+# rsp = 0: 
+# =======================================
+# 
+# =======================================
+# chnl_trans object content is as below: 
+# data[0] = c2000000 
+# data[1] = c2000001 
+# data[2] = c2000002 
+# data[3] = c2000003 
+# data[4] = c2000004 
+# data[5] = c2000005 
+# data[6] = c2000006 
+# data[7] = c2000007 
+# data[8] = c2000008 
+# data[9] = c2000009 
+# data[10] = c200000a 
+# data[11] = c200000b 
+# data[12] = c200000c 
+# data[13] = c200000d 
+# data[14] = c200000e 
+# data[15] = c200000f 
+# data[16] = c2000010 
+# data[17] = c2000011 
+# data[18] = c2000012 
+# data[19] = c2000013 
+# data[20] = c2000014 
+# data[21] = c2000015 
+# data[22] = c2000016 
+# data[23] = c2000017 
+# data[24] = c2000018 
+# data[25] = c2000019 
+# data[26] = c200001a 
+# data[27] = c200001b 
+# data[28] = c200001c 
+# data[29] = c200001d 
+# data[30] = c200001e 
+# data[31] = c200001f 
+# ch_id = 2: 
+# pkt_id = 0: 
+# data_nidles = 2: 
+# pkt_nidles = 8: 
+# rsp = 0: 
+# =======================================
+# 
+# 235000 reg_agt.monitor monitored addr 08, cmd 01, data 0000001c
+# Break key hit
+# Break in Module tb at D:/Qsim/lab/lab4/tb.sv line 103
+# End time: 21:36:15 on Feb 19,2022, Elapsed time: 0:23:24
+# Errors: 0, Warnings: 0

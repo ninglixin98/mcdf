@@ -1,0 +1,265 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Qsim/lab/lab2
+T_opt
+!s110 1640870001
+VKo5FNTlQje=JR5[FW?8fL1
+04 17 4 work class_inheritance fast 0
+=1-bce92f6ecb36-61cdb071-151-1c58
+Z1 o-quiet -auto_acc_if_foreign -work work +acc
+Z2 tCvgOpt 0
+n@_opt
+Z3 OL;O;10.6c;65
+R0
+T_opt1
+!s110 1641451240
+V9M_hV=hzc;D@k;P_KVde91
+04 2 4 work tb fast 0
+=6-bce92f6ecb36-61d68ee7-3de-e2c
+R1
+R2
+n@_opt1
+R3
+R0
+varray_type
+Z4 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z5 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 HULf49F8iJaneRAPcD4Ig3
+I`OED5bm51<XjYaM;[`Z9<1
+!s105 array_type_sv_unit
+S1
+Z6 dD:/Qsim/lab/exercise
+w1640867081
+8D:/Qsim/lab/exercise/array_type.sv
+FD:/Qsim/lab/exercise/array_type.sv
+L0 2
+Z7 OL;L;10.6c;65
+!s108 1640867085.000000
+!s107 D:/Qsim/lab/exercise/array_type.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/exercise/array_type.sv|
+!i113 0
+Z8 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vclass_encapsulation
+R4
+!s110 1640857585
+!i10b 1
+!s100 LR:5<@l>PIWZkGQ1>bF<z0
+IbXTY6YgJVL1U7nYn_:J2b0
+R5
+!s105 class_encapsulation_sv_unit
+S1
+R6
+Z9 w1640856179
+8D:/Qsim/lab/exercise/class_encapsulation.sv
+FD:/Qsim/lab/exercise/class_encapsulation.sv
+L0 2
+R7
+r1
+!s85 0
+31
+!s108 1640857585.000000
+!s107 D:/Qsim/lab/exercise/class_encapsulation.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/exercise/class_encapsulation.sv|
+!i113 0
+R8
+R2
+vclass_inheritance
+R4
+R5
+r1
+!s85 0
+31
+!i10b 1
+!s100 Annd5[@IX14GcHAYgaGGn0
+IDCGoQ>`Fc]72QefBf7Xza2
+!s105 class_inheritance_sv_unit
+S1
+R6
+R9
+8D:/Qsim/lab/exercise/class_inheritance.sv
+FD:/Qsim/lab/exercise/class_inheritance.sv
+L0 2
+R7
+!s108 1640857578.000000
+!s107 D:/Qsim/lab/exercise/class_inheritance.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/exercise/class_inheritance.sv|
+!i113 0
+R8
+R2
+Xinheritance_sv_unit
+R4
+V`i_mRA;einFVdB]e_E1mG1
+r1
+!s85 0
+31
+!i10b 1
+!s100 FNzczUhYF9lDDH]NP`_QI2
+I`i_mRA;einFVdB]e_E1mG1
+!i103 1
+S1
+R6
+w1640945030
+8D:\Qsim\lab\exercise\inheritance.sv
+FD:\Qsim\lab\exercise\inheritance.sv
+L0 1
+R7
+!s108 1640945039.000000
+!s107 D:\Qsim\lab\exercise\inheritance.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:\Qsim\lab\exercise\inheritance.sv|
+!i113 0
+R8
+R2
+vpackage_usage
+R4
+DXx4 work 7 sky_pkg 0 22 DOOg;J9nhATRfRm[gk<4Y3
+DXx4 work 7 sea_pkg 0 22 PgYK9m<7YbnfoC;ad30N>2
+Z10 !s110 1640857588
+!i10b 1
+!s100 VoBBLhW3bVHhCH5_6Q7Wb3
+I5z1^jZVReCI4bzCFBC8MO3
+R5
+!s105 package_usage_sv_unit
+S1
+R6
+R9
+Z11 8D:/Qsim/lab/exercise/package_usage.sv
+Z12 FD:/Qsim/lab/exercise/package_usage.sv
+L0 29
+R7
+r1
+!s85 0
+31
+Z13 !s108 1640857588.000000
+Z14 !s107 D:/Qsim/lab/exercise/package_usage.sv|
+Z15 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/exercise/package_usage.sv|
+!i113 0
+R8
+R2
+Xsea_pkg
+R4
+R10
+!i10b 1
+!s100 BT[SlC1I=b[eod3e@^MDK0
+IPgYK9m<7YbnfoC;ad30N>2
+VPgYK9m<7YbnfoC;ad30N>2
+S1
+R6
+R9
+R11
+R12
+L0 14
+R7
+r1
+!s85 0
+31
+R13
+R14
+R15
+!i113 0
+R8
+R2
+Xsky_pkg
+R4
+R10
+!i10b 1
+!s100 gzzSzEOkjhAS??Z4o=Bic3
+IDOOg;J9nhATRfRm[gk<4Y3
+VDOOg;J9nhATRfRm[gk<4Y3
+S1
+R6
+R9
+R11
+R12
+L0 2
+R7
+r1
+!s85 0
+31
+R13
+R14
+R15
+!i113 0
+R8
+R2
+vtb
+R4
+!s110 1641459069
+!i10b 1
+!s100 LdiZH3:fJQGP^<10o4=ET0
+Iaa2SP1b33?P9[2h2?Sma23
+R5
+!s105 event_exer_sv_unit
+S1
+R6
+w1641452334
+8D:/Qsim/lab/exercise/event_exer.sv
+FD:/Qsim/lab/exercise/event_exer.sv
+L0 2
+R7
+r1
+!s85 0
+31
+!s108 1641459069.000000
+!s107 D:/Qsim/lab/exercise/event_exer.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/exercise/event_exer.sv|
+!i113 0
+R8
+R2
+vtb2
+R4
+R5
+r1
+!s85 0
+31
+!i10b 1
+!s100 ]AMUd6RQT@QUzH4IL[8CI2
+I?[fC^>gIkgFKT=UdKQA?Z1
+!s105 semaphore_test_sv_unit
+S1
+R6
+w1641459785
+8D:\Qsim\lab\exercise\semaphore_test.sv
+FD:\Qsim\lab\exercise\semaphore_test.sv
+L0 1
+R7
+!s108 1641459793.000000
+!s107 D:\Qsim\lab\exercise\semaphore_test.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:\Qsim\lab\exercise\semaphore_test.sv|
+!i113 0
+R8
+R2
+vtb3
+R4
+R5
+r1
+!s85 0
+31
+!i10b 1
+!s100 8NP?86>OnM:5JVB?zjPI<1
+IY96jY0XO7lf275C@RBcL43
+!s105 mailbox_test_sv_unit
+S1
+R6
+w1641470644
+8D:\Qsim\lab\exercise\mailbox_test.sv
+FD:\Qsim\lab\exercise\mailbox_test.sv
+L0 1
+R7
+!s108 1641470654.000000
+!s107 D:\Qsim\lab\exercise\mailbox_test.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:\Qsim\lab\exercise\mailbox_test.sv|
+!i113 0
+R8
+R2

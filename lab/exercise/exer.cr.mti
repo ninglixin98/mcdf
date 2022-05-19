@@ -1,0 +1,33 @@
+D:/Qsim/lab/exercise/class_inheritance.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/exercise/class_inheritance.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module class_inheritance
+
+Top level modules:
+	class_inheritance
+
+} {} {}} D:/Qsim/lab/exercise/class_encapsulation.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/exercise/class_encapsulation.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module class_encapsulation
+
+Top level modules:
+	class_encapsulation
+
+} {} {}} D:/Qsim/lab/exercise/package_usage.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/exercise/package_usage.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package sky_pkg
+-- Compiling package sea_pkg
+-- Compiling module package_usage
+-- Importing package sky_pkg
+-- Importing package sea_pkg
+
+Top level modules:
+	package_usage
+
+} {} {}} D:/Qsim/lab/exercise/array_type.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/exercise/array_type.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module array_type
+
+Top level modules:
+	array_type
+
+} {} {}}

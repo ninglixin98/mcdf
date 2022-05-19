@@ -1,0 +1,352 @@
+D:/Qsim/lab/UVM_lab2/tb.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab2/tb.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:06 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab2/tb.sv 
+-- Compiling interface chnl_intf
+-- Compiling interface reg_intf
+-- Compiling interface arb_intf
+-- Compiling interface fmt_intf
+-- Compiling interface mcdf_intf
+-- Compiling module tb
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab2/tb.sv(124): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package chnl_pkg
+-- Importing package reg_pkg
+-- Importing package arb_pkg
+-- Importing package fmt_pkg
+-- Importing package mcdf_pkg
+
+Top level modules:
+	tb
+End time: 21:04:06 on Mar 20,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/reg_pkg.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab2/reg_pkg.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:04 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab2/reg_pkg.sv 
+-- Compiling package reg_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab2/reg_pkg.sv(5): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+End time: 21:04:04 on Mar 20,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/mcdf_pkg_ref.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/UVM_lab2/mcdf_pkg_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package mcdf_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab2/mcdf_pkg_ref.sv(6): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package chnl_pkg
+-- Importing package reg_pkg
+-- Importing package arb_pkg
+-- Importing package fmt_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Qsim/lab/UVM_lab2/fmt_pkg.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab2/fmt_pkg.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:03 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab2/fmt_pkg.sv 
+-- Compiling package fmt_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab2/fmt_pkg.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+End time: 21:04:03 on Mar 20,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/chnl_pkg_ref.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab2/chnl_pkg_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:02 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab2/chnl_pkg_ref.sv 
+-- Compiling package chnl_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab2/chnl_pkg_ref.sv(3): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+End time: 21:04:03 on Mar 20,2022, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/mcdf_pkg.sv {0 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package mcdf_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(6): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package chnl_pkg
+-- Importing package reg_pkg
+-- Importing package arb_pkg
+-- Importing package fmt_pkg
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(66): Field/method name (reg_mb) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(66): Field/method name (reg_mb) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(83): Field/method name (in_mbs) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(83): Field/method name (in_mbs) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(90): Field/method name (in_mbs) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(90): Field/method name (in_mbs) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(227): Field/method name (in_mbs) not in 'refmod'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(228): Field/method name (in_mbs) not in 'refmod'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(229): Field/method name (exp_mbs) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(229): Field/method name (out_mbs) not in 'refmod'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(231): Field/method name (reg_mb) not in 'refmod'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(735): Field/method name (mon_mb) not in 'monitor'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(737): Field/method name (mon_mb) not in 'monitor'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(738): Field/method name (mon_mb) not in 'monitor'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1015): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1015): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1015): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1016): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1016): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1016): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1017): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1017): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1017): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1017): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1015): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1015): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1016): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1016): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1017): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1017): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1017): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1015): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1015): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1016): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1016): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1017): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1017): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1017): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1032): Field/method name (idle_reg) not in 'this'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1038): (vlog-7027) The name ('fmt_gen.randomize') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.randomize'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1038): (vlog-7027) The name ('fmt_gen') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1038): (vlog-7027) The name ('fmt_gen.bandwidth') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.bandwidth'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1038): (vlog-7027) The name ('fmt_gen.HIGH_WIDTH') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.HIGH_WIDTH'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1038): (vlog-7027) The name ('fmt_gen.fifo') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.fifo'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1038): (vlog-7027) The name ('fmt_gen.LONG_FIFO') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.LONG_FIFO'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1039): (vlog-7027) The name ('fmt_gen.start') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.start'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1045): (vlog-7027) The name ('chnl_gens[0].randomize') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].randomize'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1045): (vlog-7027) The name ('chnl_gens[0]') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0]'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1045): (vlog-7027) The name ('chnl_gens[0].data_size') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].data_size'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1045): (vlog-7027) The name ('chnl_gens[0].pkt_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].pkt_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1045): (vlog-7027) The name ('chnl_gens[0].data_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].data_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1045): (vlog-7027) The name ('chnl_gens[0].ch_id') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].ch_id'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1045): (vlog-7027) The name ('chnl_gens[0].ntrans') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].ntrans'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1046): (vlog-7027) The name ('chnl_gens[1].randomize') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].randomize'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1046): (vlog-7027) The name ('chnl_gens[1]') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1]'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1046): (vlog-7027) The name ('chnl_gens[1].data_size') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].data_size'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1046): (vlog-7027) The name ('chnl_gens[1].pkt_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].pkt_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1046): (vlog-7027) The name ('chnl_gens[1].data_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].data_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1046): (vlog-7027) The name ('chnl_gens[1].ch_id') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].ch_id'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1046): (vlog-7027) The name ('chnl_gens[1].ntrans') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].ntrans'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1047): (vlog-7027) The name ('chnl_gens[2].randomize') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].randomize'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1047): (vlog-7027) The name ('chnl_gens[2]') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2]'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1047): (vlog-7027) The name ('chnl_gens[2].data_size') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].data_size'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1047): (vlog-7027) The name ('chnl_gens[2].pkt_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].pkt_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1047): (vlog-7027) The name ('chnl_gens[2].data_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].data_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1047): (vlog-7027) The name ('chnl_gens[2].ch_id') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].ch_id'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1047): (vlog-7027) The name ('chnl_gens[2].ntrans') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].ntrans'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1049): (vlog-7027) The name ('chnl_gens[0].start') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].start'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1050): (vlog-7027) The name ('chnl_gens[1].start') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].start'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1051): (vlog-7027) The name ('chnl_gens[2].start') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].start'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1083): Field/method name (test) not in 'cb'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1156): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1156): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1156): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1157): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1157): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1157): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1158): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1158): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1158): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1158): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1156): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1156): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1157): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1157): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1158): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1158): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1158): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1156): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1156): Field/method name (write_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1157): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1157): Field/method name (read_reg) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1158): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1158): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1158): Field/method name (diff_value) not in 'this'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1173): Field/method name (idle_reg) not in 'this'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1179): (vlog-7027) The name ('fmt_gen.randomize') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.randomize'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1179): (vlog-7027) The name ('fmt_gen.bandwidth') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.bandwidth'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1179): (vlog-7027) The name ('fmt_gen.LOW_WIDTH') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.LOW_WIDTH'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1179): (vlog-7027) The name ('fmt_gen.ULTRA_WIDTH') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.ULTRA_WIDTH'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1179): (vlog-7027) The name ('fmt_gen.fifo') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.fifo'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1179): (vlog-7027) The name ('fmt_gen.SHORT_FIFO') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.SHORT_FIFO'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1179): (vlog-7027) The name ('fmt_gen.ULTRA_FIFO') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.ULTRA_FIFO'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1180): (vlog-7027) The name ('fmt_gen.start') was not found in the current scope.  Please verify the spelling of the name 'fmt_gen.start'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1186): (vlog-7027) The name ('chnl_gens[0].randomize') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].randomize'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1045): (vlog-7027) The name ('chnl_gens[0]') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0]'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1186): (vlog-7027) The name ('chnl_gens[0].data_size') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].data_size'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1186): (vlog-7027) The name ('chnl_gens[0].pkt_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].pkt_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1186): (vlog-7027) The name ('chnl_gens[0].data_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].data_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1186): (vlog-7027) The name ('chnl_gens[0].ch_id') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].ch_id'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1186): (vlog-7027) The name ('chnl_gens[0].ntrans') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].ntrans'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1187): (vlog-7027) The name ('chnl_gens[1].randomize') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].randomize'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1046): (vlog-7027) The name ('chnl_gens[1]') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1]'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1187): (vlog-7027) The name ('chnl_gens[1].data_size') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].data_size'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1187): (vlog-7027) The name ('chnl_gens[1].pkt_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].pkt_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1187): (vlog-7027) The name ('chnl_gens[1].data_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].data_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1187): (vlog-7027) The name ('chnl_gens[1].ch_id') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].ch_id'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1187): (vlog-7027) The name ('chnl_gens[1].ntrans') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].ntrans'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1188): (vlog-7027) The name ('chnl_gens[2].randomize') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].randomize'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1047): (vlog-7027) The name ('chnl_gens[2]') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2]'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1188): (vlog-7027) The name ('chnl_gens[2].data_size') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].data_size'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1188): (vlog-7027) The name ('chnl_gens[2].pkt_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].pkt_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1188): (vlog-7027) The name ('chnl_gens[2].data_nidles') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].data_nidles'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1188): (vlog-7027) The name ('chnl_gens[2].ch_id') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].ch_id'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1188): (vlog-7027) The name ('chnl_gens[2].ntrans') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].ntrans'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1190): (vlog-7027) The name ('chnl_gens[0].start') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[0].start'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1191): (vlog-7027) The name ('chnl_gens[1].start') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[1].start'.
+** Error (suppressible): D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1192): (vlog-7027) The name ('chnl_gens[2].start') was not found in the current scope.  Please verify the spelling of the name 'chnl_gens[2].start'.
+** Error (suppressible): (vlog-13276) D:\Qsim\lab\UVM_lab2\mcdf_pkg.sv(1219): Field/method name (test) not in 'cb'.
+
+} {} {}} D:/Qsim/lab/UVM_lab2/reg.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab2/reg.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:01 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab2/reg.v 
+-- Compiling module ctrl_regs
+
+Top level modules:
+	ctrl_regs
+End time: 21:04:01 on Mar 20,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/formater.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab2/formater.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:00 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab2/formater.v 
+-- Compiling module formater
+
+Top level modules:
+	formater
+End time: 21:04:00 on Mar 20,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/chnl_pkg.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab2/chnl_pkg.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:02 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab2/chnl_pkg.sv 
+-- Compiling package chnl_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab2/chnl_pkg.sv(3): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+End time: 21:04:02 on Mar 20,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/arbiter.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab2/arbiter.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:00 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab2/arbiter.v 
+-- Compiling module arbiter
+
+Top level modules:
+	arbiter
+End time: 21:04:00 on Mar 20,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/arb_pkg.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab2/arb_pkg.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:01 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab2/arb_pkg.sv 
+-- Compiling package arb_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab2/arb_pkg.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+End time: 21:04:02 on Mar 20,2022, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/mcdf.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab2/mcdf.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:01 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab2/mcdf.v 
+-- Compiling module mcdf
+
+Top level modules:
+	mcdf
+End time: 21:04:01 on Mar 20,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/tb_ref.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab2/tb_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:06 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab2/tb_ref.sv 
+-- Compiling interface chnl_intf
+-- Compiling interface reg_intf
+-- Compiling interface arb_intf
+-- Compiling interface fmt_intf
+-- Compiling interface mcdf_intf
+-- Compiling module tb
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab2/tb_ref.sv(124): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package chnl_pkg
+-- Importing package reg_pkg
+-- Importing package arb_pkg
+-- Importing package fmt_pkg
+-- Importing package mcdf_pkg
+
+Top level modules:
+	tb
+End time: 21:04:07 on Mar 20,2022, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/reg_pkg_ref.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab2/reg_pkg_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:04 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab2/reg_pkg_ref.sv 
+-- Compiling package reg_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab2/reg_pkg_ref.sv(5): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+End time: 21:04:05 on Mar 20,2022, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/slave_fifo.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab2/slave_fifo.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:01 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab2/slave_fifo.v 
+-- Compiling module slave_fifo
+
+Top level modules:
+	slave_fifo
+End time: 21:04:01 on Mar 20,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/param_def.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab2/param_def.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:00 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab2/param_def.v 
+End time: 21:04:00 on Mar 20,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab2/fmt_pkg_ref.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab2/fmt_pkg_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 21:04:03 on Mar 20,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab2/fmt_pkg_ref.sv 
+-- Compiling package fmt_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab2/fmt_pkg_ref.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+End time: 21:04:04 on Mar 20,2022, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+
+} {} {}}

@@ -1,0 +1,22 @@
+D:/Qsim/lab/UVM_EX_lab1/lab1_ref/apb_pkg.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\UVM_EX_lab1\lab1_ref\apb_pkg.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package apb_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:\Qsim\lab\UVM_EX_lab1\lab1_ref\apb_pkg.sv(8): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Qsim/lab/UVM_EX_lab1/lab1_ref/apb_tb.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/UVM_EX_lab1/lab1_ref/apb_tb.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+** Note: (vlog-2286) D:/Qsim/lab/UVM_EX_lab1/lab1_ref/apb_tb.sv(3): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling package apb_tb_sv_unit
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Importing package apb_pkg
+-- Compiling interface apb_if
+-- Compiling module apb_tb
+
+Top level modules:
+	apb_tb
+
+} {} {}}

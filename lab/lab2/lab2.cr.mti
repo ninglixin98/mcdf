@@ -1,0 +1,102 @@
+D:/Qsim/lab/lab2/tb3_ref.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab2/tb3_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface chnl_intf
+-- Compiling package tb3_ref_sv_unit
+-- Compiling module tb3_ref
+
+Top level modules:
+	tb3_ref
+
+} {} {}} D:/Qsim/lab/lab2/arbiter.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab2/arbiter.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module arbiter
+
+Top level modules:
+	arbiter
+
+} {} {}} D:/Qsim/lab/lab2/tb1.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab2/tb1.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface chnl_intf
+-- Compiling module chnl_initiator
+-- Compiling module chnl_generator
+-- Compiling module tb1
+
+Top level modules:
+	tb1
+
+} {} {}} D:/Qsim/lab/lab2/simstart.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\lab2\simstart.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module simstart1
+
+Top level modules:
+	simstart1
+
+} {} {}} D:/Qsim/lab/lab2/breakpoint.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab2/breakpoint.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module breakpoint1
+
+Top level modules:
+	breakpoint1
+
+} {} {}} D:/Qsim/lab/lab2/tb3.sv {2 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab2/tb3.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface chnl_intf
+** Warning: D:/Qsim/lab/lab2/tb3.sv(15): (vlog-13233) Design unit "tb3_sv_unit" already exists and will be overwritten. Overwriting SystemVerilog $unit with different source files.
+-- Compiling package tb3_sv_unit
+-- Compiling module tb3
+
+Top level modules:
+	tb3
+
+} {} {}} D:/Qsim/lab/lab2/tb2_ref.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab2/tb2_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface chnl_intf
+-- Compiling module chnl_initiator
+-- Compiling module chnl_generator
+-- Compiling module tb2_ref
+
+Top level modules:
+	tb2_ref
+
+} {} {}} D:/Qsim/lab/lab2/mcdt.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab2/mcdt.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module mcdt
+
+Top level modules:
+	mcdt
+
+} {} {}} D:/Qsim/lab/lab2/tb2.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab2/tb2.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface chnl_intf
+-- Compiling module chnl_initiator
+-- Compiling module chnl_generator
+-- Compiling module tb2
+
+Top level modules:
+	tb2
+
+} {} {}} D:/Qsim/lab/lab2/tb4.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\lab2\tb4.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface chnl_intf
+-- Compiling package chnl_pkg
+-- Compiling module tb4
+-- Importing package chnl_pkg
+
+Top level modules:
+	tb4
+
+} {} {}} D:/Qsim/lab/lab2/slave_fifo.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab2/slave_fifo.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module slave_fifo
+
+Top level modules:
+	slave_fifo
+
+} {} {}} D:/Qsim/lab/lab2/race.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab2/race.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module race1
+
+Top level modules:
+	race1
+
+} {} {}}

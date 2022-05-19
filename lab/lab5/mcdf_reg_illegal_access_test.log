@@ -1,0 +1,787 @@
+# Saving coverage data in D:/Qsim/coverage ...
+# End time: 20:09:33 on Feb 22,2022, Elapsed time: 0:00:42
+# Errors: 0, Warnings: 0
+# vsim -i -classdebug -solvefaildebug -coverage -coverstore D:/Qsim/coverage -testname mcdf_reg_illegal_access_test -sv_seed random "+TESTNAME=mcdf_reg_illegal_access_test" -l mcdf_reg_illegal_access_test.log work.tb 
+# Start time: 20:09:33 on Feb 22,2022
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.mcdf_intf(fast)
+# Loading work.fmt_intf(fast)
+# Loading work.rpt_pkg(fast)
+# Loading work.fmt_pkg(fast)
+# Loading work.arb_pkg(fast)
+# Loading work.reg_pkg(fast)
+# Loading work.chnl_pkg(fast)
+# Loading work.mcdf_pkg(fast)
+# Loading work.tb(fast)
+# Loading work.mcdf(fast)
+# Loading work.reg_intf(fast)
+# Loading work.chnl_intf(fast)
+# Loading work.arb_intf(fast)
+# Sv_Seed = 333061785
+run -all
+# env instantiated and connected objects
+# mcdf_data_consistence_basic_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_full_random_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_channel_disable_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_write_read_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_illegal_access_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_abiter_priority_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_abiter_priority_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_formatter_length_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_formatter_grant_test instantiated and connected objects
+# @0 [INFO] [TEST] : =====================mcdf_reg_illegal_access_test AT TIME 0 STARTED=====================
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 217ce100: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 217ce100: 
+# rsp = 0: 
+# =======================================
+# 
+# *****************env started********************
+# 115000 reg driver [reg_agt.driver] sent addr 00, cmd 10, data 217ce100
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = 217ce100: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 135000 reg_agt.monitor monitored addr 00, cmd 10, data 217ce100
+# 140000 reg driver [reg_agt.driver] sent addr 00, cmd 01, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# @140000 [ERROR] [CMPERR] : ERROR! SLV0_WR_REG val1 217ce100 != val2 00000000
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 59ee25c0: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 59ee25c0: 
+# rsp = 0: 
+# =======================================
+# 
+# 145000 reg driver [reg_agt.driver] sent addr 04, cmd 10, data 59ee25c0
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = 59ee25c0: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 155000 reg_agt.monitor monitored addr 00, cmd 01, data 00000000
+# 165000 reg_agt.monitor monitored addr 04, cmd 10, data 59ee25c0
+# 170000 reg driver [reg_agt.driver] sent addr 04, cmd 01, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# @170000 [ERROR] [CMPERR] : ERROR! SLV1_WR_REG val1 59ee25c0 != val2 00000000
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 045345c0: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 045345c0: 
+# rsp = 0: 
+# =======================================
+# 
+# 175000 reg driver [reg_agt.driver] sent addr 08, cmd 10, data 045345c0
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 045345c0: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 185000 reg_agt.monitor monitored addr 04, cmd 01, data 00000000
+# 195000 reg_agt.monitor monitored addr 08, cmd 10, data 045345c0
+# 200000 reg driver [reg_agt.driver] sent addr 08, cmd 01, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# @200000 [ERROR] [CMPERR] : ERROR! SLV2_WR_REG val1 045345c0 != val2 00000000
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 10: 
+# cmd = 10: 
+# data = 000000cf: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 10: 
+# cmd = 10: 
+# data = 000000cf: 
+# rsp = 0: 
+# =======================================
+# 
+# 205000 reg driver [reg_agt.driver] sent addr 10, cmd 10, data 000000cf
+# =======================================
+# reg_trans object content is as below: 
+# addr = 10: 
+# cmd = 10: 
+# data = 000000cf: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 14: 
+# cmd = 10: 
+# data = 000000dc: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 14: 
+# cmd = 10: 
+# data = 000000dc: 
+# rsp = 0: 
+# =======================================
+# 
+# 215000 reg driver [reg_agt.driver] sent addr 14, cmd 10, data 000000dc
+# 215000 reg_agt.monitor monitored addr 08, cmd 01, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 14: 
+# cmd = 10: 
+# data = 000000dc: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 18: 
+# cmd = 10: 
+# data = 00000100: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 18: 
+# cmd = 10: 
+# data = 00000100: 
+# rsp = 0: 
+# =======================================
+# 
+# 225000 reg driver [reg_agt.driver] sent addr 18, cmd 10, data 00000100
+# 225000 reg_agt.monitor monitored addr 10, cmd 10, data 000000cf
+# =======================================
+# reg_trans object content is as below: 
+# addr = 18: 
+# cmd = 10: 
+# data = 00000100: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 0: 
+# =======================================
+# 
+# 235000 reg_agt.monitor monitored addr 14, cmd 10, data 000000dc
+# 245000 reg_agt.monitor monitored addr 18, cmd 10, data 00000100
+# 245000 reg driver [reg_agt.driver] sent addr 00, cmd 00, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# @245000 [INFO] [TEST] : =====================mcdf_reg_illegal_access_test AT TIME 245000 FINISHED=====================
+# @245000 [INFO] [mcdf_checker] : 
+# ---------------------------------------------------------------
+# CHECKER SUMMARY 
+# total comparison count: 0 
+#  channel[0] comparison count: 0 
+#  channel[1] comparison count: 0 
+#  channel[2] comparison count: 0 
+# total error count: 0 
+# ---------------------------------------------------------------
+# 
+# @245000 [INFO] [mcdf_coverage] : 
+# ---------------------------------------------------------------
+# COVERAGE SUMMARY 
+# total coverage: 25.0 
+#   cg_mcdf_reg_write_read coverage: 83.3 
+#   cg_mcdf_reg_illegal_access coverage: 66.7 
+#   cg_channel_disable_test coverage: 0.0 
+#   cg_arbiter_priority_test coverage: 0.0 
+#   cg_formatter_length_test coverage: 0.0 
+#   cg_formatter_grant_test coverage: 0.0 
+# ---------------------------------------------------------------
+# 
+# @245000 [INFO] [REPORT] : 
+# ---------------------------------------------------------------
+# REPORT SUMMARY
+# info count: 4 
+# warning count: 0 
+# error count: 3 
+# fatal count: 0 
+# ---------------------------------------------------------------
+# 
+# ** Note: $finish    : D:/Qsim/lab/lab5/mcdf_pkg.sv(640)
+#    Time: 245 ns  Iteration: 2  Instance: /tb
+# 1
+# Break in Task mcdf_pkg/mcdf_base_test::run at D:/Qsim/lab/lab5/mcdf_pkg.sv line 640
+quit -sim
+# Saving coverage data in D:/Qsim/coverage ...
+# End time: 20:09:51 on Feb 22,2022, Elapsed time: 0:00:18
+# Errors: 0, Warnings: 0
+vcover merge -out merged_coverage.ucdb D:/Qsim/coverage
+# QuestaSim-64 vcover 10.6c Coverage Utility 2017.07 Jul 26 2017
+# Start time: 20:09:57 on Feb 22,2022
+# vcover merge -out merged_coverage.ucdb D:/Qsim/coverage 
+# QuestaSim-64 vcover 10.6c Coverage Utility 2017.07 Jul 26 2017
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_diff_test_1547269377
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_diff_test_1587176677
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_diff_test_945369129
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_same_test_1224286385
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_same_test_1299857473
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_same_test_1666805185
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_test_1317712581
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_test_1322818921
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_test_1446561197
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_test_154701997
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_test_1942661105
+# Merging test D:/Qsim/coverage:mcdf_abiter_priority_test_219723609
+# Merging test D:/Qsim/coverage:mcdf_channel_disable_test_1762293485
+# Merging test D:/Qsim/coverage:mcdf_channel_disable_test_683661
+# Merging test D:/Qsim/coverage:mcdf_data_consistence_basic_test_2083155081
+# Merging test D:/Qsim/coverage:mcdf_formatter_grant_test_1248509253
+# Merging test D:/Qsim/coverage:mcdf_formatter_length_test_1145740413
+# Merging test D:/Qsim/coverage:mcdf_formatter_length_test_1502272869
+# Merging test D:/Qsim/coverage:mcdf_formatter_length_test_2002295989
+# Merging test D:/Qsim/coverage:mcdf_formatter_length_test_255363893
+# Merging test D:/Qsim/coverage:mcdf_formatter_length_test_392867869
+# Merging test D:/Qsim/coverage:mcdf_formatter_length_test_65704689
+# Merging test D:/Qsim/coverage:mcdf_formatter_length_test_962108461
+# Merging test D:/Qsim/coverage:mcdf_full_random_test_1305463533
+# Merging test D:/Qsim/coverage:mcdf_full_random_test_284137309
+# Merging test D:/Qsim/coverage:mcdf_full_random_test_636476513
+# Merging test D:/Qsim/coverage:mcdf_reg_illegal_access_test_1167633033
+# Merging test D:/Qsim/coverage:mcdf_reg_illegal_access_test_1368014957
+# Merging test D:/Qsim/coverage:mcdf_reg_illegal_access_test_1933102933
+# Merging test D:/Qsim/coverage:mcdf_reg_illegal_access_test_2067307405
+# Merging test D:/Qsim/coverage:mcdf_reg_illegal_access_test_2129296341
+# Merging test D:/Qsim/coverage:mcdf_reg_illegal_access_test_2130219581
+# Merging test D:/Qsim/coverage:mcdf_reg_illegal_access_test_307780537
+# Merging test D:/Qsim/coverage:mcdf_reg_illegal_access_test_333061785
+# Merging test D:/Qsim/coverage:mcdf_reg_illegal_access_test_811113585
+# Merging test D:/Qsim/coverage:mcdf_reg_write_read_test_1315585153
+# Writing merged result to merged_coverage.ucdb
+# 
+# End time: 20:09:57 on Feb 22,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# coverage read -dataset merged_coverage2 D:/Qsim/lab/lab5/merged_coverage.ucdb
+# D:/Qsim/lab/lab5/merged_coverage.ucdb opened as coverage dataset "merged_coverage2"
+# coverage read -dataset merged_coverage3 D:/Qsim/lab/lab5/merged_coverage.ucdb
+# D:/Qsim/lab/lab5/merged_coverage.ucdb opened as coverage dataset "merged_coverage3"
+coverage report -html -htmldir covhtmlreport -source -details -assert -directive -cvg -code bcefst -threshL 50 -threshH 90
+# Report created in covhtmlreport/index.html
+# Compile of mcdf_pkg.sv was successful.
+vsim -i -classdebug -solvefaildebug -coverage -coverstore D:/Qsim/coverage -testname mcdf_reg_illegal_access_test -sv_seed random +TESTNAME=mcdf_reg_illegal_access_test -l mcdf_reg_illegal_access_test.log work.tb
+# vsim -i -classdebug -solvefaildebug -coverage -coverstore D:/Qsim/coverage -testname mcdf_reg_illegal_access_test -sv_seed random "+TESTNAME=mcdf_reg_illegal_access_test" -l mcdf_reg_illegal_access_test.log work.tb 
+# Start time: 20:16:32 on Feb 22,2022
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.mcdf_intf(fast)
+# Loading work.fmt_intf(fast)
+# Loading work.rpt_pkg(fast)
+# Loading work.fmt_pkg(fast)
+# Loading work.arb_pkg(fast)
+# Loading work.reg_pkg(fast)
+# Loading work.chnl_pkg(fast)
+# Loading work.mcdf_pkg(fast)
+# Loading work.tb(fast)
+# Loading work.mcdf(fast)
+# Loading work.reg_intf(fast)
+# Loading work.chnl_intf(fast)
+# Loading work.arb_intf(fast)
+# Sv_Seed = 1371189409
+run -all
+# env instantiated and connected objects
+# mcdf_data_consistence_basic_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_full_random_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_channel_disable_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_write_read_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_reg_illegal_access_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_abiter_priority_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_abiter_priority_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_formatter_length_test instantiated and connected objects
+# env instantiated and connected objects
+# mcdf_formatter_grant_test instantiated and connected objects
+# @0 [INFO] [TEST] : =====================mcdf_reg_illegal_access_test AT TIME 0 STARTED=====================
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = af50ae00: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = af50ae00: 
+# rsp = 0: 
+# =======================================
+# 
+# *****************env started********************
+# 115000 reg driver [reg_agt.driver] sent addr 00, cmd 10, data af50ae00
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 10: 
+# data = af50ae00: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 135000 reg_agt.monitor monitored addr 00, cmd 10, data af50ae00
+# 140000 reg driver [reg_agt.driver] sent addr 00, cmd 01, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 01: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# @140000 [ERROR] [CMPERR] : ERROR! SLV0_WR_REG val1 af50ae00 != val2 00000000
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = ebeaebc0: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = ebeaebc0: 
+# rsp = 0: 
+# =======================================
+# 
+# 145000 reg driver [reg_agt.driver] sent addr 04, cmd 10, data ebeaebc0
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 10: 
+# data = ebeaebc0: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 155000 reg_agt.monitor monitored addr 00, cmd 01, data 00000000
+# 165000 reg_agt.monitor monitored addr 04, cmd 10, data ebeaebc0
+# 170000 reg driver [reg_agt.driver] sent addr 04, cmd 01, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 04: 
+# cmd = 01: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# @170000 [ERROR] [CMPERR] : ERROR! SLV1_WR_REG val1 ebeaebc0 != val2 00000000
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 5268a7c0: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 5268a7c0: 
+# rsp = 0: 
+# =======================================
+# 
+# 175000 reg driver [reg_agt.driver] sent addr 08, cmd 10, data 5268a7c0
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 10: 
+# data = 5268a7c0: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 185000 reg_agt.monitor monitored addr 04, cmd 01, data 00000000
+# 195000 reg_agt.monitor monitored addr 08, cmd 10, data 5268a7c0
+# 200000 reg driver [reg_agt.driver] sent addr 08, cmd 01, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 08: 
+# cmd = 01: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# @200000 [ERROR] [CMPERR] : ERROR! SLV2_WR_REG val1 5268a7c0 != val2 00000000
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 10: 
+# cmd = 10: 
+# data = 00000059: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 10: 
+# cmd = 10: 
+# data = 00000059: 
+# rsp = 0: 
+# =======================================
+# 
+# 205000 reg driver [reg_agt.driver] sent addr 10, cmd 10, data 00000059
+# =======================================
+# reg_trans object content is as below: 
+# addr = 10: 
+# cmd = 10: 
+# data = 00000059: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 14: 
+# cmd = 10: 
+# data = 00000073: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 14: 
+# cmd = 10: 
+# data = 00000073: 
+# rsp = 0: 
+# =======================================
+# 
+# 215000 reg driver [reg_agt.driver] sent addr 14, cmd 10, data 00000073
+# 215000 reg_agt.monitor monitored addr 08, cmd 01, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 14: 
+# cmd = 10: 
+# data = 00000073: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 18: 
+# cmd = 10: 
+# data = 000000df: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 18: 
+# cmd = 10: 
+# data = 000000df: 
+# rsp = 0: 
+# =======================================
+# 
+# 225000 reg driver [reg_agt.driver] sent addr 18, cmd 10, data 000000df
+# 225000 reg_agt.monitor monitored addr 10, cmd 10, data 00000059
+# =======================================
+# reg_trans object content is as below: 
+# addr = 18: 
+# cmd = 10: 
+# data = 000000df: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 01: 
+# cmd = 10: 
+# data = 036117e9: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 01: 
+# cmd = 10: 
+# data = 036117e9: 
+# rsp = 0: 
+# =======================================
+# 
+# 235000 reg driver [reg_agt.driver] sent addr 01, cmd 10, data 036117e9
+# 235000 reg_agt.monitor monitored addr 14, cmd 10, data 00000073
+# =======================================
+# reg_trans object content is as below: 
+# addr = 01: 
+# cmd = 10: 
+# data = 036117e9: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 01: 
+# cmd = 01: 
+# data = ffffffff: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 01: 
+# cmd = 01: 
+# data = ffffffff: 
+# rsp = 0: 
+# =======================================
+# 
+# 245000 reg_agt.monitor monitored addr 18, cmd 10, data 000000df
+# 255000 reg_agt.monitor monitored addr 01, cmd 10, data 036117e9
+# 260000 reg driver [reg_agt.driver] sent addr 01, cmd 01, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 01: 
+# cmd = 01: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# AFTER RANDOMIZATION 
+# =======================================
+# reg_generator object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# =======================================
+# 
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 0: 
+# =======================================
+# 
+# 275000 reg_agt.monitor monitored addr 01, cmd 01, data 00000000
+# 275000 reg driver [reg_agt.driver] sent addr 00, cmd 00, data 00000000
+# =======================================
+# reg_trans object content is as below: 
+# addr = 00: 
+# cmd = 00: 
+# data = 00000000: 
+# rsp = 1: 
+# =======================================
+# 
+# @275000 [INFO] [TEST] : =====================mcdf_reg_illegal_access_test AT TIME 275000 FINISHED=====================
+# @275000 [INFO] [mcdf_checker] : 
+# ---------------------------------------------------------------
+# CHECKER SUMMARY 
+# total comparison count: 0 
+#  channel[0] comparison count: 0 
+#  channel[1] comparison count: 0 
+#  channel[2] comparison count: 0 
+# total error count: 0 
+# ---------------------------------------------------------------
+# 
+# @275000 [INFO] [mcdf_coverage] : 
+# ---------------------------------------------------------------
+# COVERAGE SUMMARY 
+# total coverage: 25.0 
+#   cg_mcdf_reg_write_read coverage: 83.3 
+#   cg_mcdf_reg_illegal_access coverage: 66.7 
+#   cg_channel_disable_test coverage: 0.0 
+#   cg_arbiter_priority_test coverage: 0.0 
+#   cg_formatter_length_test coverage: 0.0 
+#   cg_formatter_grant_test coverage: 0.0 
+# ---------------------------------------------------------------
+# 
+# @275000 [INFO] [REPORT] : 
+# ---------------------------------------------------------------
+# REPORT SUMMARY
+# info count: 4 
+# warning count: 0 
+# error count: 3 
+# fatal count: 0 
+# ---------------------------------------------------------------
+# 
+# ** Note: $finish    : D:/Qsim/lab/lab5/mcdf_pkg.sv(640)
+#    Time: 275 ns  Iteration: 2  Instance: /tb
+# 1
+# Break in Task mcdf_pkg/mcdf_base_test::run at D:/Qsim/lab/lab5/mcdf_pkg.sv line 640
+vsim -i -classdebug -solvefaildebug -coverage -coverstore D:/Qsim/coverage -testname mcdf_abiter_priority_same_test -sv_seed random +TESTNAME=mcdf_abiter_priority_same_test -l mcdf_abiter_priority_same_test.log work.tb

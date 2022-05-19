@@ -1,0 +1,19 @@
+register,address,reg_access,field,field_access,reset_value,bitpos_end,bitpos_start,function
+chnl0_ctrl,0x00,RW,chnl_en,RW,0x1,0,0,channel enable
+,,,prio_level,RW,0x3,2,1,priority level
+,,,pkt_len,RW,0x0,5,3,packet length
+,,,reserved,RO,0x0,31,6,reserved 
+chnl1_ctrl,0x04,RW,chnl_en,RW,0x1,0,0,channel enable
+,,,prio_level,RW,0x3,2,1,priority level
+,,,pkt_len,RW,0x0,5,3,packet length
+,,,reserved,RO,0x0,31,6,reserved 
+chnl2_ctrl,0x08,RW,chnl_en,RW,0x1,0,0,channel enable
+,,,prio_level,RW,0x3,2,1,priority level
+,,,pkt_len,RW,0x0,5,3,packet length
+,,,reserved,RO,0x0,31,6,reserved 
+chnl0_stat,0x10,RO,fifo_avail,RO,0x20,7,0,fifo available storage
+,,,reserved,RO,0x0,31,8,reserved 
+chnl1_stat,0x14,RO,fifo_avail,RO,0x20,7,0,fifo available storage
+,,,reserved,RO,0x0,31,8,reserved 
+chnl2_stat,0x18,RO,fifo_avail,RO,0x20,7,0,fifo available storage
+,,,reserved,RO,0x0,31,8,reserved 

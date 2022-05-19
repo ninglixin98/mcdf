@@ -1,0 +1,9 @@
+var g_db_data = [
+{dummy:0},
+{name:'cg_mcdf_reg_write_read',f:1,type:6,id:157,tb:'18',h:'18',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['merge_instance','auto(true)']],lnk:'__HDL_srcfile_5.htm#259',hdlPath:'/mcdf_pkg/mcdf_coverage',parent:'156'},
+{name:'cg_mcdf_reg_illegal_access',f:1,type:6,id:161,tb:'12',h:'9',m:'3',hp:'75.00%',cov:['75.00%','Y'],g:'100.00%',gp:['75.00%','Y'],opts:[[],['merge_instance','auto(true)']],lnk:'__HDL_srcfile_5.htm#297',hdlPath:'/mcdf_pkg/mcdf_coverage',parent:'156'},
+{name:'cg_channel_disable',f:1,type:6,id:167,tb:'18',h:'18',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['merge_instance','auto(true)']],lnk:'__HDL_srcfile_5.htm#335',hdlPath:'/mcdf_pkg/mcdf_coverage',parent:'156'},
+{name:'cg_arbiter_priority',f:1,type:6,id:175,tb:'12',h:'12',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['merge_instance','auto(true)']],lnk:'__HDL_srcfile_5.htm#388',hdlPath:'/mcdf_pkg/mcdf_coverage',parent:'156'},
+{name:'cg_formatter_length',f:1,type:6,id:179,tb:'7',h:'7',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['merge_instance','auto(true)']],lnk:'__HDL_srcfile_5.htm#409',hdlPath:'/mcdf_pkg/mcdf_coverage',parent:'156'},
+{name:'cg_formatter_grant',f:1,type:6,id:182,tb:'3',h:'3',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['merge_instance','auto(true)']],lnk:'__HDL_srcfile_5.htm#425',hdlPath:'/mcdf_pkg/mcdf_coverage',parent:'156'}];
+processConsCovergroupsData(g_db_data);

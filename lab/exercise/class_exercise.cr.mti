@@ -1,0 +1,20 @@
+D:/Qsim/lab/exercise/inheritance.sv {2 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\exercise\inheritance.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+** Warning: D:\Qsim\lab\exercise\inheritance.sv(26): (vlog-2244) Variable 'p' is implicitly static. You must either explicitly declare it as static or automatic
+or remove the initialization in the declaration of variable.
+** Warning: D:\Qsim\lab\exercise\inheritance.sv(27): (vlog-2244) Variable 'lp' is implicitly static. You must either explicitly declare it as static or automatic
+or remove the initialization in the declaration of variable.
+-- Compiling package inheritance_sv_unit
+** Warning: D:\Qsim\lab\exercise\inheritance.sv(19): (vlog-2240) Treating stand-alone use of function 'shift' as an implicit VOID cast.
+-- Compiling module tb
+** Warning: D:\Qsim\lab\exercise\inheritance.sv(26): (vlog-2244) Variable 'p' is implicitly static. You must either explicitly declare it as static or automatic
+or remove the initialization in the declaration of variable.
+** Warning: D:\Qsim\lab\exercise\inheritance.sv(27): (vlog-2244) Variable 'lp' is implicitly static. You must either explicitly declare it as static or automatic
+or remove the initialization in the declaration of variable.
+** Warning: D:\Qsim\lab\exercise\inheritance.sv(32): (vlog-2240) Treating stand-alone use of function 'shift' as an implicit VOID cast.
+** Warning: D:\Qsim\lab\exercise\inheritance.sv(34): (vlog-2240) Treating stand-alone use of function 'shift' as an implicit VOID cast.
+
+Top level modules:
+	tb
+
+} {} {}}

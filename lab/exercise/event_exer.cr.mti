@@ -1,0 +1,24 @@
+D:/Qsim/lab/exercise/semaphore_test.sv {2 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\exercise\semaphore_test.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module tb2
+** Warning: D:\Qsim\lab\exercise\semaphore_test.sv(22): (vlog-2244) Variable 'data' is implicitly static. You must either explicitly declare it as static or automatic
+or remove the initialization in the declaration of variable.
+
+Top level modules:
+	tb2
+
+} {} {}} D:/Qsim/lab/exercise/mailbox_test.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\exercise\mailbox_test.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module tb3
+
+Top level modules:
+	tb3
+
+} {} {}} D:/Qsim/lab/exercise/event_exer.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/exercise/event_exer.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module tb
+
+Top level modules:
+	tb
+
+} {} {}}

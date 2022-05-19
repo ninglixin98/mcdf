@@ -1,0 +1,10 @@
+arbiter.v
+chnl_pkg.sv
+fmt_pkg.sv
+formater.v
+mcdf.v
+mcdf_pkg.sv
+reg.v
+reg_pkg.sv
+slave_fifo.v
+tb.sv

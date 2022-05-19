@@ -1,0 +1,4 @@
+@0 [INFO] [TEST] : =====================mcdf_channel_disable_test AT TIME 0 STARTED=====================
+@140000 [INFO] [CMPSUC] : SUCCESS! SLV0_WR_REG val1 00000008 == val2 00000008
+@170000 [INFO] [CMPSUC] : SUCCESS! SLV1_WR_REG val1 00000012 == val2 00000012
+@200000 [INFO] [CMPSUC] : SUCCESS! SLV2_WR_REG val1 0000001c == val2 0000001c

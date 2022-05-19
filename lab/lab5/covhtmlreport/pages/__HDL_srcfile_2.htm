@@ -1,0 +1,304 @@
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <title>Questa Coverage Report</title>
+  <link rel="StyleSheet" media="screen" href="../css/hdl2html.css"/>
+</head>
+<body id="hdl2html">
+  <tt>
+<pre>
+<a name="1"><q-n>     1  </q-n></a>
+<a name="2"><q-n>     2  </q-n></a><q-w>package</q-w> fmt_pkg;
+<a name="3"><q-n>     3  </q-n></a>  <q-w>import</q-w> rpt_pkg::*;
+<a name="4"><q-n>     4  </q-n></a>
+<a name="5"><q-n>     5  </q-n></a>  <q-w>typedef</q-w> <q-w>enum</q-w> {SHORT_FIFO, MED_FIFO, LONG_FIFO, ULTRA_FIFO} fmt_fifo_t;
+<a name="6"><q-n>     6  </q-n></a>  <q-w>typedef</q-w> <q-w>enum</q-w> {LOW_WIDTH, MED_WIDTH, HIGH_WIDTH, ULTRA_WIDTH} fmt_bandwidth_t;
+<a name="7"><q-n>     7  </q-n></a>
+<a name="8"><q-n>     8  </q-n></a>  <q-w>class</q-w> fmt_trans;
+<a name="9"><q-n>     9  </q-n></a>    <q-w>rand</q-w> fmt_fifo_t fifo;
+<a name="10"><q-n>     10  </q-n></a>    <q-w>rand</q-w> fmt_bandwidth_t bandwidth;
+<a name="11"><q-n>     11  </q-n></a>    <q-w>bit</q-w> [9:0] length;
+<a name="12"><q-n>     12  </q-n></a>    <q-w>bit</q-w> [31:0] data[];
+<a name="13"><q-n>     13  </q-n></a>    <q-w>bit</q-w> [1:0] ch_id;
+<a name="14"><q-n>     14  </q-n></a>    <q-w>bit</q-w> rsp;
+<a name="15"><q-n>     15  </q-n></a>    <q-w>constraint</q-w> cstr{
+<a name="16"><q-n>     16  </q-n></a>      soft fifo == MED_FIFO;
+<a name="17"><q-n>     17  </q-n></a>      soft bandwidth == MED_WIDTH;
+<a name="18"><q-n>     18  </q-n></a>    };
+<a name="19"><q-n>     19  </q-n></a>    <q-w>function</q-w> fmt_trans clone();
+<a name="20"><q-n>     20  </q-n></a>      fmt_trans c = <q-w>new</q-w>();
+<a name="21"><q-n>     21  </q-n></a>      c.fifo = <q-w>this</q-w>.fifo;
+<a name="22"><q-n>     22  </q-n></a>      c.bandwidth = <q-w>this</q-w>.bandwidth;
+<a name="23"><q-n>     23  </q-n></a>      c.length = <q-w>this</q-w>.length;
+<a name="24"><q-n>     24  </q-n></a>      c.data = <q-w>this</q-w>.data;
+<a name="25"><q-n>     25  </q-n></a>      c.ch_id = <q-w>this</q-w>.ch_id;
+<a name="26"><q-n>     26  </q-n></a>      c.rsp = <q-w>this</q-w>.rsp;
+<a name="27"><q-n>     27  </q-n></a>      <q-w>return</q-w> c;
+<a name="28"><q-n>     28  </q-n></a>    <q-w>endfunction</q-w>
+<a name="29"><q-n>     29  </q-n></a>
+<a name="30"><q-n>     30  </q-n></a>    <q-w>function</q-w> <q-w>string</q-w> sprint();
+<a name="31"><q-n>     31  </q-n></a>      <q-w>string</q-w> s;
+<a name="32"><q-n>     32  </q-n></a>      s = {s, $sformatf(<q-l>"=======================================\n"</q-l>)};
+<a name="33"><q-n>     33  </q-n></a>      s = {s, $sformatf(<q-l>"fmt_trans object content is as below: \n"</q-l>)};
+<a name="34"><q-n>     34  </q-n></a>      s = {s, $sformatf(<q-l>"fifo = %s: \n"</q-l>, <q-w>this</q-w>.fifo)};
+<a name="35"><q-n>     35  </q-n></a>      s = {s, $sformatf(<q-l>"bandwidth = %s: \n"</q-l>, <q-w>this</q-w>.bandwidth)};
+<a name="36"><q-n>     36  </q-n></a>      s = {s, $sformatf(<q-l>"length = %s: \n"</q-l>, <q-w>this</q-w>.length)};
+<a name="37"><q-n>     37  </q-n></a>      <q-w>foreach</q-w>(data[i]) s = {s, $sformatf(<q-l>"data[%0d] = %8x \n"</q-l>, i, <q-w>this</q-w>.data[i])};
+<a name="38"><q-n>     38  </q-n></a>      s = {s, $sformatf(<q-l>"ch_id = %0d: \n"</q-l>, <q-w>this</q-w>.ch_id)};
+<a name="39"><q-n>     39  </q-n></a>      s = {s, $sformatf(<q-l>"rsp = %0d: \n"</q-l>, <q-w>this</q-w>.rsp)};
+<a name="40"><q-n>     40  </q-n></a>      s = {s, $sformatf(<q-l>"=======================================\n"</q-l>)};
+<a name="41"><q-n>     41  </q-n></a>      <q-w>return</q-w> s;
+<a name="42"><q-n>     42  </q-n></a>    <q-w>endfunction</q-w>
+<a name="43"><q-n>     43  </q-n></a>
+<a name="44"><q-n>     44  </q-n></a>    <q-w>function</q-w> <q-w>bit</q-w> compare(fmt_trans t);
+<a name="45"><q-n>     45  </q-n></a>      <q-w>string</q-w> s;
+<a name="46"><q-n>     46  </q-n></a>      compare = 1;
+<a name="47"><q-n>     47  </q-n></a>      s = <q-l>"\n=======================================\n"</q-l>;
+<a name="48"><q-n>     48  </q-n></a>      s = {s, $sformatf(<q-l>"COMPARING fmt_trans object at time %0d \n"</q-l>, $<q-w>time</q-w>)};
+<a name="49"><q-n>     49  </q-n></a>      <q-w>if</q-w>(<q-w>this</q-w>.length != t.length) <q-w>begin</q-w>
+<a name="50"><q-n>     50  </q-n></a>        compare = 0;
+<a name="51"><q-n>     51  </q-n></a>        s = {s, $sformatf(<q-l>"sobj length %0d != tobj length %0d \n"</q-l>, <q-w>this</q-w>.length, t.length)};
+<a name="52"><q-n>     52  </q-n></a>      <q-w>end</q-w>
+<a name="53"><q-n>     53  </q-n></a>      <q-w>if</q-w>(<q-w>this</q-w>.ch_id != t.ch_id) <q-w>begin</q-w>
+<a name="54"><q-n>     54  </q-n></a>        compare = 0;
+<a name="55"><q-n>     55  </q-n></a>        s = {s, $sformatf(<q-l>"sobj ch_id %0d != tobj ch_id %0d\n"</q-l>, <q-w>this</q-w>.ch_id, t.ch_id)};
+<a name="56"><q-n>     56  </q-n></a>      <q-w>end</q-w>
+<a name="57"><q-n>     57  </q-n></a>      <q-w>foreach</q-w>(<q-w>this</q-w>.data[i]) <q-w>begin</q-w>
+<a name="58"><q-n>     58  </q-n></a>        <q-w>if</q-w>(<q-w>this</q-w>.data[i] != t.data[i]) <q-w>begin</q-w>
+<a name="59"><q-n>     59  </q-n></a>          compare = 0;
+<a name="60"><q-n>     60  </q-n></a>          s = {s, $sformatf(<q-l>"sobj data[%0d] %8x != tobj data[%0d] %8x\n"</q-l>, i, <q-w>this</q-w>.data[i], i, t.data[i])};
+<a name="61"><q-n>     61  </q-n></a>        <q-w>end</q-w>
+<a name="62"><q-n>     62  </q-n></a>      <q-w>end</q-w>
+<a name="63"><q-n>     63  </q-n></a>      <q-w>if</q-w>(compare == 1) s = {s, <q-l>"COMPARED SUCCESS!\n"</q-l>};
+<a name="64"><q-n>     64  </q-n></a>      <q-w>else</q-w>  s = {s, <q-l>"COMPARED FAILURE!\n"</q-l>};
+<a name="65"><q-n>     65  </q-n></a>      s = {s, <q-l>"=======================================\n"</q-l>};
+<a name="66"><q-n>     66  </q-n></a>      rpt_pkg::rpt_msg(<q-l>"[CMPOBJ]"</q-l>, s, rpt_pkg::INFO, rpt_pkg::MEDIUM);
+<a name="67"><q-n>     67  </q-n></a>    <q-w>endfunction</q-w>
+<a name="68"><q-n>     68  </q-n></a>  <q-w>endclass</q-w>
+<a name="69"><q-n>     69  </q-n></a>
+<a name="70"><q-n>     70  </q-n></a>  <q-w>class</q-w> fmt_driver;
+<a name="71"><q-n>     71  </q-n></a>    <q-w>local</q-w> <q-w>string</q-w> name;
+<a name="72"><q-n>     72  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> fmt_intf intf;
+<a name="73"><q-n>     73  </q-n></a>    mailbox #(fmt_trans) req_mb;
+<a name="74"><q-n>     74  </q-n></a>    mailbox #(fmt_trans) rsp_mb;
+<a name="75"><q-n>     75  </q-n></a>
+<a name="76"><q-n>     76  </q-n></a>    <q-w>local</q-w> mailbox #(<q-w>bit</q-w>[31:0]) fifo;
+<a name="77"><q-n>     77  </q-n></a>    <q-w>local</q-w> <q-w>int</q-w> fifo_bound;
+<a name="78"><q-n>     78  </q-n></a>    <q-w>local</q-w> <q-w>int</q-w> data_consum_peroid;
+<a name="79"><q-n>     79  </q-n></a>
+<a name="80"><q-n>     80  </q-n></a>  
+<a name="81"><q-n>     81  </q-n></a>    <q-w>function</q-w> <q-w>new</q-w>(<q-w>string</q-w> name = <q-l>"fmt_driver"</q-l>);
+<a name="82"><q-n>     82  </q-n></a>      <q-w>this</q-w>.name = name;
+<a name="83"><q-n>     83  </q-n></a>      <q-w>this</q-w>.fifo = <q-w>new</q-w>();
+<a name="84"><q-n>     84  </q-n></a>      <q-w>this</q-w>.fifo_bound = 4096;
+<a name="85"><q-n>     85  </q-n></a>      <q-w>this</q-w>.data_consum_peroid = 1;
+<a name="86"><q-n>     86  </q-n></a>    <q-w>endfunction</q-w>
+<a name="87"><q-n>     87  </q-n></a>  
+<a name="88"><q-n>     88  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> set_interface(<q-w>virtual</q-w> fmt_intf intf);
+<a name="89"><q-n>     89  </q-n></a>      <q-w>if</q-w>(intf == <q-w>null</q-w>)
+<a name="90"><q-n>     90  </q-n></a>        $<q-v>error</q-w>(<q-l>"interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="91"><q-n>     91  </q-n></a>      <q-w>else</q-w>
+<a name="92"><q-n>     92  </q-n></a>        <q-w>this</q-w>.intf = intf;
+<a name="93"><q-n>     93  </q-n></a>    <q-w>endfunction</q-w>
+<a name="94"><q-n>     94  </q-n></a>
+<a name="95"><q-n>     95  </q-n></a>    <q-w>task</q-w> run();
+<a name="96"><q-n>     96  </q-n></a>      <q-w>fork</q-w>
+<a name="97"><q-n>     97  </q-n></a>        <q-w>this</q-w>.do_receive();
+<a name="98"><q-n>     98  </q-n></a>        <q-w>this</q-w>.do_consume();
+<a name="99"><q-n>     99  </q-n></a>        <q-w>this</q-w>.do_config();
+<a name="100"><q-n>     100  </q-n></a>        <q-w>this</q-w>.do_reset();
+<a name="101"><q-n>     101  </q-n></a>      <q-w>join</q-w>
+<a name="102"><q-n>     102  </q-n></a>    <q-w>endtask</q-w>
+<a name="103"><q-n>     103  </q-n></a>
+<a name="104"><q-n>     104  </q-n></a>    <q-w>task</q-w> do_config();
+<a name="105"><q-n>     105  </q-n></a>      fmt_trans req, rsp;
+<a name="106"><q-n>     106  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="107"><q-n>     107  </q-n></a>        <q-w>this</q-w>.req_mb.get(req);
+<a name="108"><q-n>     108  </q-n></a>        <q-w>case</q-w>(req.fifo)
+<a name="109"><q-n>     109  </q-n></a>          SHORT_FIFO: <q-w>this</q-w>.fifo_bound = 64;
+<a name="110"><q-n>     110  </q-n></a>          MED_FIFO: <q-w>this</q-w>.fifo_bound = 256;
+<a name="111"><q-n>     111  </q-n></a>          LONG_FIFO: <q-w>this</q-w>.fifo_bound = 512;
+<a name="112"><q-n>     112  </q-n></a>          ULTRA_FIFO: <q-w>this</q-w>.fifo_bound = 2048;
+<a name="113"><q-n>     113  </q-n></a>        <q-w>endcase</q-w>
+<a name="114"><q-n>     114  </q-n></a>        <q-w>this</q-w>.fifo = <q-w>new</q-w>(<q-w>this</q-w>.fifo_bound);
+<a name="115"><q-n>     115  </q-n></a>        <q-w>case</q-w>(req.bandwidth)
+<a name="116"><q-n>     116  </q-n></a>          LOW_WIDTH: <q-w>this</q-w>.data_consum_peroid = 8;
+<a name="117"><q-n>     117  </q-n></a>          MED_WIDTH: <q-w>this</q-w>.data_consum_peroid = 4;
+<a name="118"><q-n>     118  </q-n></a>          HIGH_WIDTH: <q-w>this</q-w>.data_consum_peroid = 2;
+<a name="119"><q-n>     119  </q-n></a>          ULTRA_WIDTH: <q-w>this</q-w>.data_consum_peroid = 1;
+<a name="120"><q-n>     120  </q-n></a>        <q-w>endcase</q-w>
+<a name="121"><q-n>     121  </q-n></a>        rsp = req.clone();
+<a name="122"><q-n>     122  </q-n></a>        rsp.rsp = 1;
+<a name="123"><q-n>     123  </q-n></a>        <q-w>this</q-w>.rsp_mb.put(rsp);
+<a name="124"><q-n>     124  </q-n></a>      <q-w>end</q-w>
+<a name="125"><q-n>     125  </q-n></a>    <q-w>endtask</q-w>
+<a name="126"><q-n>     126  </q-n></a>
+<a name="127"><q-n>     127  </q-n></a>    <q-w>task</q-w> do_reset();
+<a name="128"><q-n>     128  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="129"><q-n>     129  </q-n></a>        @(<q-a>negedge</q-w> intf.rstn) 
+<a name="130"><q-n>     130  </q-n></a>        intf.fmt_grant &lt;= 0;
+<a name="131"><q-n>     131  </q-n></a>      <q-w>end</q-w>
+<a name="132"><q-n>     132  </q-n></a>    <q-w>endtask</q-w>
+<a name="133"><q-n>     133  </q-n></a>
+<a name="134"><q-n>     134  </q-n></a>    <q-w>task</q-w> do_receive();
+<a name="135"><q-n>     135  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="136"><q-n>     136  </q-n></a>        @(<q-a>posedge</q-w> intf.fmt_req);
+<a name="137"><q-n>     137  </q-n></a>        <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="138"><q-n>     138  </q-n></a>          @(<q-a>posedge</q-w> intf.clk);
+<a name="139"><q-n>     139  </q-n></a>          <q-w>if</q-w>((<q-w>this</q-w>.fifo_bound-<q-w>this</q-w>.fifo.num()) &gt;= intf.fmt_length)
+<a name="140"><q-n>     140  </q-n></a>            <q-w>break</q-w>;
+<a name="141"><q-n>     141  </q-n></a>        <q-w>end</q-w>
+<a name="142"><q-n>     142  </q-n></a>        intf.drv_ck.fmt_grant &lt;= 1;
+<a name="143"><q-n>     143  </q-n></a>        @(<q-a>posedge</q-w> intf.fmt_start);
+<a name="144"><q-n>     144  </q-n></a>        <q-w>fork</q-w>
+<a name="145"><q-n>     145  </q-n></a>          <q-w>begin</q-w>
+<a name="146"><q-n>     146  </q-n></a>            @(<q-a>posedge</q-w> intf.clk);
+<a name="147"><q-n>     147  </q-n></a>            intf.drv_ck.fmt_grant &lt;= 0;
+<a name="148"><q-n>     148  </q-n></a>          <q-w>end</q-w>
+<a name="149"><q-n>     149  </q-n></a>        <q-w>join_none</q-w>
+<a name="150"><q-n>     150  </q-n></a>        <q-w>repeat</q-w>(intf.fmt_length) <q-w>begin</q-w>
+<a name="151"><q-n>     151  </q-n></a>          @(<q-a>negedge</q-w> intf.clk);
+<a name="152"><q-n>     152  </q-n></a>          <q-w>this</q-w>.fifo.put(intf.fmt_data);
+<a name="153"><q-n>     153  </q-n></a>        <q-w>end</q-w>
+<a name="154"><q-n>     154  </q-n></a>      <q-w>end</q-w>
+<a name="155"><q-n>     155  </q-n></a>    <q-w>endtask</q-w>
+<a name="156"><q-n>     156  </q-n></a>
+<a name="157"><q-n>     157  </q-n></a>    <q-w>task</q-w> do_consume();
+<a name="158"><q-n>     158  </q-n></a>      <q-w>bit</q-w>[31:0] data;
+<a name="159"><q-n>     159  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="160"><q-n>     160  </q-n></a>        <q-w>void</q-w>'(<q-w>this</q-w>.fifo.try_get(data));
+<a name="161"><q-n>     161  </q-n></a>        <q-w>repeat</q-w>($urandom_range(1, <q-w>this</q-w>.data_consum_peroid)) @(<q-a>posedge</q-w> intf.clk);
+<a name="162"><q-n>     162  </q-n></a>      <q-w>end</q-w>
+<a name="163"><q-n>     163  </q-n></a>    <q-w>endtask</q-w>
+<a name="164"><q-n>     164  </q-n></a>  <q-w>endclass</q-w>
+<a name="165"><q-n>     165  </q-n></a>
+<a name="166"><q-n>     166  </q-n></a>  <q-w>class</q-w> fmt_generator;
+<a name="167"><q-n>     167  </q-n></a>    <q-w>rand</q-w> fmt_fifo_t fifo = MED_FIFO;
+<a name="168"><q-n>     168  </q-n></a>    <q-w>rand</q-w> fmt_bandwidth_t bandwidth = MED_WIDTH;
+<a name="169"><q-n>     169  </q-n></a>
+<a name="170"><q-n>     170  </q-n></a>    mailbox #(fmt_trans) req_mb;
+<a name="171"><q-n>     171  </q-n></a>    mailbox #(fmt_trans) rsp_mb;
+<a name="172"><q-n>     172  </q-n></a>
+<a name="173"><q-n>     173  </q-n></a>    <q-w>constraint</q-w> cstr{
+<a name="174"><q-n>     174  </q-n></a>      soft fifo == MED_FIFO;
+<a name="175"><q-n>     175  </q-n></a>      soft bandwidth == MED_WIDTH;
+<a name="176"><q-n>     176  </q-n></a>    }
+<a name="177"><q-n>     177  </q-n></a>
+<a name="178"><q-n>     178  </q-n></a>    <q-w>function</q-w> <q-w>new</q-w>();
+<a name="179"><q-n>     179  </q-n></a>      <q-w>this</q-w>.req_mb = <q-w>new</q-w>();
+<a name="180"><q-n>     180  </q-n></a>      <q-w>this</q-w>.rsp_mb = <q-w>new</q-w>();
+<a name="181"><q-n>     181  </q-n></a>    <q-w>endfunction</q-w>
+<a name="182"><q-n>     182  </q-n></a>
+<a name="183"><q-n>     183  </q-n></a>    <q-w>task</q-w> start();
+<a name="184"><q-n>     184  </q-n></a>      send_trans();
+<a name="185"><q-n>     185  </q-n></a>    <q-w>endtask</q-w>
+<a name="186"><q-n>     186  </q-n></a>
+<a name="187"><q-n>     187  </q-n></a>    <q-m>// generate transaction and put into local mailbox</q-m>
+<a name="188"><q-n>     188  </q-n></a>    <q-w>task</q-w> send_trans();
+<a name="189"><q-n>     189  </q-n></a>      fmt_trans req, rsp;
+<a name="190"><q-n>     190  </q-n></a>      req = <q-w>new</q-w>();
+<a name="191"><q-n>     191  </q-n></a>      <q-w>assert</q-w>(req.randomize <q-w>with</q-w> {<q-w>local</q-w>::fifo != MED_FIFO -&gt; fifo == <q-w>local</q-w>::fifo; 
+<a name="192"><q-n>     192  </q-n></a>                                 <q-w>local</q-w>::bandwidth != MED_WIDTH -&gt; bandwidth == <q-w>local</q-w>::bandwidth;
+<a name="193"><q-n>     193  </q-n></a>                               })
+<a name="194"><q-n>     194  </q-n></a>        <q-w>else</q-w> $fatal(<q-l>"[RNDFAIL] formatter packet randomization failure!"</q-l>);
+<a name="195"><q-n>     195  </q-n></a>      $display(req.sprint());
+<a name="196"><q-n>     196  </q-n></a>      <q-w>this</q-w>.req_mb.put(req);
+<a name="197"><q-n>     197  </q-n></a>      <q-w>this</q-w>.rsp_mb.get(rsp);
+<a name="198"><q-n>     198  </q-n></a>      $display(rsp.sprint());
+<a name="199"><q-n>     199  </q-n></a>      <q-w>assert</q-w>(rsp.rsp)
+<a name="200"><q-n>     200  </q-n></a>        <q-w>else</q-w> $<q-v>error</q-w>(<q-l>"[RSPERR] %0t error response received!"</q-l>, $<q-w>time</q-w>);
+<a name="201"><q-n>     201  </q-n></a>    <q-w>endtask</q-w>
+<a name="202"><q-n>     202  </q-n></a>
+<a name="203"><q-n>     203  </q-n></a>    <q-w>function</q-w> <q-w>string</q-w> sprint();
+<a name="204"><q-n>     204  </q-n></a>      <q-w>string</q-w> s;
+<a name="205"><q-n>     205  </q-n></a>      s = {s, $sformatf(<q-l>"=======================================\n"</q-l>)};
+<a name="206"><q-n>     206  </q-n></a>      s = {s, $sformatf(<q-l>"fmt_generator object content is as below: \n"</q-l>)};
+<a name="207"><q-n>     207  </q-n></a>      s = {s, $sformatf(<q-l>"fifo = %s: \n"</q-l>, <q-w>this</q-w>.fifo)};
+<a name="208"><q-n>     208  </q-n></a>      s = {s, $sformatf(<q-l>"bandwidth = %s: \n"</q-l>, <q-w>this</q-w>.bandwidth)};
+<a name="209"><q-n>     209  </q-n></a>      s = {s, $sformatf(<q-l>"=======================================\n"</q-l>)};
+<a name="210"><q-n>     210  </q-n></a>      <q-w>return</q-w> s;
+<a name="211"><q-n>     211  </q-n></a>    <q-w>endfunction</q-w>
+<a name="212"><q-n>     212  </q-n></a>
+<a name="213"><q-n>     213  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> post_randomize();
+<a name="214"><q-n>     214  </q-n></a>      <q-w>string</q-w> s;
+<a name="215"><q-n>     215  </q-n></a>      s = {<q-l>"AFTER RANDOMIZATION \n"</q-l>, <q-w>this</q-w>.sprint()};
+<a name="216"><q-n>     216  </q-n></a>      $display(s);
+<a name="217"><q-n>     217  </q-n></a>    <q-w>endfunction</q-w>
+<a name="218"><q-n>     218  </q-n></a>
+<a name="219"><q-n>     219  </q-n></a>  <q-w>endclass</q-w>
+<a name="220"><q-n>     220  </q-n></a>
+<a name="221"><q-n>     221  </q-n></a>  <q-w>class</q-w> fmt_monitor;
+<a name="222"><q-n>     222  </q-n></a>    <q-w>local</q-w> <q-w>string</q-w> name;
+<a name="223"><q-n>     223  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> fmt_intf intf;
+<a name="224"><q-n>     224  </q-n></a>    mailbox #(fmt_trans) mon_mb;
+<a name="225"><q-n>     225  </q-n></a>    <q-w>function</q-w> <q-w>new</q-w>(<q-w>string</q-w> name=<q-l>"fmt_monitor"</q-l>);
+<a name="226"><q-n>     226  </q-n></a>      <q-w>this</q-w>.name = name;
+<a name="227"><q-n>     227  </q-n></a>    <q-w>endfunction</q-w>
+<a name="228"><q-n>     228  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> set_interface(<q-w>virtual</q-w> fmt_intf intf);
+<a name="229"><q-n>     229  </q-n></a>      <q-w>if</q-w>(intf == <q-w>null</q-w>)
+<a name="230"><q-n>     230  </q-n></a>        $<q-v>error</q-w>(<q-l>"interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="231"><q-n>     231  </q-n></a>      <q-w>else</q-w>
+<a name="232"><q-n>     232  </q-n></a>        <q-w>this</q-w>.intf = intf;
+<a name="233"><q-n>     233  </q-n></a>    <q-w>endfunction</q-w>
+<a name="234"><q-n>     234  </q-n></a>
+<a name="235"><q-n>     235  </q-n></a>    <q-w>task</q-w> run();
+<a name="236"><q-n>     236  </q-n></a>      <q-w>this</q-w>.mon_trans();
+<a name="237"><q-n>     237  </q-n></a>    <q-w>endtask</q-w>
+<a name="238"><q-n>     238  </q-n></a>
+<a name="239"><q-n>     239  </q-n></a>    <q-w>task</q-w> mon_trans();
+<a name="240"><q-n>     240  </q-n></a>      fmt_trans m;
+<a name="241"><q-n>     241  </q-n></a>      <q-w>string</q-w> s;
+<a name="242"><q-n>     242  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="243"><q-n>     243  </q-n></a>        @(<q-a>posedge</q-w> intf.mon_ck.fmt_start);
+<a name="244"><q-n>     244  </q-n></a>        m = <q-w>new</q-w>();
+<a name="245"><q-n>     245  </q-n></a>        m.length = intf.mon_ck.fmt_length;
+<a name="246"><q-n>     246  </q-n></a>        m.ch_id = intf.mon_ck.fmt_chid;
+<a name="247"><q-n>     247  </q-n></a>        m.data = <q-w>new</q-w>[m.length];
+<a name="248"><q-n>     248  </q-n></a>        <q-w>foreach</q-w>(m.data[i]) <q-w>begin</q-w>
+<a name="249"><q-n>     249  </q-n></a>          @(<q-a>posedge</q-w> intf.clk);
+<a name="250"><q-n>     250  </q-n></a>          m.data[i] = intf.mon_ck.fmt_data;
+<a name="251"><q-n>     251  </q-n></a>        <q-w>end</q-w>
+<a name="252"><q-n>     252  </q-n></a>        mon_mb.put(m);
+<a name="253"><q-n>     253  </q-n></a>        s = $sformatf(<q-l>"=======================================\n"</q-l>);
+<a name="254"><q-n>     254  </q-n></a>        s = {s, $sformatf(<q-l>"%0t %s monitored a packet: \n"</q-l>, $<q-w>time</q-w>, <q-w>this</q-w>.name)};
+<a name="255"><q-n>     255  </q-n></a>        s = {s, $sformatf(<q-l>"length = %0d: \n"</q-l>, m.length)};
+<a name="256"><q-n>     256  </q-n></a>        s = {s, $sformatf(<q-l>"chid = %0d: \n"</q-l>, m.ch_id)};
+<a name="257"><q-n>     257  </q-n></a>        <q-w>foreach</q-w>(m.data[i]) s = {s, $sformatf(<q-l>"data[%0d] = %8x \n"</q-l>, i, m.data[i])};
+<a name="258"><q-n>     258  </q-n></a>        s = {s, $sformatf(<q-l>"=======================================\n"</q-l>)};
+<a name="259"><q-n>     259  </q-n></a>        $display(s);
+<a name="260"><q-n>     260  </q-n></a>      <q-w>end</q-w>
+<a name="261"><q-n>     261  </q-n></a>    <q-w>endtask</q-w>
+<a name="262"><q-n>     262  </q-n></a>  <q-w>endclass</q-w>
+<a name="263"><q-n>     263  </q-n></a>
+<a name="264"><q-n>     264  </q-n></a>  <q-w>class</q-w> fmt_agent;
+<a name="265"><q-n>     265  </q-n></a>    <q-w>local</q-w> <q-w>string</q-w> name;
+<a name="266"><q-n>     266  </q-n></a>    fmt_driver driver;
+<a name="267"><q-n>     267  </q-n></a>    fmt_monitor monitor;
+<a name="268"><q-n>     268  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> fmt_intf vif;
+<a name="269"><q-n>     269  </q-n></a>    <q-w>function</q-w> <q-w>new</q-w>(<q-w>string</q-w> name = <q-l>"fmt_agent"</q-l>);
+<a name="270"><q-n>     270  </q-n></a>      <q-w>this</q-w>.name = name;
+<a name="271"><q-n>     271  </q-n></a>      <q-w>this</q-w>.driver = <q-w>new</q-w>({name, <q-l>".driver"</q-l>});
+<a name="272"><q-n>     272  </q-n></a>      <q-w>this</q-w>.monitor = <q-w>new</q-w>({name, <q-l>".monitor"</q-l>});
+<a name="273"><q-n>     273  </q-n></a>    <q-w>endfunction</q-w>
+<a name="274"><q-n>     274  </q-n></a>
+<a name="275"><q-n>     275  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> set_interface(<q-w>virtual</q-w> fmt_intf vif);
+<a name="276"><q-n>     276  </q-n></a>      <q-w>this</q-w>.vif = vif;
+<a name="277"><q-n>     277  </q-n></a>      driver.set_interface(vif);
+<a name="278"><q-n>     278  </q-n></a>      monitor.set_interface(vif);
+<a name="279"><q-n>     279  </q-n></a>    <q-w>endfunction</q-w>
+<a name="280"><q-n>     280  </q-n></a>    <q-w>task</q-w> run();
+<a name="281"><q-n>     281  </q-n></a>      <q-w>fork</q-w>
+<a name="282"><q-n>     282  </q-n></a>        driver.run();
+<a name="283"><q-n>     283  </q-n></a>        monitor.run();
+<a name="284"><q-n>     284  </q-n></a>      <q-w>join</q-w>
+<a name="285"><q-n>     285  </q-n></a>    <q-w>endtask</q-w>
+<a name="286"><q-n>     286  </q-n></a>  <q-w>endclass</q-w>
+<a name="287"><q-n>     287  </q-n></a>
+<a name="288"><q-n>     288  </q-n></a><q-w>endpackage</q-w>
+</pre>
+</tt>
+
+  
+</body>
+</html>

@@ -1,0 +1,255 @@
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <title>Questa Coverage Report</title>
+  <link rel="StyleSheet" media="screen" href="../css/hdl2html.css"/>
+</head>
+<body id="hdl2html">
+  <tt>
+<pre>
+<a name="1"><q-n>     1  </q-n></a>`<q-i>include</q-w> <q-l>"param_def.v"</q-l>
+<a name="2"><q-n>     2  </q-n></a>
+<a name="3"><q-n>     3  </q-n></a><q-w>package</q-w> reg_pkg;
+<a name="4"><q-n>     4  </q-n></a>
+<a name="5"><q-n>     5  </q-n></a>  <q-w>class</q-w> reg_trans;
+<a name="6"><q-n>     6  </q-n></a>    <q-w>rand</q-w> <q-w>bit</q-w>[7:0] addr;
+<a name="7"><q-n>     7  </q-n></a>    <q-w>rand</q-w> <q-w>bit</q-w>[1:0] cmd;
+<a name="8"><q-n>     8  </q-n></a>    <q-w>rand</q-w> <q-w>bit</q-w>[31:0] data;
+<a name="9"><q-n>     9  </q-n></a>    <q-w>bit</q-w> rsp;
+<a name="10"><q-n>     10  </q-n></a>
+<a name="11"><q-n>     11  </q-n></a>    <q-w>constraint</q-w> cstr {
+<a name="12"><q-n>     12  </q-n></a>      soft cmd <q-w>inside</q-w> {`WRITE, `READ, `IDLE};
+<a name="13"><q-n>     13  </q-n></a>      soft addr <q-w>inside</q-w> {`SLV0_RW_ADDR, `SLV1_RW_ADDR, `SLV2_RW_ADDR, `SLV0_R_ADDR, `SLV1_R_ADDR, `SLV2_R_ADDR};
+<a name="14"><q-n>     14  </q-n></a>      addr[7:4]==0 &amp;&amp; cmd==`WRITE -&gt; soft data[31:6]==0;
+<a name="15"><q-n>     15  </q-n></a>      soft addr[7:5]==0;
+<a name="16"><q-n>     16  </q-n></a>      addr[4]==1 -&gt; soft cmd == `READ;
+<a name="17"><q-n>     17  </q-n></a>    };
+<a name="18"><q-n>     18  </q-n></a>
+<a name="19"><q-n>     19  </q-n></a>    <q-w>function</q-w> reg_trans clone();
+<a name="20"><q-n>     20  </q-n></a>      reg_trans c = <q-w>new</q-w>();
+<a name="21"><q-n>     21  </q-n></a>      c.addr = <q-w>this</q-w>.addr;
+<a name="22"><q-n>     22  </q-n></a>      c.cmd = <q-w>this</q-w>.cmd;
+<a name="23"><q-n>     23  </q-n></a>      c.data = <q-w>this</q-w>.data;
+<a name="24"><q-n>     24  </q-n></a>      c.rsp = <q-w>this</q-w>.rsp;
+<a name="25"><q-n>     25  </q-n></a>      <q-w>return</q-w> c;
+<a name="26"><q-n>     26  </q-n></a>    <q-w>endfunction</q-w>
+<a name="27"><q-n>     27  </q-n></a>
+<a name="28"><q-n>     28  </q-n></a>    <q-w>function</q-w> <q-w>string</q-w> sprint();
+<a name="29"><q-n>     29  </q-n></a>      <q-w>string</q-w> s;
+<a name="30"><q-n>     30  </q-n></a>      s = {s, $sformatf(<q-l>"=======================================\n"</q-l>)};
+<a name="31"><q-n>     31  </q-n></a>      s = {s, $sformatf(<q-l>"reg_trans object content is as below: \n"</q-l>)};
+<a name="32"><q-n>     32  </q-n></a>      s = {s, $sformatf(<q-l>"addr = %2x: \n"</q-l>, <q-w>this</q-w>.addr)};
+<a name="33"><q-n>     33  </q-n></a>      s = {s, $sformatf(<q-l>"cmd = %2b: \n"</q-l>, <q-w>this</q-w>.cmd)};
+<a name="34"><q-n>     34  </q-n></a>      s = {s, $sformatf(<q-l>"data = %8x: \n"</q-l>, <q-w>this</q-w>.data)};
+<a name="35"><q-n>     35  </q-n></a>      s = {s, $sformatf(<q-l>"rsp = %0d: \n"</q-l>, <q-w>this</q-w>.rsp)};
+<a name="36"><q-n>     36  </q-n></a>      s = {s, $sformatf(<q-l>"=======================================\n"</q-l>)};
+<a name="37"><q-n>     37  </q-n></a>      <q-w>return</q-w> s;
+<a name="38"><q-n>     38  </q-n></a>    <q-w>endfunction</q-w>
+<a name="39"><q-n>     39  </q-n></a>  <q-w>endclass</q-w>
+<a name="40"><q-n>     40  </q-n></a>
+<a name="41"><q-n>     41  </q-n></a>  <q-w>class</q-w> reg_driver;
+<a name="42"><q-n>     42  </q-n></a>    <q-w>local</q-w> <q-w>string</q-w> name;
+<a name="43"><q-n>     43  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> reg_intf intf;
+<a name="44"><q-n>     44  </q-n></a>    mailbox #(reg_trans) req_mb;
+<a name="45"><q-n>     45  </q-n></a>    mailbox #(reg_trans) rsp_mb;
+<a name="46"><q-n>     46  </q-n></a>
+<a name="47"><q-n>     47  </q-n></a>    <q-w>function</q-w> <q-w>new</q-w>(<q-w>string</q-w> name = <q-l>"reg_driver"</q-l>);
+<a name="48"><q-n>     48  </q-n></a>      <q-w>this</q-w>.name = name;
+<a name="49"><q-n>     49  </q-n></a>    <q-w>endfunction</q-w>
+<a name="50"><q-n>     50  </q-n></a>  
+<a name="51"><q-n>     51  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> set_interface(<q-w>virtual</q-w> reg_intf intf);
+<a name="52"><q-n>     52  </q-n></a>      <q-w>if</q-w>(intf == <q-w>null</q-w>)
+<a name="53"><q-n>     53  </q-n></a>        $<q-v>error</q-w>(<q-l>"interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="54"><q-n>     54  </q-n></a>      <q-w>else</q-w>
+<a name="55"><q-n>     55  </q-n></a>        <q-w>this</q-w>.intf = intf;
+<a name="56"><q-n>     56  </q-n></a>    <q-w>endfunction</q-w>
+<a name="57"><q-n>     57  </q-n></a>
+<a name="58"><q-n>     58  </q-n></a>    <q-w>task</q-w> run();
+<a name="59"><q-n>     59  </q-n></a>      <q-w>fork</q-w>
+<a name="60"><q-n>     60  </q-n></a>        <q-w>this</q-w>.do_drive();
+<a name="61"><q-n>     61  </q-n></a>        <q-w>this</q-w>.do_reset();
+<a name="62"><q-n>     62  </q-n></a>      <q-w>join</q-w>
+<a name="63"><q-n>     63  </q-n></a>    <q-w>endtask</q-w>
+<a name="64"><q-n>     64  </q-n></a>
+<a name="65"><q-n>     65  </q-n></a>    <q-w>task</q-w> do_reset();
+<a name="66"><q-n>     66  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="67"><q-n>     67  </q-n></a>        @(<q-a>negedge</q-w> intf.rstn);
+<a name="68"><q-n>     68  </q-n></a>        intf.cmd_addr &lt;= 0;
+<a name="69"><q-n>     69  </q-n></a>        intf.cmd &lt;= `IDLE;
+<a name="70"><q-n>     70  </q-n></a>        intf.cmd_data_m2s &lt;= 0;
+<a name="71"><q-n>     71  </q-n></a>      <q-w>end</q-w>
+<a name="72"><q-n>     72  </q-n></a>    <q-w>endtask</q-w>
+<a name="73"><q-n>     73  </q-n></a>
+<a name="74"><q-n>     74  </q-n></a>    <q-w>task</q-w> do_drive();
+<a name="75"><q-n>     75  </q-n></a>      reg_trans req, rsp;
+<a name="76"><q-n>     76  </q-n></a>      @(<q-a>posedge</q-w> intf.rstn);
+<a name="77"><q-n>     77  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="78"><q-n>     78  </q-n></a>        <q-w>this</q-w>.req_mb.get(req);
+<a name="79"><q-n>     79  </q-n></a>        <q-w>this</q-w>.reg_write(req);
+<a name="80"><q-n>     80  </q-n></a>        rsp = req.clone();
+<a name="81"><q-n>     81  </q-n></a>        rsp.rsp = 1;
+<a name="82"><q-n>     82  </q-n></a>        <q-w>this</q-w>.rsp_mb.put(rsp);
+<a name="83"><q-n>     83  </q-n></a>      <q-w>end</q-w>
+<a name="84"><q-n>     84  </q-n></a>    <q-w>endtask</q-w>
+<a name="85"><q-n>     85  </q-n></a>  
+<a name="86"><q-n>     86  </q-n></a>    <q-w>task</q-w> reg_write(reg_trans t);
+<a name="87"><q-n>     87  </q-n></a>      @(<q-a>posedge</q-w> intf.clk <q-w>iff</q-w> intf.rstn);
+<a name="88"><q-n>     88  </q-n></a>      <q-w>case</q-w>(t.cmd)
+<a name="89"><q-n>     89  </q-n></a>        `WRITE: <q-w>begin</q-w> 
+<a name="90"><q-n>     90  </q-n></a>                  intf.drv_ck.cmd_addr &lt;= t.addr; 
+<a name="91"><q-n>     91  </q-n></a>                  intf.drv_ck.cmd &lt;= t.cmd; 
+<a name="92"><q-n>     92  </q-n></a>                  intf.drv_ck.cmd_data_m2s &lt;= t.data; 
+<a name="93"><q-n>     93  </q-n></a>                <q-w>end</q-w>
+<a name="94"><q-n>     94  </q-n></a>        `READ:  <q-w>begin</q-w> 
+<a name="95"><q-n>     95  </q-n></a>                  intf.drv_ck.cmd_addr &lt;= t.addr; 
+<a name="96"><q-n>     96  </q-n></a>                  intf.drv_ck.cmd &lt;= t.cmd; 
+<a name="97"><q-n>     97  </q-n></a>                  <q-w>repeat</q-w>(2) @(<q-a>negedge</q-w> intf.clk);
+<a name="98"><q-n>     98  </q-n></a>                  t.data = intf.cmd_data_s2m; 
+<a name="99"><q-n>     99  </q-n></a>                <q-w>end</q-w>
+<a name="100"><q-n>     100  </q-n></a>        `IDLE:  <q-w>begin</q-w> 
+<a name="101"><q-n>     101  </q-n></a>                  <q-w>this</q-w>.reg_idle(); 
+<a name="102"><q-n>     102  </q-n></a>                <q-w>end</q-w>
+<a name="103"><q-n>     103  </q-n></a>        <q-w>default</q-w>: $<q-v>error</q-w>(<q-l>"command %b is illegal"</q-l>, t.cmd);
+<a name="104"><q-n>     104  </q-n></a>      <q-w>endcase</q-w>
+<a name="105"><q-n>     105  </q-n></a>      $display(<q-l>"%0t reg driver [%s] sent addr %2x, cmd %2b, data %8x"</q-l>, $<q-w>time</q-w>, name, t.addr, t.cmd, t.data);
+<a name="106"><q-n>     106  </q-n></a>    <q-w>endtask</q-w>
+<a name="107"><q-n>     107  </q-n></a>    
+<a name="108"><q-n>     108  </q-n></a>    <q-w>task</q-w> reg_idle();
+<a name="109"><q-n>     109  </q-n></a>      @(<q-a>posedge</q-w> intf.clk);
+<a name="110"><q-n>     110  </q-n></a>      intf.drv_ck.cmd_addr &lt;= 0;
+<a name="111"><q-n>     111  </q-n></a>      intf.drv_ck.cmd &lt;= `IDLE;
+<a name="112"><q-n>     112  </q-n></a>      intf.drv_ck.cmd_data_m2s &lt;= 0;
+<a name="113"><q-n>     113  </q-n></a>    <q-w>endtask</q-w>
+<a name="114"><q-n>     114  </q-n></a>  <q-w>endclass</q-w>
+<a name="115"><q-n>     115  </q-n></a>
+<a name="116"><q-n>     116  </q-n></a>  <q-w>class</q-w> reg_generator;
+<a name="117"><q-n>     117  </q-n></a>    <q-w>rand</q-w> <q-w>bit</q-w>[7:0] addr = -1;
+<a name="118"><q-n>     118  </q-n></a>    <q-w>rand</q-w> <q-w>bit</q-w>[1:0] cmd = -1;
+<a name="119"><q-n>     119  </q-n></a>    <q-w>rand</q-w> <q-w>bit</q-w>[31:0] data = -1;
+<a name="120"><q-n>     120  </q-n></a>
+<a name="121"><q-n>     121  </q-n></a>    mailbox #(reg_trans) req_mb;
+<a name="122"><q-n>     122  </q-n></a>    mailbox #(reg_trans) rsp_mb;
+<a name="123"><q-n>     123  </q-n></a>
+<a name="124"><q-n>     124  </q-n></a>    reg_trans reg_req[$];
+<a name="125"><q-n>     125  </q-n></a>
+<a name="126"><q-n>     126  </q-n></a>    <q-w>constraint</q-w> cstr{
+<a name="127"><q-n>     127  </q-n></a>      soft addr == -1;
+<a name="128"><q-n>     128  </q-n></a>      soft cmd == -1;
+<a name="129"><q-n>     129  </q-n></a>      soft data == -1;
+<a name="130"><q-n>     130  </q-n></a>    }
+<a name="131"><q-n>     131  </q-n></a>
+<a name="132"><q-n>     132  </q-n></a>    <q-w>function</q-w> <q-w>new</q-w>();
+<a name="133"><q-n>     133  </q-n></a>      <q-w>this</q-w>.req_mb = <q-w>new</q-w>();
+<a name="134"><q-n>     134  </q-n></a>      <q-w>this</q-w>.rsp_mb = <q-w>new</q-w>();
+<a name="135"><q-n>     135  </q-n></a>    <q-w>endfunction</q-w>
+<a name="136"><q-n>     136  </q-n></a>
+<a name="137"><q-n>     137  </q-n></a>    <q-w>task</q-w> start();
+<a name="138"><q-n>     138  </q-n></a>      send_trans();
+<a name="139"><q-n>     139  </q-n></a>    <q-w>endtask</q-w>
+<a name="140"><q-n>     140  </q-n></a>
+<a name="141"><q-n>     141  </q-n></a>    <q-m>// generate transaction and put into local mailbox</q-m>
+<a name="142"><q-n>     142  </q-n></a>    <q-w>task</q-w> send_trans();
+<a name="143"><q-n>     143  </q-n></a>      reg_trans req, rsp;
+<a name="144"><q-n>     144  </q-n></a>      req = <q-w>new</q-w>();
+<a name="145"><q-n>     145  </q-n></a>      <q-w>assert</q-w>(req.randomize <q-w>with</q-w> {<q-w>local</q-w>::addr &gt;= 0 -&gt; addr == <q-w>local</q-w>::addr;
+<a name="146"><q-n>     146  </q-n></a>                                 <q-w>local</q-w>::cmd &gt;= 0 -&gt; cmd == <q-w>local</q-w>::cmd;
+<a name="147"><q-n>     147  </q-n></a>                                 <q-w>local</q-w>::data &gt;= 0 -&gt; data == <q-w>local</q-w>::data;
+<a name="148"><q-n>     148  </q-n></a>                               })
+<a name="149"><q-n>     149  </q-n></a>        <q-w>else</q-w> $fatal(<q-l>"[RNDFAIL] register packet randomization failure!"</q-l>);
+<a name="150"><q-n>     150  </q-n></a>      $display(req.sprint());
+<a name="151"><q-n>     151  </q-n></a>      <q-w>this</q-w>.req_mb.put(req);
+<a name="152"><q-n>     152  </q-n></a>      <q-w>this</q-w>.rsp_mb.get(rsp);
+<a name="153"><q-n>     153  </q-n></a>      $display(rsp.sprint());
+<a name="154"><q-n>     154  </q-n></a>      <q-w>if</q-w>(req.cmd == `READ) 
+<a name="155"><q-n>     155  </q-n></a>        <q-w>this</q-w>.data = rsp.data;
+<a name="156"><q-n>     156  </q-n></a>      <q-w>assert</q-w>(rsp.rsp)
+<a name="157"><q-n>     157  </q-n></a>        <q-w>else</q-w> $<q-v>error</q-w>(<q-l>"[RSPERR] %0t error response received!"</q-l>, $<q-w>time</q-w>);
+<a name="158"><q-n>     158  </q-n></a>    <q-w>endtask</q-w>
+<a name="159"><q-n>     159  </q-n></a>
+<a name="160"><q-n>     160  </q-n></a>    <q-w>function</q-w> <q-w>string</q-w> sprint();
+<a name="161"><q-n>     161  </q-n></a>      <q-w>string</q-w> s;
+<a name="162"><q-n>     162  </q-n></a>      s = {s, $sformatf(<q-l>"=======================================\n"</q-l>)};
+<a name="163"><q-n>     163  </q-n></a>      s = {s, $sformatf(<q-l>"reg_generator object content is as below: \n"</q-l>)};
+<a name="164"><q-n>     164  </q-n></a>      s = {s, $sformatf(<q-l>"addr = %2x: \n"</q-l>, <q-w>this</q-w>.addr)};
+<a name="165"><q-n>     165  </q-n></a>      s = {s, $sformatf(<q-l>"cmd = %2b: \n"</q-l>, <q-w>this</q-w>.cmd)};
+<a name="166"><q-n>     166  </q-n></a>      s = {s, $sformatf(<q-l>"data = %8x: \n"</q-l>, <q-w>this</q-w>.data)};
+<a name="167"><q-n>     167  </q-n></a>      s = {s, $sformatf(<q-l>"=======================================\n"</q-l>)};
+<a name="168"><q-n>     168  </q-n></a>      <q-w>return</q-w> s;
+<a name="169"><q-n>     169  </q-n></a>    <q-w>endfunction</q-w>
+<a name="170"><q-n>     170  </q-n></a>
+<a name="171"><q-n>     171  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> post_randomize();
+<a name="172"><q-n>     172  </q-n></a>      <q-w>string</q-w> s;
+<a name="173"><q-n>     173  </q-n></a>      s = {<q-l>"AFTER RANDOMIZATION \n"</q-l>, <q-w>this</q-w>.sprint()};
+<a name="174"><q-n>     174  </q-n></a>      $display(s);
+<a name="175"><q-n>     175  </q-n></a>    <q-w>endfunction</q-w>
+<a name="176"><q-n>     176  </q-n></a>  <q-w>endclass</q-w>
+<a name="177"><q-n>     177  </q-n></a>
+<a name="178"><q-n>     178  </q-n></a>  <q-w>class</q-w> reg_monitor;
+<a name="179"><q-n>     179  </q-n></a>    <q-w>local</q-w> <q-w>string</q-w> name;
+<a name="180"><q-n>     180  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> reg_intf intf;
+<a name="181"><q-n>     181  </q-n></a>    mailbox #(reg_trans) mon_mb;
+<a name="182"><q-n>     182  </q-n></a>    <q-w>function</q-w> <q-w>new</q-w>(<q-w>string</q-w> name=<q-l>"reg_monitor"</q-l>);
+<a name="183"><q-n>     183  </q-n></a>      <q-w>this</q-w>.name = name;
+<a name="184"><q-n>     184  </q-n></a>    <q-w>endfunction</q-w>
+<a name="185"><q-n>     185  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> set_interface(<q-w>virtual</q-w> reg_intf intf);
+<a name="186"><q-n>     186  </q-n></a>      <q-w>if</q-w>(intf == <q-w>null</q-w>)
+<a name="187"><q-n>     187  </q-n></a>        $<q-v>error</q-w>(<q-l>"interface handle is NULL, please check if target interface has been intantiated"</q-l>);
+<a name="188"><q-n>     188  </q-n></a>      <q-w>else</q-w>
+<a name="189"><q-n>     189  </q-n></a>        <q-w>this</q-w>.intf = intf;
+<a name="190"><q-n>     190  </q-n></a>    <q-w>endfunction</q-w>
+<a name="191"><q-n>     191  </q-n></a>    <q-w>task</q-w> run();
+<a name="192"><q-n>     192  </q-n></a>      <q-w>this</q-w>.mon_trans();
+<a name="193"><q-n>     193  </q-n></a>    <q-w>endtask</q-w>
+<a name="194"><q-n>     194  </q-n></a>
+<a name="195"><q-n>     195  </q-n></a>    <q-w>task</q-w> mon_trans();
+<a name="196"><q-n>     196  </q-n></a>      reg_trans m;
+<a name="197"><q-n>     197  </q-n></a>      <q-w>forever</q-w> <q-w>begin</q-w>
+<a name="198"><q-n>     198  </q-n></a>        @(<q-a>posedge</q-w> intf.clk <q-w>iff</q-w> (intf.rstn &amp;&amp; intf.mon_ck.cmd != `IDLE));
+<a name="199"><q-n>     199  </q-n></a>        m = <q-w>new</q-w>();
+<a name="200"><q-n>     200  </q-n></a>        m.addr = intf.mon_ck.cmd_addr;
+<a name="201"><q-n>     201  </q-n></a>        m.cmd = intf.mon_ck.cmd;
+<a name="202"><q-n>     202  </q-n></a>        <q-w>if</q-w>(intf.mon_ck.cmd == `WRITE) <q-w>begin</q-w>
+<a name="203"><q-n>     203  </q-n></a>          m.data = intf.mon_ck.cmd_data_m2s;
+<a name="204"><q-n>     204  </q-n></a>        <q-w>end</q-w>
+<a name="205"><q-n>     205  </q-n></a>        <q-w>else</q-w> <q-w>if</q-w>(intf.mon_ck.cmd == `READ) <q-w>begin</q-w>
+<a name="206"><q-n>     206  </q-n></a>          @(<q-a>posedge</q-w> intf.clk);
+<a name="207"><q-n>     207  </q-n></a>          m.data = intf.mon_ck.cmd_data_s2m;
+<a name="208"><q-n>     208  </q-n></a>        <q-w>end</q-w>
+<a name="209"><q-n>     209  </q-n></a>        mon_mb.put(m);
+<a name="210"><q-n>     210  </q-n></a>        $display(<q-l>"%0t %s monitored addr %2x, cmd %2b, data %8x"</q-l>, $<q-w>time</q-w>, <q-w>this</q-w>.name, m.addr, m.cmd, m.data);
+<a name="211"><q-n>     211  </q-n></a>      <q-w>end</q-w>
+<a name="212"><q-n>     212  </q-n></a>    <q-w>endtask</q-w>
+<a name="213"><q-n>     213  </q-n></a>  <q-w>endclass</q-w>
+<a name="214"><q-n>     214  </q-n></a>
+<a name="215"><q-n>     215  </q-n></a>  <q-w>class</q-w> reg_agent;
+<a name="216"><q-n>     216  </q-n></a>    <q-w>local</q-w> <q-w>string</q-w> name;
+<a name="217"><q-n>     217  </q-n></a>    reg_driver driver;
+<a name="218"><q-n>     218  </q-n></a>    reg_monitor monitor;
+<a name="219"><q-n>     219  </q-n></a>    <q-w>local</q-w> <q-w>virtual</q-w> reg_intf vif;
+<a name="220"><q-n>     220  </q-n></a>    <q-w>function</q-w> <q-w>new</q-w>(<q-w>string</q-w> name = <q-l>"reg_agent"</q-l>);
+<a name="221"><q-n>     221  </q-n></a>      <q-w>this</q-w>.name = name;
+<a name="222"><q-n>     222  </q-n></a>      <q-w>this</q-w>.driver = <q-w>new</q-w>({name, <q-l>".driver"</q-l>});
+<a name="223"><q-n>     223  </q-n></a>      <q-w>this</q-w>.monitor = <q-w>new</q-w>({name, <q-l>".monitor"</q-l>});
+<a name="224"><q-n>     224  </q-n></a>    <q-w>endfunction</q-w>
+<a name="225"><q-n>     225  </q-n></a>
+<a name="226"><q-n>     226  </q-n></a>    <q-w>function</q-w> <q-w>void</q-w> set_interface(<q-w>virtual</q-w> reg_intf vif);
+<a name="227"><q-n>     227  </q-n></a>      <q-w>this</q-w>.vif = vif;
+<a name="228"><q-n>     228  </q-n></a>      driver.set_interface(vif);
+<a name="229"><q-n>     229  </q-n></a>      monitor.set_interface(vif);
+<a name="230"><q-n>     230  </q-n></a>    <q-w>endfunction</q-w>
+<a name="231"><q-n>     231  </q-n></a>    <q-w>task</q-w> run();
+<a name="232"><q-n>     232  </q-n></a>      <q-w>fork</q-w>
+<a name="233"><q-n>     233  </q-n></a>        driver.run();
+<a name="234"><q-n>     234  </q-n></a>        monitor.run();
+<a name="235"><q-n>     235  </q-n></a>      <q-w>join</q-w>
+<a name="236"><q-n>     236  </q-n></a>    <q-w>endtask</q-w>
+<a name="237"><q-n>     237  </q-n></a>  <q-w>endclass</q-w>
+<a name="238"><q-n>     238  </q-n></a>
+<a name="239"><q-n>     239  </q-n></a><q-w>endpackage</q-w>
+</pre>
+</tt>
+
+  
+</body>
+</html>

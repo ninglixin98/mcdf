@@ -1,0 +1,59 @@
+D:/Qsim/lab/lab1/tb4.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\lab1\tb4.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module chnl_initiator
+-- Compiling module tb4
+
+Top level modules:
+	tb4
+
+} {} {}} D:/Qsim/lab/lab1/tb4_ref.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab1/tb4_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module chnl_initiator
+-- Compiling module tb4_ref
+
+Top level modules:
+	tb4_ref
+
+} {} {}} D:/Qsim/lab/lab1/arbiter.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab1/arbiter.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module arbiter
+
+Top level modules:
+	arbiter
+
+} {} {}} D:/Qsim/lab/lab1/slave_fifo.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab1/slave_fifo.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module slave_fifo
+
+Top level modules:
+	slave_fifo
+
+} {} {}} D:/Qsim/lab/lab1/tb1.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab1/tb1.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module tb1
+
+Top level modules:
+	tb1
+
+} {} {}} D:/Qsim/lab/lab1/tb2.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab1/tb2.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module tb2
+
+Top level modules:
+	tb2
+
+} {} {}} D:/Qsim/lab/lab1/mcdt.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab1/mcdt.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module mcdt
+
+Top level modules:
+	mcdt
+
+} {} {}} D:/Qsim/lab/lab1/tb3.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab1/tb3.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module tb3
+
+Top level modules:
+	tb3
+
+} {} {}}

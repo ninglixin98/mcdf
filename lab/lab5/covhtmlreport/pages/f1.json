@@ -1,0 +1,52 @@
+var g_data = {
+f124:{
+scopes:[{link:'z.htm?f=0&s=124',val:'work.formater'}]
+,FSMs:[{dummy:0}
+,{anchor:'cvg985',items:[{c:'Y',p:'80.00',lnk:'__HDL_srcfile_9.htm#140',z:'c_state'}
+,{cr:'c',s:'1',z:'FMT_IDLE',h:'1',c:'g'}
+,{cr:'c',z:'FMT_IDLE -> FMT_REQ',h:'1',c:'g'}
+,{cr:'c',s:'1',z:'FMT_REQ',h:'1',c:'g'}
+,{cr:'c',z:'FMT_REQ -> FMT_WAIT_GRANT',h:'1',c:'g'}
+,{cr:'m',z:'FMT_REQ -> FMT_IDLE',h:'0',c:'r'}
+,{cr:'c',s:'1',z:'FMT_WAIT_GRANT',h:'1',c:'g'}
+,{cr:'c',z:'FMT_WAIT_GRANT -> FMT_START',h:'1',c:'g'}
+,{cr:'m',z:'FMT_WAIT_GRANT -> FMT_IDLE',h:'0',c:'r'}
+,{cr:'c',s:'1',z:'FMT_START',h:'1',c:'g'}
+,{cr:'c',z:'FMT_START -> FMT_SEND',h:'1',c:'g'}
+,{cr:'m',z:'FMT_START -> FMT_IDLE',h:'0',c:'r'}
+,{cr:'c',s:'1',z:'FMT_SEND',h:'1',c:'g'}
+,{cr:'c',z:'FMT_SEND -> FMT_END',h:'1',c:'g'}
+,{cr:'m',z:'FMT_SEND -> FMT_IDLE',h:'0',c:'r'}
+,{cr:'c',s:'1',z:'FMT_END',h:'1',c:'g'}
+,{cr:'c',z:'FMT_END -> FMT_IDLE',h:'1',c:'g'}
+]}
+
+],
+},
+f954:{
+scopes:[{s:'191',b:'1',val:'tb'},{s:'192',b:'1',val:'dut'},{link:'z.htm?f=0&s=954',val:'formater_inst'}]
+,FSMs:[{dummy:0}
+,{anchor:'cvg985',items:[{c:'Y',p:'80.00',lnk:'__HDL_srcfile_9.htm#140',z:'c_state'}
+,{cr:'c',s:'1',z:'FMT_IDLE',h:'1',c:'g'}
+,{cr:'c',z:'FMT_IDLE -> FMT_REQ',h:'1',c:'g'}
+,{cr:'c',s:'1',z:'FMT_REQ',h:'1',c:'g'}
+,{cr:'c',z:'FMT_REQ -> FMT_WAIT_GRANT',h:'1',c:'g'}
+,{cr:'m',z:'FMT_REQ -> FMT_IDLE',h:'0',c:'r'}
+,{cr:'c',s:'1',z:'FMT_WAIT_GRANT',h:'1',c:'g'}
+,{cr:'c',z:'FMT_WAIT_GRANT -> FMT_START',h:'1',c:'g'}
+,{cr:'m',z:'FMT_WAIT_GRANT -> FMT_IDLE',h:'0',c:'r'}
+,{cr:'c',s:'1',z:'FMT_START',h:'1',c:'g'}
+,{cr:'c',z:'FMT_START -> FMT_SEND',h:'1',c:'g'}
+,{cr:'m',z:'FMT_START -> FMT_IDLE',h:'0',c:'r'}
+,{cr:'c',s:'1',z:'FMT_SEND',h:'1',c:'g'}
+,{cr:'c',z:'FMT_SEND -> FMT_END',h:'1',c:'g'}
+,{cr:'m',z:'FMT_SEND -> FMT_IDLE',h:'0',c:'r'}
+,{cr:'c',s:'1',z:'FMT_END',h:'1',c:'g'}
+,{cr:'c',z:'FMT_END -> FMT_IDLE',h:'1',c:'g'}
+]}
+
+],
+},
+dummyEnd:0
+};
+processFsmData(g_data);

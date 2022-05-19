@@ -1,0 +1,11 @@
+D:/Qsim/lab/exercise/random_exer.sv {2 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\exercise\random_exer.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module tb
+** Warning: D:\Qsim\lab\exercise\random_exer.sv(17): (vlog-2244) Variable 'pkt' is implicitly static. You must either explicitly declare it as static or automatic
+or remove the initialization in the declaration of variable.
+** Warning: D:\Qsim\lab\exercise\random_exer.sv(11): (vlog-2240) Treating stand-alone use of function 'randomize' as an implicit VOID cast.
+
+Top level modules:
+	tb
+
+} {} {}}

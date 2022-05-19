@@ -1,0 +1,344 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Qsim/lab/exercise
+T_opt
+!s110 1642412105
+Vhl`=><0CYZaa55Hi]c1^K3
+04 3 4 work tb2 fast 0
+=1-bce92f6ecb36-61e53848-11b-5208
+o-quiet -auto_acc_if_foreign -work work
+Z1 tCvgOpt 0
+n@_opt
+OL;O;10.6c;65
+R0
+varbiter
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 WP:o[HjjD0dDYj[Z=L?U20
+IXf=kjAXI@7mMfokRlL@z63
+Z3 dD:/Qsim/lab/lab3
+Z4 w1639224651
+8D:/Qsim/lab/lab3/arbiter.v
+FD:/Qsim/lab/lab3/arbiter.v
+L0 5
+Z5 OL;L;10.6c;65
+Z6 !s108 1642515076.000000
+!s107 D:/Qsim/lab/lab3/arbiter.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|D:/Qsim/lab/lab3/arbiter.v|
+!i113 0
+Z7 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+Ychnl_intf
+Z8 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+R2
+r1
+!s85 0
+31
+!i10b 1
+!s100 VJ@7mZ:G_7:3NM>zIFbbU2
+ICY310KZcJKXUlUU:9jHo`1
+Z9 !s105 tb3_ref_sv_unit
+S1
+R3
+Z10 w1641473264
+Z11 8D:/Qsim/lab/lab3/tb3_ref.sv
+Z12 FD:/Qsim/lab/lab3/tb3_ref.sv
+L0 3
+R5
+R6
+Z13 !s107 D:/Qsim/lab/lab3/tb3_ref.sv|
+Z14 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/lab3/tb3_ref.sv|
+!i113 0
+Z15 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+Xchnl_pkg1
+Z16 !s115 chnl_intf
+R8
+Z17 !s110 1642515075
+!i10b 1
+!s100 GB2_N[5>E5=k3g=48Hk5e1
+Ia`DL_>XCKk7Hb=PnA325?2
+Va`DL_>XCKk7Hb=PnA325?2
+S1
+R3
+w1641964413
+8D:/Qsim/lab/lab3/chnl_pkg1.sv
+FD:/Qsim/lab/lab3/chnl_pkg1.sv
+L0 1
+R5
+r1
+!s85 0
+31
+Z18 !s108 1642515075.000000
+!s107 D:/Qsim/lab/lab3/chnl_pkg1.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/lab3/chnl_pkg1.sv|
+!i113 0
+R15
+R1
+Xchnl_pkg2
+R16
+R8
+R17
+!i10b 1
+!s100 Sco=MPP4H?JzjlOZb3m_M0
+IaElS^IGd@BzF0GjEQLQ[Y1
+VaElS^IGd@BzF0GjEQLQ[Y1
+S1
+R3
+w1642411002
+8D:/Qsim/lab/lab3/chnl_pkg2.sv
+FD:/Qsim/lab/lab3/chnl_pkg2.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R18
+!s107 D:/Qsim/lab/lab3/chnl_pkg2.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/lab3/chnl_pkg2.sv|
+!i113 0
+R15
+R1
+Xchnl_pkg3
+!s115 mcdt_intf
+R16
+R8
+VMAd=0:6B2ALQ3d@l5BbGL1
+r1
+!s85 0
+31
+!i10b 1
+!s100 kN::[_:Z542bNmbdXWf1R2
+IMAd=0:6B2ALQ3d@l5BbGL1
+S1
+R3
+w1641473265
+8D:/Qsim/lab/lab3/chnl_pkg3_ref.sv
+FD:/Qsim/lab/lab3/chnl_pkg3_ref.sv
+L0 1
+R5
+R6
+!s107 D:/Qsim/lab/lab3/chnl_pkg3_ref.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/lab3/chnl_pkg3_ref.sv|
+!i113 0
+R15
+R1
+vmcdt
+R2
+r1
+!s85 0
+31
+!i10b 1
+!s100 ;d:CKaUJN@kC@I0;XK=<V3
+IZ`UMaVnF_WI1:dPgd>`UV0
+R3
+R4
+8D:/Qsim/lab/lab3/mcdt.v
+FD:/Qsim/lab/lab3/mcdt.v
+L0 5
+R5
+R6
+!s107 D:/Qsim/lab/lab3/mcdt.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|D:/Qsim/lab/lab3/mcdt.v|
+!i113 0
+R7
+R1
+Ymcdt_intf
+R8
+R2
+r1
+!s85 0
+31
+!i10b 1
+!s100 J=]m^bbA4jc[gVT``8Jk@3
+I[?]ISeCaMmBYAU[4XJP5D3
+R9
+S1
+R3
+R10
+R11
+R12
+L0 19
+R5
+R6
+R13
+R14
+!i113 0
+R15
+R1
+vrepeat_tb1
+R8
+DXx4 work 19 repeat_test_sv_unit 0 22 EFV62Yd6eGben=Q`iL93m0
+R2
+r1
+!s85 0
+31
+!i10b 1
+!s100 n^XbZPzhcZXGj>3eRk;:`3
+INc^IGZhRo2g[O=B>Rb?C93
+!s105 repeat_test_sv_unit
+S1
+R3
+Z19 w1642070949
+Z20 8D:\Qsim\lab\lab3\repeat_test.sv
+Z21 FD:\Qsim\lab\lab3\repeat_test.sv
+L0 12
+R5
+Z22 !s108 1642070955.000000
+Z23 !s107 D:\Qsim\lab\lab3\repeat_test.sv|
+Z24 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:\Qsim\lab\lab3\repeat_test.sv|
+!i113 0
+R15
+R1
+Xrepeat_test_sv_unit
+R8
+VEFV62Yd6eGben=Q`iL93m0
+r1
+!s85 0
+31
+!i10b 1
+!s100 >FGmhjaNnBfT8OL07lklU1
+IEFV62Yd6eGben=Q`iL93m0
+!i103 1
+S1
+R3
+R19
+R20
+R21
+L0 1
+R5
+R22
+R23
+R24
+!i113 0
+R15
+R1
+vslave_fifo
+R2
+r1
+!s85 0
+31
+!i10b 1
+!s100 1LRmCDhOihg`i78`dJOe30
+IW:gN0ATF_bO0?jh<6[SU?0
+R3
+w1639224650
+8D:/Qsim/lab/lab3/slave_fifo.v
+FD:/Qsim/lab/lab3/slave_fifo.v
+L0 5
+R5
+R6
+!s107 D:/Qsim/lab/lab3/slave_fifo.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|D:/Qsim/lab/lab3/slave_fifo.v|
+!i113 0
+R7
+R1
+vtb1
+R8
+DXx4 work 9 chnl_pkg1 0 22 a`DL_>XCKk7Hb=PnA325?2
+Z25 !s110 1642515076
+!i10b 1
+!s100 YC]4_OHfXQO_Z:@Gh5T@C0
+Ic0cmi>YYK0>_al6GN68^B0
+R2
+!s105 tb1_sv_unit
+S1
+R3
+R10
+8D:/Qsim/lab/lab3/tb1.sv
+FD:/Qsim/lab/lab3/tb1.sv
+Z26 L0 15
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/Qsim/lab/lab3/tb1.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/lab3/tb1.sv|
+!i113 0
+R15
+R1
+vtb2
+R8
+DXx4 work 9 chnl_pkg2 0 22 aElS^IGd@BzF0GjEQLQ[Y1
+R25
+!i10b 1
+!s100 haozBND1BSJC1;a<0aE;^3
+I>9lo1QJITVd_gYUCQ@3GX0
+R2
+!s105 tb2_sv_unit
+S1
+R3
+R10
+8D:/Qsim/lab/lab3/tb2.sv
+FD:/Qsim/lab/lab3/tb2.sv
+R26
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/Qsim/lab/lab3/tb2.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/lab3/tb2.sv|
+!i113 0
+R15
+R1
+vtb3
+R8
+Z27 DXx4 work 9 chnl_pkg3 0 22 MAd=0:6B2ALQ3d@l5BbGL1
+R2
+r1
+!s85 0
+31
+!i10b 1
+!s100 5o=ZXh5kW9D8;cC4HE1n]2
+I_Bo=jIP5n25LGL^:TH>I:2
+!s105 tb3_sv_unit
+S1
+R3
+R10
+8D:/Qsim/lab/lab3/tb3.sv
+FD:/Qsim/lab/lab3/tb3.sv
+Z28 L0 29
+R5
+R6
+!s107 D:/Qsim/lab/lab3/tb3.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Qsim/lab/lab3/tb3.sv|
+!i113 0
+R15
+R1
+vtb3_ref
+R8
+R27
+R25
+!i10b 1
+!s100 5BC_LKH4D^YNH=g831ChR3
+IS0TRKa05DEY7Sz3U9jU7k2
+R2
+R9
+S1
+R3
+R10
+R11
+R12
+R28
+R5
+r1
+!s85 0
+31
+R6
+R13
+R14
+!i113 0
+R15
+R1

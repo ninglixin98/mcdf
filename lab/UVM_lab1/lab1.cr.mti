@@ -1,0 +1,191 @@
+D:/Qsim/lab/UVM_lab1/mcdf.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab1/mcdf.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 19:09:09 on Feb 26,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab1/mcdf.v 
+-- Compiling module mcdf
+
+Top level modules:
+	mcdf
+End time: 19:09:09 on Feb 26,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab1/uvm_message_ref.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab1/uvm_message_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 19:09:12 on Feb 26,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab1/uvm_message_ref.sv 
+-- Compiling package uvm_message_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab1/uvm_message_ref.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module uvm_message_ref
+-- Importing package uvm_message_pkg
+
+Top level modules:
+	uvm_message_ref
+End time: 19:09:12 on Feb 26,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab1/factory_mechanism_ref.sv {1 {vlog -work work -vopt -sv {D:\Qsim\lab\UVM_lab1\factory_mechanism_ref.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 19:09:10 on Feb 26,2022
+vlog -reportprogress 300 -work work -vopt -sv D:\Qsim\lab\UVM_lab1\factory_mechanism_ref.sv 
+-- Compiling package factory_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:\Qsim\lab\UVM_lab1\factory_mechanism_ref.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module factory_mechanism
+-- Importing package factory_pkg
+
+Top level modules:
+	factory_mechanism
+End time: 19:09:10 on Feb 26,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab1/uvm_object_methods.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\UVM_lab1\uvm_object_methods.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package object_methods_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:\Qsim\lab\UVM_lab1\uvm_object_methods.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module object_methods
+-- Importing package object_methods_pkg
+
+Top level modules:
+	object_methods
+
+} {} {}} D:/Qsim/lab/UVM_lab1/slave_fifo.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab1/slave_fifo.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 19:09:09 on Feb 26,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab1/slave_fifo.v 
+-- Compiling module slave_fifo
+
+Top level modules:
+	slave_fifo
+End time: 19:09:09 on Feb 26,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab1/reg.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab1/reg.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 19:09:09 on Feb 26,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab1/reg.v 
+-- Compiling module ctrl_regs
+
+Top level modules:
+	ctrl_regs
+End time: 19:09:09 on Feb 26,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab1/uvm_message.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\UVM_lab1\uvm_message.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package uvm_message_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:\Qsim\lab\UVM_lab1\uvm_message.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module uvm_message
+-- Importing package uvm_message_pkg
+
+Top level modules:
+	uvm_message
+
+} {} {}} D:/Qsim/lab/UVM_lab1/factory_mechanism.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\UVM_lab1\factory_mechanism.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package factory_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:\Qsim\lab\UVM_lab1\factory_mechanism.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module factory_mechanism
+-- Importing package factory_pkg
+
+Top level modules:
+	factory_mechanism
+
+} {} {}} D:/Qsim/lab/UVM_lab1/arbiter.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab1/arbiter.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 19:09:09 on Feb 26,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab1/arbiter.v 
+-- Compiling module arbiter
+
+Top level modules:
+	arbiter
+End time: 19:09:09 on Feb 26,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab1/phase_order_ref.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab1/phase_order_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 19:09:10 on Feb 26,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab1/phase_order_ref.sv 
+-- Compiling package phase_order_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab1/phase_order_ref.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module phase_order
+-- Importing package phase_order_pkg
+
+Top level modules:
+	phase_order
+End time: 19:09:11 on Feb 26,2022, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab1/uvm_config_ref.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\UVM_lab1\uvm_config_ref.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface uvm_config_if
+-- Compiling package uvm_config_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:\Qsim\lab\UVM_lab1\uvm_config_ref.sv(9): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module uvm_config
+-- Importing package uvm_config_pkg
+
+Top level modules:
+	uvm_config
+
+} {} {}} D:/Qsim/lab/UVM_lab1/param_def.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab1/param_def.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 19:09:08 on Feb 26,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab1/param_def.v 
+End time: 19:09:08 on Feb 26,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab1/phase_order.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\UVM_lab1\phase_order.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package phase_order_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:\Qsim\lab\UVM_lab1\phase_order.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module phase_order
+-- Importing package phase_order_pkg
+
+Top level modules:
+	phase_order
+
+} {} {}} D:/Qsim/lab/UVM_lab1/uvm_config.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\UVM_lab1\uvm_config.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface uvm_config_if
+-- Compiling package uvm_config_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:\Qsim\lab\UVM_lab1\uvm_config.sv(9): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module uvm_config
+-- Importing package uvm_config_pkg
+
+Top level modules:
+	uvm_config
+
+} {} {}} D:/Qsim/lab/UVM_lab1/formater.v {1 {vlog -work work -vopt D:/Qsim/lab/UVM_lab1/formater.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 19:09:09 on Feb 26,2022
+vlog -reportprogress 300 -work work -vopt D:/Qsim/lab/UVM_lab1/formater.v 
+-- Compiling module formater
+
+Top level modules:
+	formater
+End time: 19:09:09 on Feb 26,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}} D:/Qsim/lab/UVM_lab1/uvm_object_methods_ref.sv {1 {vlog -work work -vopt -sv D:/Qsim/lab/UVM_lab1/uvm_object_methods_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+Start time: 19:09:13 on Feb 26,2022
+vlog -reportprogress 300 -work work -vopt -sv D:/Qsim/lab/UVM_lab1/uvm_object_methods_ref.sv 
+-- Compiling package object_methods_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/Qsim/lab/UVM_lab1/uvm_object_methods_ref.sv(4): Using implicit +incdir+D:/Qsim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module object_methods
+-- Importing package object_methods_pkg
+
+Top level modules:
+	object_methods
+End time: 19:09:13 on Feb 26,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+
+} {} {}}

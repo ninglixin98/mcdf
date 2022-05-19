@@ -1,0 +1,81 @@
+D:/Qsim/lab/lab3/tb2.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab3/tb2.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface chnl_intf
+-- Compiling module tb2
+-- Importing package chnl_pkg2
+
+Top level modules:
+	tb2
+
+} {} {}} D:/Qsim/lab/lab3/chnl_pkg2.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab3/chnl_pkg2.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package chnl_pkg2
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Qsim/lab/lab3/chnl_pkg3.sv {1 {vlog -work work -vopt -sv -stats=none {D:\Qsim\lab\lab3\chnl_pkg3.sv}
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package chnl_pkg3
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Qsim/lab/lab3/mcdt.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab3/mcdt.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module mcdt
+
+Top level modules:
+	mcdt
+
+} {} {}} D:/Qsim/lab/lab3/chnl_pkg3_ref.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab3/chnl_pkg3_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling package chnl_pkg3
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Qsim/lab/lab3/tb3_ref.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab3/tb3_ref.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface chnl_intf
+-- Compiling interface mcdt_intf
+-- Compiling module tb3_ref
+-- Importing package chnl_pkg3
+
+Top level modules:
+	tb3_ref
+
+} {} {}} D:/Qsim/lab/lab3/tb3.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab3/tb3.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface chnl_intf
+-- Compiling interface mcdt_intf
+-- Compiling module tb3
+-- Importing package chnl_pkg3
+
+Top level modules:
+	tb3
+
+} {} {}} D:/Qsim/lab/lab3/arbiter.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab3/arbiter.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module arbiter
+
+Top level modules:
+	arbiter
+
+} {} {}} D:/Qsim/lab/lab3/tb1.sv {1 {vlog -work work -vopt -sv -stats=none D:/Qsim/lab/lab3/tb1.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling interface chnl_intf
+-- Compiling module tb1
+-- Importing package chnl_pkg1
+
+Top level modules:
+	tb1
+
+} {} {}} D:/Qsim/lab/lab3/slave_fifo.v {1 {vlog -work work -vopt -stats=none D:/Qsim/lab/lab3/slave_fifo.v
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+-- Compiling module slave_fifo
+
+Top level modules:
+	slave_fifo
+
+} {} {}}

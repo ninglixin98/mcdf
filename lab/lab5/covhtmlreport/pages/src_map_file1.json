@@ -1,0 +1,11 @@
+var g_data = {'dummy':null,
+'8':'arbiter.v',
+'4':'chnl_pkg.sv',
+'2':'fmt_pkg.sv',
+'9':'formater.v',
+'7':'mcdf.v',
+'5':'mcdf_pkg.sv',
+'6':'reg.v',
+'3':'reg_pkg.sv',
+'1':'slave_fifo.v',
+'10':'tb.sv'};

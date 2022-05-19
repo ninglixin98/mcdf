@@ -1,0 +1,29 @@
+register,address,reg_access,field,field_access,reset_value,bitpos_end,bitpos_start,function
+slv_en,0x00,RW,en,RW,0x0,3,0,slave enable
+,,,reserved,RO,0x0,31,4,reserved
+parity_err_clr,0x04,RW,err_clr,RW,0x0,3,0,parity error flag clear
+,,,reserved,RO,0x0,31,4,reserved
+slv_id,0x08,RW,slv0_id,RW,0x0,7,0,slave0 packet id
+,,,slv1_id,RW,0x1,15,8,slave1 packet id
+,,,slv2_id,RW,0x2,23,16,slave2 packet id
+,,,slv3_id,RW,0x3,31,24,slave3 packet id
+slv_len,0x0C,RW,slv0_len,RW,0x0,7,0,slave0 packet length
+,,,slv1_len,RW,0x0,15,8,slave1 packet length
+,,,slv2_len,RW,0x0,23,16,slave2 packet length
+,,,slv3_len,RW,0x0,31,24,slave3 packet length
+slv0_free_slot,0x80,RO,free_slot,RO,0x20,5,0,slave0 available slot
+,,,reserved,RO,0x0,31,6,reserved
+slv1_free_slot,0x84,RO,free_slot,RO,0x20,5,0,slave1 available slot
+,,,reserved,RO,0x0,31,6,reserved
+slv2_free_slot,0x88,RO,free_slot,RO,0x20,5,0,slave2 available slot
+,,,reserved,RO,0x0,31,6,reserved
+slv3_free_slot,0x8C,RO,free_slot,RO,0x20,5,0,slave3 available slot
+,,,reserved,RO,0x0,31,6,reserved
+slv0_parity_err,0x90,RO,parity_err,RO,0x0,0,0,slave0 parity error flag
+,,,reserved,RO,0x0,31,1,reserved
+slv1_parity_err,0x94,RO,parity_err,RO,0x0,0,0,slave1 parity error flag
+,,,reserved,RO,0x0,31,1,reserved
+slv2_parity_err,0x98,RO,parity_err,RO,0x0,0,0,slave2 parity error flag
+,,,reserved,RO,0x0,31,1,reserved
+slv3_parity_err,0x9C,RO,parity_err,RO,0x0,0,0,slave3 parity error flag
+,,,reserved,RO,0x0,31,1,reserved
